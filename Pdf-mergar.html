@@ -1,10 +1,11 @@
+html
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Merge PDF files online for free with PDFWala.in. Combine multiple PDF documents into one file securely. No server upload. Files are processed locally in your browser.">
-    <title>PDF Merger | Combine PDF Files Online</title>
+    <title>Merge PDF Files Online Free – PDF Merger Tool | PDFWala.in</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -17,23 +18,6 @@
         .gradient-bg {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
         }
-        .file-item-enter {
-            opacity: 0;
-            transform: translateY(-10px);
-        }
-        .file-item-enter-active {
-            opacity: 1;
-            transform: translateY(0);
-            transition: opacity 300ms, transform 300ms;
-        }
-        .file-item-exit {
-            opacity: 1;
-        }
-        .file-item-exit-active {
-            opacity: 0;
-            transform: translateY(-10px);
-            transition: opacity 300ms, transform 300ms;
-        }
         .pdf-icon {
             background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
         }
@@ -45,23 +29,56 @@
             border-color: #667eea;
             background-color: rgba(102, 126, 234, 0.05);
         }
+        .file-item {
+            transition: all 0.3s ease;
+        }
+        .file-item:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        }
+        .drag-handle {
+            cursor: grab;
+        }
+        .drag-handle:active {
+            cursor: grabbing;
+        }
+        .brand-text {
+            font-family: 'Inter', sans-serif;
+            font-weight: 800;
+            color: #4f46e5;
+        }
+        .watermark {
+            position: absolute;
+            opacity: 0.05;
+            font-size: 120px;
+            font-weight: bold;
+            color: #4f46e5;
+            pointer-events: none;
+            z-index: 0;
+        }
     </style>
 </head>
 <body class="bg-gray-50 min-h-screen">
-    <div class="gradient-bg text-white">
-        <div class="container mx-auto px-4 py-8">
+    <div class="gradient-bg text-white relative overflow-hidden">
+        <div class="absolute inset-0 opacity-10">
+            <div class="watermark top-10 left-10">PDFwala.in</div>
+            <div class="watermark bottom-10 right-10">PDFwala.in</div>
+        </div>
+        <div class="container mx-auto px-4 py-8 relative z-10">
             <header class="flex flex-col md:flex-row justify-between items-center">
                 <div class="text-center md:text-left mb-6 md:mb-0">
-                    <h1 class="text-3xl md:text-4xl font-bold mb-2">PDF Merger</h1>
-                    <p class="text-lg opacity-90">Combine multiple PDF files into one document</p>
+                    <h1 class="text-3xl md:text-4xl font-bold mb-2">
+  Merge PDF Files Online – PDF Merger Tool
+                    </h1>
+            
+        
+                    <p class="text-lg opacity-90">Combine multiple PDF files into one document - 100% Free</p>
                 </div>
-                <div class="flex items-center space-x-2">
-                    <div class="bg-white bg-opacity-20 p-2 rounded-lg">
-                        <i class="fas fa-file-pdf text-2xl"></i>
-                    </div>
+                <div class="flex items-center space-x-2 bg-white bg-opacity-20 p-3 rounded-lg">
+                    <i class="fas fa-shield-alt text-xl"></i>
                     <div>
-                        <p class="text-sm">No uploads required</p>
-                        <p class="text-xs opacity-80">Everything happens in your browser</p>
+                        <p class="text-sm font-medium">100% Safe & Secure</p>
+                        <p class="text-xs opacity-80">Files never leave your computer</p>
                     </div>
                 </div>
             </header>
@@ -71,10 +88,13 @@
     <main class="container mx-auto px-4 py-8 -mt-6">
         <div class="max-w-6xl mx-auto">
             <!-- Main Content Card -->
-            <div class="bg-white rounded-xl shadow-xl overflow-hidden">
+            <div class="bg-white rounded-xl shadow-xl overflow-hidden relative">
+                <div class="absolute top-4 right-4">
+                    <span class="bg-green-100 text-green-800 text-xs font-medium px-2.5 py-0.5 rounded">Powered by PDFwala.in</span>
+                </div>
                 <div class="p-6 border-b border-gray-200">
                     <h2 class="text-2xl font-bold text-gray-800">Merge Your PDFs</h2>
-                    <p class="text-gray-600 mt-1">Select and arrange PDF files to merge into a single document</p>
+                    <p class="text-gray-600 mt-1">Drag to reorder files in your preferred sequence</p>
                 </div>
                 
                 <!-- Upload Area -->
@@ -91,17 +111,23 @@
                         <label for="fileInput" class="inline-block bg-indigo-600 hover:bg-indigo-700 text-white font-medium py-3 px-6 rounded-lg cursor-pointer transition duration-300">
                             <i class="fas fa-plus mr-2"></i> Select PDF Files
                         </label>
-                        <p class="text-gray-500 text-sm mt-4">You can select multiple files at once</p>
+                        <p class="text-gray-500 text-sm mt-4">Maximum 10 PDF files • Each up to 10MB</p>
                     </div>
                     
                     <!-- File List -->
                     <div id="fileListContainer" class="mt-10">
-                        <h3 class="text-lg font-semibold text-gray-800 mb-4 flex items-center">
-                            <span>Selected Files</span>
-                            <span id="fileCount" class="ml-2 bg-gray-200 text-gray-800 text-xs font-medium px-2.5 py-0.5 rounded-full">0</span>
-                        </h3>
+                        <div class="flex justify-between items-center mb-4">
+                            <h3 class="text-lg font-semibold text-gray-800 flex items-center">
+                                <span>Selected Files</span>
+                                <span id="fileCount" class="ml-2 bg-gray-200 text-gray-800 text-xs font-medium px-2.5 py-0.5 rounded-full">0</span>
+                            </h3>
+                            <div class="text-sm text-gray-600">
+                                <i class="fas fa-arrows-alt mr-1"></i>
+                                <span>Drag files to reorder</span>
+                            </div>
+                        </div>
                         
-                        <div id="fileList" class="space-y-4">
+                        <div id="fileList" class="space-y-3">
                             <div id="emptyState" class="text-center py-10">
                                 <i class="fas fa-folder-open text-gray-300 text-5xl mb-4"></i>
                                 <p class="text-gray-500">No PDF files selected yet. Add files using the upload area above.</p>
@@ -121,63 +147,97 @@
                         </div>
                         
                         <div class="flex items-center text-gray-600">
-                            <i class="fas fa-info-circle mr-2"></i>
-                            <span class="text-sm">Files are processed locally in your browser</span>
+                            <i class="fas fa-home mr-2"></i>
+                            <span class="text-sm">www.PDFwala.in</span>
                         </div>
                     </div>
                 </div>
             </div>
             
-            <!-- How it works & Features -->
+            <!-- Features -->
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8">
-                <div class="bg-white p-6 rounded-xl shadow-md">
+                <div class="bg-white p-6 rounded-xl shadow-md border border-gray-100">
                     <div class="text-indigo-600 mb-4">
-                        <i class="fas fa-upload text-2xl"></i>
+                        <i class="fas fa-bolt text-2xl"></i>
                     </div>
-                    <h4 class="font-bold text-lg text-gray-800 mb-2">Upload PDFs</h4>
-                    <p class="text-gray-600">Select PDF files from your device or drag and drop them directly into the browser.</p>
+                    <h4 class="font-bold text-lg text-gray-800 mb-2">Fast Processing</h4>
+                    <p class="text-gray-600">Merge PDFs instantly in your browser. No waiting for server processing.</p>
                 </div>
                 
-                <div class="bg-white p-6 rounded-xl shadow-md">
+                <div class="bg-white p-6 rounded-xl shadow-md border border-gray-100">
                     <div class="text-indigo-600 mb-4">
-                        <i class="fas fa-sort-amount-down text-2xl"></i>
+                        <i class="fas fa-user-shield text-2xl"></i>
                     </div>
-                    <h4 class="font-bold text-lg text-gray-800 mb-2">Rearrange & Merge</h4>
-                    <p class="text-gray-600">Arrange files in your preferred order and merge them into a single PDF document.</p>
+                    <h4 class="font-bold text-lg text-gray-800 mb-2">Complete Privacy</h4>
+                    <p class="text-gray-600">Your files never leave your computer. Process everything locally.</p>
                 </div>
                 
-                <div class="bg-white p-6 rounded-xl shadow-md">
+                <div class="bg-white p-6 rounded-xl shadow-md border border-gray-100">
                     <div class="text-indigo-600 mb-4">
-                        <i class="fas fa-download text-2xl"></i>
+                        <i class="fas fa-rupee-sign text-2xl"></i>
                     </div>
-                    <h4 class="font-bold text-lg text-gray-800 mb-2">Download Result</h4>
-                    <p class="text-gray-600">Download the merged PDF file directly to your device. No data is sent to any server.</p>
+                    <h4 class="font-bold text-lg text-gray-800 mb-2">100% Free</h4>
+                    <p class="text-gray-600">No charges, no subscriptions, no watermarks. Forever free to use.</p>
                 </div>
             </div>
             
             <!-- Result Section -->
             <div id="resultSection" class="hidden mt-10">
-                <div class="bg-gradient-to-r from-green-50 to-emerald-50 border border-green-200 rounded-xl p-6">
+                <div class="bg-gradient-to-r from-green-50 to-emerald-50 border border-green-200 rounded-xl p-6 relative overflow-hidden">
+                    <div class="absolute top-4 right-4">
+                        <span class="bg-green-100 text-green-800 text-xs font-medium px-2.5 py-0.5 rounded">PDFwala.in</span>
+                    </div>
                     <div class="flex flex-col md:flex-row justify-between items-center">
                         <div class="mb-4 md:mb-0">
                             <h3 class="text-xl font-bold text-gray-800 flex items-center">
-                                <i class="fas fa-check-circle text-green-600 mr-2"></i> PDFs Successfully Merged!
+                                <i class="fas fa-check-circle text-green-600 mr-2"></i> Successfully Merged!
                             </h3>
                             <p class="text-gray-600 mt-1">Your merged PDF file is ready to download.</p>
+                            <div class="mt-3 flex items-center text-gray-500">
+                                <i class="fas fa-file-pdf mr-2 text-red-500"></i>
+                                <span id="resultFileName" class="font-medium">PDFwala.in-merged-file.pdf</span>
+                            </div>
                         </div>
-                        <div class="flex space-x-4">
-                            <button id="downloadBtn" class="px-5 py-3 bg-green-600 hover:bg-green-700 text-white font-medium rounded-lg transition duration-300">
-                                <i class="fas fa-download mr-2"></i> Download PDF
+                        <div class="flex flex-col sm:flex-row space-y-3 sm:space-y-0 sm:space-x-4">
+                            <button id="downloadBtn" class="px-5 py-3 bg-green-600 hover:bg-green-700 text-white font-medium rounded-lg transition duration-300 flex items-center justify-center shadow-md">
+                                <i class="fas fa-download mr-2"></i> Download Now
                             </button>
-                            <button id="newMergeBtn" class="px-5 py-3 border border-gray-300 text-gray-700 font-medium rounded-lg hover:bg-gray-50 transition duration-300">
-                                <i class="fas fa-redo mr-2"></i> New Merge
+                            <button id="newMergeBtn" class="px-5 py-3 border border-gray-300 text-gray-700 font-medium rounded-lg hover:bg-gray-50 transition duration-300 flex items-center justify-center">
+                                <i class="fas fa-plus-circle mr-2"></i> New Merge
                             </button>
                         </div>
                     </div>
                     <div class="mt-6 pt-6 border-t border-green-200">
-                        <div class="flex items-center text-green-700">
-                            <i class="fas fa-shield-alt mr-2"></i>
-                            <span class="text-sm">Privacy guaranteed: All processing happens locally in your browser.</span>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div class="flex items-center text-green-700">
+                                <i class="fas fa-bolt mr-2"></i>
+                                <span class="text-sm">Merged locally in your browser</span>
+                            </div>
+                            <div class="flex items-center text-gray-600">
+                                <i class="fas fa-globe mr-2"></i>
+                                <span class="text-sm">Created with ❤️ by PDFwala.in</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Share Section -->
+                <div class="mt-6 bg-blue-50 border border-blue-100 rounded-xl p-6">
+                    <div class="flex flex-col md:flex-row justify-between items-center">
+                        <div class="mb-4 md:mb-0">
+                            <h4 class="font-bold text-gray-800 flex items-center">
+                                <i class="fas fa-share-alt text-blue-600 mr-2"></i>
+                                Share PDFwala.in
+                            </h4>
+                            <p class="text-gray-600 text-sm mt-1">Help others merge their PDFs for free!</p>
+                        </div>
+                        <div class="flex space-x-4">
+                            <button onclick="shareTool()" class="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-lg transition duration-300 text-sm">
+                                <i class="fas fa-share mr-1"></i> Share Tool
+                            </button>
+                            <button onclick="copyLink()" class="px-4 py-2 bg-gray-200 hover:bg-gray-300 text-gray-800 font-medium rounded-lg transition duration-300 text-sm">
+                                <i class="fas fa-copy mr-1"></i> Copy Link
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -185,16 +245,39 @@
         </div>
     </main>
 
-    <footer class="bg-gray-800 text-white mt-12">
+    <footer class="bg-gray-900 text-white mt-12">
         <div class="container mx-auto px-4 py-8">
             <div class="flex flex-col md:flex-row justify-between items-center">
-                <div class="mb-4 md:mb-0">
-                    <h3 class="text-xl font-bold">PDF Merger</h3>
-                    <p class="text-gray-400 mt-1">A free tool to merge PDF files locally in your browser</p>
+                <div class="mb-6 md:mb-0 text-center md:text-left">
+                    <h3 class="text-2xl font-bold flex items-center justify-center md:justify-start">
+                        <i class="fas fa-file-pdf mr-2 text-red-400"></i><span class="brand-text">PDFwala.in</span>
+                    </h3>
+                    <p class="text-gray-400 mt-2 max-w-md">India's favorite free PDF merger tool. Fast, secure, and completely free forever.</p>
+                    <div class="mt-4 flex space-x-4 justify-center md:justify-start">
+                        <a href="#" class="text-gray-400 hover:text-white transition text-lg">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition text-lg">
+                            <i class="fab fa-facebook"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition text-lg">
+                            <i class="fab fa-whatsapp"></i>
+                        </a>
+                    </div>
                 </div>
+                
                 <div class="text-center md:text-right">
-                    <p class="text-gray-400">Made with <i class="fas fa-heart text-red-400"></i> for the community</p>
-                    <p class="text-gray-500 text-sm mt-1">No data leaves your device • 100% secure • No registration required</p>
+                    <div class="mb-4">
+                        <h4 class="font-semibold mb-2 text-white">Quick Links</h4>
+                        <div class="space-x-4 text-gray-400">
+                            <a href="#" class="hover:text-white transition">Home</a>
+                            <a href="#" class="hover:text-white transition">About Us</a>
+                            <a href="#" class="hover:text-white transition">Privacy</a>
+                            <a href="#" class="hover:text-white transition">Contact</a>
+                        </div>
+                    </div>
+                    <p class="text-gray-500 text-sm">© 2023 PDFwala.in. All rights reserved.</p>
+                    <p class="text-gray-500 text-xs mt-1">Made with ❤️ for India</p>
                 </div>
             </div>
         </div>
@@ -205,7 +288,9 @@
         const state = {
             files: [],
             mergedPdf: null,
-            processing: false
+            processing: false,
+            dragItem: null,
+            dragOverItem: null
         };
         
         // DOM elements
@@ -219,6 +304,7 @@
         const resultSection = document.getElementById('resultSection');
         const downloadBtn = document.getElementById('downloadBtn');
         const newMergeBtn = document.getElementById('newMergeBtn');
+        const resultFileName = document.getElementById('resultFileName');
         
         // Initialize the application
         function init() {
@@ -287,12 +373,30 @@
                 return;
             }
             
+            // Limit to 10 files
+            if (state.files.length + pdfFiles.length > 10) {
+                showNotification('Maximum 10 PDF files allowed.', 'error');
+                return;
+            }
+            
+            // Check file size (10MB limit)
+            const oversizedFiles = pdfFiles.filter(file => file.size > 10 * 1024 * 1024);
+            if (oversizedFiles.length > 0) {
+                showNotification('Some files exceed 10MB limit.', 'e            
+            // Check file size (10MB limit)
+            const oversizedFiles = pdfFiles.filter(file => file.size > 10 * 1024 * 1024);
+            if (oversizedFiles.length > 0) {
+                showNotification('Some files exceed 10MB limit.', 'error');
+                return;
+            }
+            
             // Add files to state with metadata
             pdfFiles.forEach(file => {
                 state.files.push({
                     id: Date.now() + Math.random(),
                     file,
-                    name: file.name,
+                    name: file.name.length > 30 ? file.name.substring(0, 30) + '...' : file.name,
+                    fullName: file.name,
                     size: formatFileSize(file.size),
                     order: state.files.length + 1
                 });
@@ -309,38 +413,6 @@
             // Update order numbers
             state.files.forEach((file, index) => {
                 file.order = index + 1;
-            });
-            
-            updateUI();
-        }
-        
-        // Move file up in order
-        function moveFileUp(id) {
-            const index = state.files.findIndex(file => file.id === id);
-            if (index <= 0) return;
-            
-            // Swap with previous file
-            [state.files[index], state.files[index - 1]] = [state.files[index - 1], state.files[index]];
-            
-            // Update order numbers
-            state.files.forEach((file, idx) => {
-                file.order = idx + 1;
-            });
-            
-            updateUI();
-        }
-        
-        // Move file down in order
-        function moveFileDown(id) {
-            const index = state.files.findIndex(file => file.id === id);
-            if (index === -1 || index >= state.files.length - 1) return;
-            
-            // Swap with next file
-            [state.files[index], state.files[index + 1]] = [state.files[index + 1], state.files[index]];
-            
-            // Update order numbers
-            state.files.forEach((file, idx) => {
-                file.order = idx + 1;
             });
             
             updateUI();
@@ -365,7 +437,7 @@
                 updateUI();
                 
                 // Show processing state
-                mergeBtn.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i> Processing...';
+                mergeBtn.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i> Merging...';
                 mergeBtn.disabled = true;
                 
                 // Create a new PDF document
@@ -392,11 +464,17 @@
                 // Store the result
                 state.mergedPdf = mergedPdfBytes;
                 
+                // Generate filename with PDFwala.in branding
+                const dateStr = new Date().toISOString().slice(0, 10);
+                const timeStr = new Date().toTimeString().slice(0, 5).replace(/:/g, '-');
+                state.mergedFileName = `PDFwala.in-merged-${dateStr}-${timeStr}.pdf`;
+                resultFileName.textContent = state.mergedFileName;
+                
                 // Show result section
                 resultSection.classList.remove('hidden');
                 resultSection.scrollIntoView({ behavior: 'smooth' });
                 
-                showNotification('PDFs successfully merged!', 'success');
+                showNotification('PDFs successfully merged! Ready to download.', 'success');
                 
             } catch (error) {
                 console.error('Error merging PDFs:', error);
@@ -412,16 +490,37 @@
         function downloadMergedPdf() {
             if (!state.mergedPdf) return;
             
-            const fileName = `merged-${new Date().toISOString().slice(0, 10)}.pdf`;
-            download(new Uint8Array(state.mergedPdf), fileName, 'application/pdf');
+            // Use the filename with PDFwala.in branding
+            const fileName = state.mergedFileName || `PDFwala.in-merged-${new Date().toISOString().slice(0, 10)}.pdf`;
             
-            showNotification('Download started!', 'success');
+            // Create download
+            const pdfBlob = new Blob([state.mergedPdf], { type: 'application/pdf' });
+            const url = URL.createObjectURL(pdfBlob);
+            
+            // Create temporary link for download
+            const link = document.createElement('a');
+            link.href = url;
+            link.download = fileName;
+            link.style.display = 'none';
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+            
+            // Revoke the URL after download
+            setTimeout(() => URL.revokeObjectURL(url), 100);
+            
+            // Show download confirmation with PDFwala.in branding
+            showNotification(`Download started: ${fileName}`, 'success');
+            
+            // Log download event (for analytics)
+            console.log(`PDF downloaded from PDFwala.in: ${fileName}`);
         }
         
         // Reset the app for a new merge
         function resetApp() {
             state.files = [];
             state.mergedPdf = null;
+            state.mergedFileName = null;
             resultSection.classList.add('hidden');
             updateUI();
             
@@ -429,6 +528,34 @@
             fileInput.value = '';
             
             showNotification('Ready for a new merge!', 'info');
+        }
+        
+        // Share tool function
+        function shareTool() {
+            const shareText = "Check out PDFwala.in - Free PDF merger tool that works entirely in your browser! No uploads, 100% secure.";
+            const shareUrl = "https://PDFwala.in";
+            
+            if (navigator.share) {
+                navigator.share({
+                    title: 'PDFwala.in - Free PDF Merger',
+                    text: shareText,
+                    url: shareUrl
+                });
+            } else {
+                // Fallback for desktop
+                const twitterUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(shareText)}&url=${encodeURIComponent(shareUrl)}`;
+                window.open(twitterUrl, '_blank');
+            }
+            
+            showNotification('Thanks for sharing PDFwala.in!', 'success');
+        }
+        
+        // Copy link function
+        function copyLink() {
+            const link = "https://PDFwala.in";
+            navigator.clipboard.writeText(link).then(() => {
+                showNotification('Link copied! Share PDFwala.in with friends.', 'success');
+            });
         }
         
         // Update UI based on state
@@ -451,7 +578,7 @@
             
             // Update merge button text if processing
             if (state.processing) {
-                mergeBtn.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i> Processing...';
+                mergeBtn.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i> Merging...';
             } else {
                 mergeBtn.innerHTML = '<i class="fas fa-compress-alt mr-2"></i> Merge PDFs';
             }
@@ -461,39 +588,100 @@
         function renderFileList() {
             fileList.innerHTML = '';
             
-            state.files.forEach(fileData => {
+            state.files.forEach((fileData, index) => {
                 const fileElement = document.createElement('div');
-                fileElement.className = 'file-item bg-gray-50 border border-gray-200 rounded-xl p-4 transition-all duration-300 hover:shadow-sm';
+                fileElement.className = 'file-item bg-gray-50 border border-gray-200 rounded-xl p-4';
+                fileElement.setAttribute('draggable', 'true');
+                fileElement.dataset.id = fileData.id;
+                fileElement.dataset.index = index;
+                
                 fileElement.innerHTML = `
-                    <div class="flex flex-col md:flex-row md:items-center justify-between">
-                        <div class="flex items-center mb-3 md:mb-0">
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center">
+                            <div class="drag-handle p-2 mr-3 text-gray-400 hover:text-indigo-600 cursor-move" draggable="true">
+                                <i class="fas fa-grip-vertical"></i>
+                            </div>
                             <div class="pdf-icon p-3 rounded-lg mr-4">
                                 <i class="fas fa-file-pdf text-white"></i>
                             </div>
-                            <div>
-                                <h4 class="font-medium text-gray-800 truncate max-w-xs">${fileData.name}</h4>
-                                <p class="text-gray-500 text-sm mt-1">${fileData.size} • Order: ${fileData.order}</p>
+                            <div class="max-w-xs">
+                                <h4 class="font-medium text-gray-800 truncate" title="${fileData.fullName}">
+                                    ${fileData.name}
+                                </h4>
+                                <div class="flex items-center mt-1">
+                                    <span class="text-xs bg-indigo-100 text-indigo-800 font-medium px-2 py-0.5 rounded mr-2">
+                                        #${fileData.order}
+                                    </span>
+                                    <span class="text-gray-500 text-sm">${fileData.size}</span>
+                                </div>
                             </div>
                         </div>
                         
                         <div class="flex items-center space-x-2">
-                            <button class="move-up-btn p-2 text-gray-600 hover:text-indigo-600 hover:bg-indigo-50 rounded-lg transition duration-300 ${fileData.order === 1 ? 'opacity-50 cursor-not-allowed' : ''}" 
-                                    onclick="moveFileUp('${fileData.id}')" ${fileData.order === 1 ? 'disabled' : ''}>
-                                <i class="fas fa-arrow-up"></i>
-                            </button>
-                            
-                            <button class="move-down-btn p-2 text-gray-600 hover:text-indigo-600 hover:bg-indigo-50 rounded-lg transition duration-300 ${fileData.order === state.files.length ? 'opacity-50 cursor-not-allowed' : ''}" 
-                                    onclick="moveFileDown('${fileData.id}')" ${fileData.order === state.files.length ? 'disabled' : ''}>
-                                <i class="fas fa-arrow-down"></i>
-                            </button>
-                            
-                            <button class="remove-btn p-2 text-gray-600 hover:text-red-600 hover:bg-red-50 rounded-lg transition duration-300" 
-                                    onclick="removeFile('${fileData.id}')">
+                            <button class="remove-btn p-2 text-gray-400 hover:text-red-600 hover:bg-red-50 rounded-lg transition duration-300" 
+                                    onclick="removeFile('${fileData.id}')" title="Remove file">
                                 <i class="fas fa-times"></i>
                             </button>
                         </div>
                     </div>
                 `;
+                
+                // Add drag and drop events
+                const dragHandle = fileElement.querySelector('.drag-handle');
+                
+                dragHandle.addEventListener('dragstart', (e) => {
+                    state.dragItem = fileElement;
+                    setTimeout(() => {
+                        fileElement.classList.add('opacity-50');
+                    }, 0);
+                });
+                
+                dragHandle.addEventListener('dragend', () => {
+                    fileElement.classList.remove('opacity-50');
+                    state.dragItem = null;
+                    state.dragOverItem = null;
+                    
+                    // Remove hover effects from all items
+                    document.querySelectorAll('.file-item').forEach(item => {
+                        item.classList.remove('border-indigo-400', 'bg-indigo-50');
+                    });
+                });
+                
+                fileElement.addEventListener('dragover', (e) => {
+                    e.preventDefault();
+                    if (state.dragItem && state.dragItem !== fileElement) {
+                        state.dragOverItem = fileElement;
+                        fileElement.classList.add('border-indigo-400', 'bg-indigo-50');
+                    }
+                });
+                
+                fileElement.addEventListener('dragleave', () => {
+                    if (state.dragItem && state.dragItem !== fileElement) {
+                        fileElement.classList.remove('border-indigo-400', 'bg-indigo-50');
+                    }
+                });
+                
+                fileElement.addEventListener('drop', (e) => {
+                    e.preventDefault();
+                    if (state.dragItem && state.dragItem !== fileElement) {
+                        // Swap items in state
+                        const dragIndex = parseInt(state.dragItem.dataset.index);
+                        const dropIndex = parseInt(fileElement.dataset.index);
+                        
+                        // Swap the files in the array
+                        [state.files[dragIndex], state.files[dropIndex]] = [state.files[dropIndex], state.files[dragIndex]];
+                        
+                        // Update order numbers
+                        state.files.forEach((file, idx) => {
+                            file.order = idx + 1;
+                        });
+                        
+                        updateUI();
+                        showNotification('File order updated', 'info');
+                    }
+                    
+                    fileElement.classList.remove('border-indigo-400', 'bg-indigo-50');
+                });
                 
                 fileList.appendChild(fileElement);
             });
@@ -506,14 +694,24 @@
             
             // Set styles based on type
             let bgColor = 'bg-indigo-600';
-            if (type === 'error') bgColor = 'bg-red-600';
-            if (type === 'success') bgColor = 'bg-green-600';
-            if (type === 'info') bgColor = 'bg-blue-600';
+            let icon = 'fa-info-circle';
+            if (type === 'error') {
+                bgColor = 'bg-red-600';
+                icon = 'fa-exclamation-circle';
+            }
+            if (type === 'success') {
+                bgColor = 'bg-green-600';
+                icon = 'fa-check-circle';
+            }
+            if (type === 'info') {
+                bgColor = 'bg-blue-600';
+                icon = 'fa-info-circle';
+            }
             
             notification.className = `${bgColor} text-white fixed top-4 right-4 px-6 py-3 rounded-lg shadow-lg z-50 max-w-md transform transition-transform duration-300 translate-x-full`;
             notification.innerHTML = `
                 <div class="flex items-center">
-                    <i class="fas fa-${type === 'error' ? 'exclamation-circle' : type === 'success' ? 'check-circle' : 'info-circle'} mr-3"></i>
+                    <i class="fas ${icon} mr-3"></i>
                     <span>${message}</span>
                 </div>
             `;
@@ -549,8 +747,8 @@
         
         // Make functions available globally
         window.removeFile = removeFile;
-        window.moveFileUp = moveFileUp;
-        window.moveFileDown = moveFileDown;
+        window.shareTool = shareTool;
+        window.copyLink = copyLink;
         
         // Initialize app
         document.addEventListener('DOMContentLoaded', init);
