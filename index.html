@@ -1,18 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta name="description" lang="hi" content="PDFWala.in - सभी PDF टूल्स मुफ्त: मर्ज, स्प्लिट, कंप्रेस, कन्वर्ट और बहुत कुछ।">
+<meta name="description" lang="hi" content="PDFWala.in - 50+ मुफ्त PDF टूल्स: मर्ज, स्प्लिट, कंप्रेस, कन्वर्ट, OCR और बहुत कुछ।">
 <meta name="description" content="PDFWala.in - 100% Free online PDF tools. Merge, Split, Compress, Convert, OCR, and Edit PDFs easily.">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PDFWala.in | Free Online PDF Tools</title>
+    <title>PDFWala.in | 50+ Free PDF Tools</title>
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
         /* --- BRANDING & VARIABLES --- */
         :root {
-            --brand-color: #e53935;       /* I Love PDF Red */
+            --brand-color: #e53935;       
             --brand-dark: #b71c1c;
             --bg-body: #f3f4f6;
             --white: #ffffff;
@@ -43,43 +43,77 @@
             background: #2d3748; 
             color: white; 
             text-align: center; 
-            padding: 60px 20px 50px 20px; 
-            margin-bottom: 30px;
+            padding: 50px 20px 30px 20px; /* Reduced bottom padding */
+            margin-bottom: 0;
         }
         .hero h1 { font-size: 2.8rem; font-weight: 700; margin-bottom: 15px; }
         .hero p { font-size: 1.25rem; font-weight: 300; opacity: 0.9; margin-bottom: 30px; }
 
         /* Search Bar */
-        .search-container { position: relative; max-width: 600px; margin: 0 auto; }
+        .search-container { position: relative; max-width: 600px; margin: 0 auto 30px auto; }
         .search-input { width: 100%; padding: 15px 50px; border-radius: 8px; border: none; font-size: 1.1rem; outline: none; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
         .search-icon { position: absolute; left: 20px; top: 50%; transform: translateY(-50%); color: var(--brand-color); font-size: 1.2rem; }
+
+        /* --- CATEGORY FILTER BAR (NEW) --- */
+        .category-bar {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 10px;
+            max-width: 900px;
+            margin: 0 auto;
+            padding-bottom: 20px;
+        }
+        
+        .cat-btn {
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 8px 16px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .cat-btn:hover { background: rgba(255, 255, 255, 0.25); }
+        
+        .cat-btn.active {
+            background: var(--brand-color);
+            border-color: var(--brand-color);
+            box-shadow: 0 4px 12px rgba(229, 57, 53, 0.4);
+            font-weight: 700;
+        }
 
         /* --- CONTAINER --- */
         .container { max-width: 1280px; margin: 0 auto; padding: 0 20px 40px 20px; }
 
         /* --- SECTIONS --- */
+        .tool-section { margin-bottom: 40px; } /* Group Wrapper */
+
         .section-title { 
-            font-size: 1.4rem; 
+            font-size: 1.5rem; 
             color: var(--text-main); 
             margin: 40px 0 20px 0; 
-            font-weight: 700; 
+            font-weight: 800; 
             display: flex; 
             align-items: center; 
             gap: 10px;
         }
         .section-title i { color: var(--brand-color); }
 
-        /* --- GRID LAYOUT (4 Columns per row) --- */
+        /* --- GRID LAYOUT (4 Columns) --- */
         .tools-grid { 
             display: grid; 
-            grid-template-columns: repeat(4, 1fr); /* 4 Columns Fixed */
+            grid-template-columns: repeat(4, 1fr); 
             gap: 20px; 
         }
 
-        /* --- TOOL CARD (I Love PDF Style) --- */
+        /* --- TOOL CARD --- */
         .tool-card {
             background: var(--white);
-            padding: 30px 20px;
+            padding: 25px 20px;
             border-radius: 8px;
             text-align: center;
             transition: transform 0.2s ease, box-shadow 0.2s ease;
@@ -96,24 +130,24 @@
         .tool-card:hover {
             transform: translateY(-5px);
             box-shadow: var(--card-hover);
-            border-color: #fee2e2; /* Light red border on hover */
+            border-color: #fee2e2; 
         }
 
         .tool-icon { 
-            font-size: 3rem; 
+            font-size: 2.8rem; 
             color: var(--brand-color); 
             margin-bottom: 15px; 
         }
 
         .tool-card h3 { 
-            font-size: 1.15rem; 
+            font-size: 1.1rem; 
             font-weight: 700; 
             color: var(--text-main); 
-            margin-bottom: 8px; 
+            margin-bottom: 6px; 
         }
 
         .tool-card p { 
-            font-size: 0.9rem; 
+            font-size: 0.85rem; 
             color: var(--text-sub); 
             line-height: 1.4; 
         }
@@ -145,19 +179,21 @@
         .footer-col a:hover { color: var(--brand-color); }
         .footer-bottom { border-top: 1px solid #374151; padding-top: 20px; text-align: center; margin-top: 40px; font-size: 0.9rem; }
 
-        /* --- RESPONSIVE MEDIA QUERIES --- */
+        /* --- RESPONSIVE --- */
         @media (max-width: 1024px) {
-            .tools-grid { grid-template-columns: repeat(3, 1fr); } /* 3 per row on tablet landscape */
+            .tools-grid { grid-template-columns: repeat(3, 1fr); }
         }
 
         @media (max-width: 768px) {
             .navbar { flex-direction: column; gap: 10px; }
-            .tools-grid { grid-template-columns: repeat(2, 1fr); } /* 2 per row on tablet portrait */
+            .tools-grid { grid-template-columns: repeat(2, 1fr); }
             .hero h1 { font-size: 2rem; }
+            .category-bar { overflow-x: auto; justify-content: flex-start; padding-left: 20px; padding-right: 20px; -webkit-overflow-scrolling: touch; }
+            .cat-btn { white-space: nowrap; }
         }
 
         @media (max-width: 480px) {
-            .tools-grid { grid-template-columns: 1fr; } /* 1 per row on mobile */
+            .tools-grid { grid-template-columns: 1fr; }
             .tool-card { padding: 20px; }
         }
     </style>
@@ -176,263 +212,120 @@
 
     <section class="hero">
         <h1>Every tool you need to work with PDFs</h1>
-        <p>100% Free. Secure. Easy to use.</p>
+        <p>Over 50+ Free Tools. Secure. Easy to use.</p>
+        
         <div class="search-container">
             <i class="fa-solid fa-magnifying-glass search-icon"></i>
-            <input type="text" id="toolSearch" class="search-input" placeholder="Search tools (e.g. 'Word', 'Merge', 'OCR')...">
+            <input type="text" id="toolSearch" class="search-input" placeholder="Search tools (e.g. 'Word', 'Crop', 'OCR')...">
+        </div>
+
+        <div class="category-bar">
+            <button class="cat-btn active" onclick="filterTools('all')">All Tools</button>
+            <button class="cat-btn" onclick="filterTools('popular')">Popular</button>
+            <button class="cat-btn" onclick="filterTools('convert-to')">Convert To PDF</button>
+            <button class="cat-btn" onclick="filterTools('convert-from')">Convert From PDF</button>
+            <button class="cat-btn" onclick="filterTools('organize')">Organize</button>
+            <button class="cat-btn" onclick="filterTools('security')">Security</button>
+            <button class="cat-btn" onclick="filterTools('advanced')">Advanced</button>
         </div>
     </section>
 
     <main class="container">
         
         <div class="ad-banner">
-            <i class="fa-solid fa-rectangle-ad"></i> Google Ads (Responsive Leaderboard)
+            <i class="fa-solid fa-rectangle-ad"></i> Google Ads (Leaderboard)
         </div>
 
-        <h2 class="section-title"><i class="fa-solid fa-star"></i> Most Popular</h2>
-        <div class="tools-grid">
-            <a href="/merge" class="tool-card">
-                <div class="tool-icon"><i class="fa-solid fa-object-group"></i></div>
-                <h3>Merge PDF</h3>
-                <p>Combine multiple PDFs into one unified document.</p>
-            </a>
-            <a href="/split" class="tool-card">
-                <div class="tool-icon"><i class="fa-solid fa-scissors"></i></div>
-                <h3>Split PDF</h3>
-                <p>Separate one page or a whole set for easy conversion.</p>
-            </a>
-            <a href="/compress" class="tool-card">
-                <div class="tool-icon"><i class="fa-solid fa-minimize"></i></div>
-                <h3>Compress PDF</h3>
-                <p>Reduce file size while optimizing for maximal PDF quality.</p>
-            </a>
-            <a href="/ocr-pdf" class="tool-card">
-                <span class="badge badge-hot">Hot</span>
-                <div class="tool-icon"><i class="fa-solid fa-eye"></i></div>
-                <h3>OCR PDF</h3>
-                <p>Make scanned PDFs searchable and selectable.</p>
-            </a>
-            <a href="/word-to-pdf" class="tool-card">
-                <div class="tool-icon"><i class="fa-solid fa-file-word"></i></div>
-                <h3>Word to PDF</h3>
-                <p>Convert your DOC and DOCX files to PDF instantly.</p>
-            </a>
-            <a href="/pdf-to-word" class="tool-card">
-                <div class="tool-icon"><i class="fa-solid fa-file-lines"></i></div>
-                <h3>PDF to Word</h3>
-                <p>Easily convert your PDF files into easy to edit DOCX documents.</p>
-            </a>
-            <a href="/jpg-to-pdf" class="tool-card">
-                <div class="tool-icon"><i class="fa-regular fa-image"></i></div>
-                <h3>JPG to PDF</h3>
-                <p>Convert JPG images to PDF in seconds.</p>
-            </a>
-            <a href="/edit" class="tool-card">
-                <div class="tool-icon"><i class="fa-solid fa-pen-to-square"></i></div>
-                <h3>Edit PDF</h3>
-                <p>Add text, shapes, comments and highlights to your PDF.</p>
-            </a>
+        <div class="tool-section" id="popular">
+            <h2 class="section-title"><i class="fa-solid fa-star"></i> Most Popular</h2>
+            <div class="tools-grid">
+                <a href="/merge" class="tool-card"><div class="tool-icon"><i class="fa-solid fa-object-group"></i></div><h3>Merge PDF</h3><p>Combine multiple PDFs into one.</p></a>
+                <a href="/split" class="tool-card"><div class="tool-icon"><i class="fa-solid fa-scissors"></i></div><h3>Split PDF</h3><p>Extract pages or split file.</p></a>
+                <a href="/compress" class="tool-card"><div class="tool-icon"><i class="fa-solid fa-minimize"></i></div><h3>Compress PDF</h3><p>Reduce file size instantly.</p></a>
+                <a href="/ocr-pdf" class="tool-card"><span class="badge badge-hot">Hot</span><div class="tool-icon"><i class="fa-solid fa-eye"></i></div><h3>OCR PDF</h3><p>Scan to Searchable Text.</p></a>
+                <a href="/word-to-pdf" class="tool-card"><div class="tool-icon"><i class="fa-solid fa-file-word"></i></div><h3>Word to PDF</h3><p>Convert DOC to PDF.</p></a>
+                <a href="/pdf-to-word" class="tool-card"><div class="tool-icon"><i class="fa-solid fa-file-lines"></i></div><h3>PDF to Word</h3><p>Convert PDF to DOCX.</p></a>
+                <a href="/jpg-to-pdf" class="tool-card"><div class="tool-icon"><i class="fa-regular fa-image"></i></div><h3>JPG to PDF</h3><p>Images to PDF.</p></a>
+                <a href="/edit" class="tool-card"><div class="tool-icon"><i class="fa-solid fa-pen-to-square"></i></div><h3>Edit PDF</h3><p>Add text, shapes, and notes.</p></a>
+            </div>
         </div>
 
-        <h2 class="section-title"><i class="fa-solid fa-file-import"></i> Convert to PDF</h2>
-        <div class="tools-grid">
-            <a href="/powerpoint-to-pdf" class="tool-card">
-                <div class="tool-icon"><i class="fa-solid fa-file-powerpoint"></i></div>
-                <h3>PowerPoint to PDF</h3>
-                <p>Make PPT and PPTX slideshows easy to view by converting to PDF.</p>
-            </a>
-            <a href="/excel-to-pdf" class="tool-card">
-                <div class="tool-icon"><i class="fa-solid fa-file-excel"></i></div>
-                <h3>Excel to PDF</h3>
-                <p>Make EXCEL spreadsheets easy to read by converting them to PDF.</p>
-            </a>
-            <a href="/html-to-pdf" class="tool-card">
-                <div class="tool-icon"><i class="fa-brands fa-html5"></i></div>
-                <h3>HTML to PDF</h3>
-                <p>Convert webpages or HTML files to PDF.</p>
-            </a>
-            <a href="/png-to-pdf" class="tool-card">
-                <div class="tool-icon"><i class="fa-solid fa-image"></i></div>
-                <h3>PNG to PDF</h3>
-                <p>Convert PNG images to PDF.</p>
-            </a>
-            <a href="/bmp-to-pdf" class="tool-card">
-                <div class="tool-icon"><i class="fa-solid fa-photo-film"></i></div>
-                <h3>BMP to PDF</h3>
-                <p>Convert BMP images to PDF.</p>
-            </a>
-            <a href="/tiff-to-pdf" class="tool-card">
-                <div class="tool-icon"><i class="fa-solid fa-scroll"></i></div>
-                <h3>TIFF to PDF</h3>
-                <p>Convert TIFF images to PDF.</p>
-            </a>
-            <a href="/txt-to-pdf" class="tool-card">
-                <div class="tool-icon"><i class="fa-solid fa-file-lines"></i></div>
-                <h3>TXT to PDF</h3>
-                <p>Convert simple text files to PDF.</p>
-            </a>
-            <a href="/rtf-to-pdf" class="tool-card">
-                <div class="tool-icon"><i class="fa-solid fa-file-contract"></i></div>
-                <h3>RTF to PDF</h3>
-                <p>Convert Rich Text Format files to PDF.</p>
-            </a>
+        <div class="tool-section" id="convert-to">
+            <h2 class="section-title"><i class="fa-solid fa-file-import"></i> Convert to PDF</h2>
+            <div class="tools-grid">
+                <a href="/powerpoint-to-pdf" class="tool-card"><div class="tool-icon"><i class="fa-solid fa-file-powerpoint"></i></div><h3>PowerPoint to PDF</h3><p>PPT slides to PDF.</p></a>
+                <a href="/excel-to-pdf" class="tool-card"><div class="tool-icon"><i class="fa-solid fa-file-excel"></i></div><h3>Excel to PDF</h3><p>XLS spreadsheets to PDF.</p></a>
+                <a href="/html-to-pdf" class="tool-card"><div class="tool-icon"><i class="fa-brands fa-html5"></i></div><h3>HTML to PDF</h3><p>Webpages to PDF.</p></a>
+                <a href="/png-to-pdf" class="tool-card"><div class="tool-icon"><i class="fa-solid fa-image"></i></div><h3>PNG to PDF</h3><p>PNG images to PDF.</p></a>
+                <a href="/bmp-to-pdf" class="tool-card"><div class="tool-icon"><i class="fa-solid fa-photo-film"></i></div><h3>BMP to PDF</h3><p>BMP images to PDF.</p></a>
+                <a href="/tiff-to-pdf" class="tool-card"><div class="tool-icon"><i class="fa-solid fa-scroll"></i></div><h3>TIFF to PDF</h3><p>TIFF images to PDF.</p></a>
+                <a href="/txt-to-pdf" class="tool-card"><div class="tool-icon"><i class="fa-solid fa-file-lines"></i></div><h3>TXT to PDF</h3><p>Text files to PDF.</p></a>
+                <a href="/rtf-to-pdf" class="tool-card"><div class="tool-icon"><i class="fa-solid fa-file-contract"></i></div><h3>RTF to PDF</h3><p>Rich Text to PDF.</p></a>
+                <a href="/pub-to-pdf" class="tool-card"><div class="tool-icon"><i class="fa-solid fa-book-open"></i></div><h3>PUB to PDF</h3><p>Publisher to PDF.</p></a>
+                <a href="/gif-to-pdf" class="tool-card"><div class="tool-icon"><i class="fa-solid fa-clapperboard"></i></div><h3>GIF to PDF</h3><p>GIF images to PDF.</p></a>
+            </div>
         </div>
 
-        <h2 class="section-title"><i class="fa-solid fa-file-export"></i> Convert from PDF</h2>
-        <div class="tools-grid">
-            <a href="/pdf-to-jpg" class="tool-card">
-                <div class="tool-icon"><i class="fa-solid fa-images"></i></div>
-                <h3>PDF to JPG</h3>
-                <p>Extract images from your PDF or save pages as JPG.</p>
-            </a>
-            <a href="/pdf-to-powerpoint" class="tool-card">
-                <div class="tool-icon"><i class="fa-solid fa-file-powerpoint"></i></div>
-                <h3>PDF to PowerPoint</h3>
-                <p>Turn your PDF into an editable PowerPoint presentation.</p>
-            </a>
-            <a href="/pdf-to-excel" class="tool-card">
-                <div class="tool-icon"><i class="fa-solid fa-table"></i></div>
-                <h3>PDF to Excel</h3>
-                <p>Pull data straight from PDFs into Excel spreadsheets.</p>
-            </a>
-            <a href="/pdf-to-pdfa" class="tool-card">
-                <div class="tool-icon"><i class="fa-solid fa-file-shield"></i></div>
-                <h3>PDF to PDF/A</h3>
-                <p>Convert PDF documents to PDF/A for archiving and long-term preservation.</p>
-            </a>
-            <a href="/pdf-to-text" class="tool-card">
-                <div class="tool-icon"><i class="fa-solid fa-font"></i></div>
-                <h3>PDF to Text</h3>
-                <p>Extract all text content from a PDF file.</p>
-            </a>
-            <a href="/pdf-to-html" class="tool-card">
-                <div class="tool-icon"><i class="fa-brands fa-chrome"></i></div>
-                <h3>PDF to HTML</h3>
-                <p>Convert PDF to HTML code for your website.</p>
-            </a>
-            <a href="/pdf-to-png" class="tool-card">
-                <div class="tool-icon"><i class="fa-regular fa-image"></i></div>
-                <h3>PDF to PNG</h3>
-                <p>Save PDF pages as high-quality PNG images.</p>
-            </a>
+        <div class="tool-section" id="convert-from">
+            <h2 class="section-title"><i class="fa-solid fa-file-export"></i> Convert from PDF</h2>
+            <div class="tools-grid">
+                <a href="/pdf-to-jpg" class="tool-card"><div class="tool-icon"><i class="fa-solid fa-images"></i></div><h3>PDF to JPG</h3><p>Save pages as JPG.</p></a>
+                <a href="/pdf-to-powerpoint" class="tool-card"><div class="tool-icon"><i class="fa-solid fa-file-powerpoint"></i></div><h3>PDF to PowerPoint</h3><p>PDF to PPT presentation.</p></a>
+                <a href="/pdf-to-excel" class="tool-card"><div class="tool-icon"><i class="fa-solid fa-table"></i></div><h3>PDF to Excel</h3><p>PDF to XLS spreadsheet.</p></a>
+                <a href="/pdf-to-pdfa" class="tool-card"><div class="tool-icon"><i class="fa-solid fa-file-shield"></i></div><h3>PDF to PDF/A</h3><p>Convert to ISO Standard.</p></a>
+                <a href="/pdf-to-text" class="tool-card"><div class="tool-icon"><i class="fa-solid fa-font"></i></div><h3>PDF to Text</h3><p>Extract simple text.</p></a>
+                <a href="/pdf-to-html" class="tool-card"><div class="tool-icon"><i class="fa-brands fa-chrome"></i></div><h3>PDF to HTML</h3><p>Convert PDF to Web code.</p></a>
+                <a href="/pdf-to-png" class="tool-card"><div class="tool-icon"><i class="fa-regular fa-image"></i></div><h3>PDF to PNG</h3><p>Save pages as PNG.</p></a>
+                <a href="/pdf-to-bmp" class="tool-card"><div class="tool-icon"><i class="fa-regular fa-id-card"></i></div><h3>PDF to BMP</h3><p>Save pages as BMP.</p></a>
+                <a href="/pdf-to-tiff" class="tool-card"><div class="tool-icon"><i class="fa-solid fa-film"></i></div><h3>PDF to TIFF</h3><p>Save pages as TIFF.</p></a>
+                <a href="/extract-images" class="tool-card"><div class="tool-icon"><i class="fa-solid fa-image"></i></div><h3>Extract Images</h3><p>Get all images from PDF.</p></a>
+            </div>
         </div>
 
-        <h2 class="section-title"><i class="fa-solid fa-layer-group"></i> Organize & Optimize</h2>
-        <div class="tools-grid">
-            <a href="/remove-pages" class="tool-card">
-                <div class="tool-icon"><i class="fa-solid fa-file-circle-minus"></i></div>
-                <h3>Remove Pages</h3>
-                <p>Select and remove the PDF pages you don’t need.</p>
-            </a>
-            <a href="/extract-pages" class="tool-card">
-                <div class="tool-icon"><i class="fa-regular fa-file-pdf"></i></div>
-                <h3>Extract Pages</h3>
-                <p>Get a new file containing only the desired pages.</p>
-            </a>
-            <a href="/organize" class="tool-card">
-                <div class="tool-icon"><i class="fa-solid fa-sort"></i></div>
-                <h3>Organize PDF</h3>
-                <p>Sort pages of your PDF file however you like.</p>
-            </a>
-            <a href="/rotate" class="tool-card">
-                <div class="tool-icon"><i class="fa-solid fa-rotate-right"></i></div>
-                <h3>Rotate PDF</h3>
-                <p>Rotate your PDF pages specifically or all at once.</p>
-            </a>
-            <a href="/repair" class="tool-card">
-                <div class="tool-icon"><i class="fa-solid fa-screwdriver-wrench"></i></div>
-                <h3>Repair PDF</h3>
-                <p>Recover data from a corrupted or damaged PDF file.</p>
-            </a>
-            <a href="/pdf-optimizer" class="tool-card">
-                <span class="badge badge-new">New</span>
-                <div class="tool-icon"><i class="fa-solid fa-gauge-high"></i></div>
-                <h3>PDF Optimizer</h3>
-                <p>Advanced compression for web-ready PDFs.</p>
-            </a>
+        <div class="tool-section" id="organize">
+            <h2 class="section-title"><i class="fa-solid fa-layer-group"></i> Organize & Optimize</h2>
+            <div class="tools-grid">
+                <a href="/remove-pages" class="tool-card"><div class="tool-icon"><i class="fa-solid fa-file-circle-minus"></i></div><h3>Remove Pages</h3><p>Delete unwanted pages.</p></a>
+                <a href="/extract-pages" class="tool-card"><div class="tool-icon"><i class="fa-regular fa-file-pdf"></i></div><h3>Extract Pages</h3><p>Get specific pages only.</p></a>
+                <a href="/organize" class="tool-card"><div class="tool-icon"><i class="fa-solid fa-sort"></i></div><h3>Organize PDF</h3><p>Sort and order pages.</p></a>
+                <a href="/rotate" class="tool-card"><div class="tool-icon"><i class="fa-solid fa-rotate-right"></i></div><h3>Rotate PDF</h3><p>Rotate pages 90/180 deg.</p></a>
+                <a href="/repair" class="tool-card"><div class="tool-icon"><i class="fa-solid fa-screwdriver-wrench"></i></div><h3>Repair PDF</h3><p>Fix corrupted files.</p></a>
+                <a href="/pdf-optimizer" class="tool-card"><span class="badge badge-new">New</span><div class="tool-icon"><i class="fa-solid fa-gauge-high"></i></div><h3>PDF Optimizer</h3><p>Web-ready compression.</p></a>
+                <a href="/crop" class="tool-card"><div class="tool-icon"><i class="fa-solid fa-crop-simple"></i></div><h3>Crop PDF</h3><p>Trim PDF margins.</p></a>
+                <a href="/grayscale" class="tool-card"><div class="tool-icon"><i class="fa-solid fa-filter"></i></div><h3>Grayscale PDF</h3><p>Convert to Black & White.</p></a>
+            </div>
         </div>
 
-        <h2 class="section-title"><i class="fa-solid fa-lock"></i> Security</h2>
-        <div class="tools-grid">
-            <a href="/unlock" class="tool-card">
-                <div class="tool-icon"><i class="fa-solid fa-unlock-keyhole"></i></div>
-                <h3>Unlock PDF</h3>
-                <p>Remove password security from PDF.</p>
-            </a>
-            <a href="/protect" class="tool-card">
-                <div class="tool-icon"><i class="fa-solid fa-user-lock"></i></div>
-                <h3>Protect PDF</h3>
-                <p>Encrypt your PDF with a password.</p>
-            </a>
-            <a href="/sign" class="tool-card">
-                <div class="tool-icon"><i class="fa-solid fa-signature"></i></div>
-                <h3>Sign PDF</h3>
-                <p>Sign yourself or request electronic signatures.</p>
-            </a>
-            <a href="/watermark" class="tool-card">
-                <div class="tool-icon"><i class="fa-solid fa-stamp"></i></div>
-                <h3>Add Watermark</h3>
-                <p>Stamp an image or text over your PDF.</p>
-            </a>
-            <a href="/redact" class="tool-card">
-                <span class="badge badge-new">New</span>
-                <div class="tool-icon"><i class="fa-solid fa-user-secret"></i></div>
-                <h3>Redact PDF</h3>
-                <p>Permanently black out sensitive information.</p>
-            </a>
-            <a href="/flatten" class="tool-card">
-                <div class="tool-icon"><i class="fa-solid fa-compress"></i></div>
-                <h3>Flatten PDF</h3>
-                <p>Merge layers to make PDF non-editable.</p>
-            </a>
+        <div class="tool-section" id="security">
+            <h2 class="section-title"><i class="fa-solid fa-lock"></i> Security</h2>
+            <div class="tools-grid">
+                <a href="/unlock" class="tool-card"><div class="tool-icon"><i class="fa-solid fa-unlock-keyhole"></i></div><h3>Unlock PDF</h3><p>Remove password.</p></a>
+                <a href="/protect" class="tool-card"><div class="tool-icon"><i class="fa-solid fa-user-lock"></i></div><h3>Protect PDF</h3><p>Add password.</p></a>
+                <a href="/sign" class="tool-card"><div class="tool-icon"><i class="fa-solid fa-signature"></i></div><h3>Sign PDF</h3><p>Electronic signature.</p></a>
+                <a href="/watermark" class="tool-card"><div class="tool-icon"><i class="fa-solid fa-stamp"></i></div><h3>Add Watermark</h3><p>Stamp image/text.</p></a>
+                <a href="/remove-watermark" class="tool-card"><div class="tool-icon"><i class="fa-solid fa-ban"></i></div><h3>Remove Watermark</h3><p>Clear stamps.</p></a>
+                <a href="/redact" class="tool-card"><span class="badge badge-new">New</span><div class="tool-icon"><i class="fa-solid fa-user-secret"></i></div><h3>Redact PDF</h3><p>Hide sensitive info.</p></a>
+                <a href="/flatten" class="tool-card"><div class="tool-icon"><i class="fa-solid fa-compress"></i></div><h3>Flatten PDF</h3><p>Make non-editable.</p></a>
+                <a href="/compare-pdf" class="tool-card"><div class="tool-icon"><i class="fa-solid fa-code-compare"></i></div><h3>Compare PDF</h3><p>Find differences.</p></a>
+            </div>
         </div>
 
-        <h2 class="section-title"><i class="fa-solid fa-microchip"></i> Advanced</h2>
-        <div class="tools-grid">
-            <a href="/scan-to-pdf" class="tool-card">
-                <div class="tool-icon"><i class="fa-solid fa-camera"></i></div>
-                <h3>Scan to PDF</h3>
-                <p>Capture document scans from mobile.</p>
-            </a>
-            <a href="/scan-to-editable" class="tool-card">
-                <div class="tool-icon"><i class="fa-solid fa-file-pen"></i></div>
-                <h3>Scan to Editable</h3>
-                <p>Convert scanned paper to editable Word/PDF.</p>
-            </a>
-            <a href="/compare-pdf" class="tool-card">
-                <div class="tool-icon"><i class="fa-solid fa-code-compare"></i></div>
-                <h3>Compare PDF</h3>
-                <p>Show differences between two files side-by-side.</p>
-            </a>
-            <a href="/metadata-viewer" class="tool-card">
-                <div class="tool-icon"><i class="fa-solid fa-circle-info"></i></div>
-                <h3>Metadata Viewer</h3>
-                <p>View hidden PDF properties and author data.</p>
-            </a>
-            <a href="/remove-metadata" class="tool-card">
-                <div class="tool-icon"><i class="fa-solid fa-eraser"></i></div>
-                <h3>Remove Metadata</h3>
-                <p>Strip hidden data for privacy.</p>
-            </a>
-            <a href="/page-numbers" class="tool-card">
-                <div class="tool-icon"><i class="fa-solid fa-list-ol"></i></div>
-                <h3>Page Numbers</h3>
-                <p>Add page numbers into PDFs easily.</p>
-            </a>
-            <a href="/header-footer" class="tool-card">
-                <div class="tool-icon"><i class="fa-solid fa-heading"></i></div>
-                <h3>Header & Footer</h3>
-                <p>Add labels to top or bottom of pages.</p>
-            </a>
-             <a href="/bates-numbering" class="tool-card">
-                <div class="tool-icon"><i class="fa-solid fa-arrow-down-1-9"></i></div>
-                <h3>Bates Numbering</h3>
-                <p>Stamp legal indexing numbers.</p>
-            </a>
+        <div class="tool-section" id="advanced">
+            <h2 class="section-title"><i class="fa-solid fa-microchip"></i> Advanced</h2>
+            <div class="tools-grid">
+                <a href="/scan-to-pdf" class="tool-card"><div class="tool-icon"><i class="fa-solid fa-camera"></i></div><h3>Scan to PDF</h3><p>Mobile Scan to PDF.</p></a>
+                <a href="/scan-to-editable" class="tool-card"><div class="tool-icon"><i class="fa-solid fa-file-pen"></i></div><h3>Scan to Editable</h3><p>Paper to Word/PDF.</p></a>
+                <a href="/metadata-viewer" class="tool-card"><div class="tool-icon"><i class="fa-solid fa-circle-info"></i></div><h3>Metadata Viewer</h3><p>View hidden info.</p></a>
+                <a href="/remove-metadata" class="tool-card"><div class="tool-icon"><i class="fa-solid fa-eraser"></i></div><h3>Remove Metadata</h3><p>Strip hidden data.</p></a>
+                <a href="/page-numbers" class="tool-card"><div class="tool-icon"><i class="fa-solid fa-list-ol"></i></div><h3>Page Numbers</h3><p>Insert numbers.</p></a>
+                <a href="/header-footer" class="tool-card"><div class="tool-icon"><i class="fa-solid fa-heading"></i></div><h3>Header & Footer</h3><p>Add labels.</p></a>
+                <a href="/bates-numbering" class="tool-card"><div class="tool-icon"><i class="fa-solid fa-arrow-down-1-9"></i></div><h3>Bates Numbering</h3><p>Legal indexing.</p></a>
+                <a href="/resize-pdf" class="tool-card"><div class="tool-icon"><i class="fa-solid fa-expand"></i></div><h3>Resize PDF</h3><p>Change page size (A4/A3).</p></a>
+            </div>
         </div>
 
         <div class="ad-banner">
-            <i class="fa-solid fa-rectangle-ad"></i> Google Ads (Responsive Horizontal)
+            <i class="fa-solid fa-rectangle-ad"></i> Google Ads (Horizontal)
         </div>
 
     </main>
@@ -477,11 +370,16 @@
             const term = e.target.value.toLowerCase();
             const cards = document.querySelectorAll('.tool-card');
             
-            // Search logic
             cards.forEach(card => {
                 const title = card.querySelector('h3').textContent.toLowerCase();
                 const desc = card.querySelector('p').textContent.toLowerCase();
                 
+                // If searching, show all sections temporarily to find the tool
+                if(term.length > 0) {
+                   // Ensure all sections are visible during search
+                   document.querySelectorAll('.tool-section').forEach(sec => sec.style.display = 'block');
+                }
+
                 if(title.includes(term) || desc.includes(term)) {
                     card.style.display = "flex";
                 } else {
@@ -489,7 +387,30 @@
                 }
             });
         });
+
+        // Category Filter Logic
+        function filterTools(category) {
+            const sections = document.querySelectorAll('.tool-section');
+            const buttons = document.querySelectorAll('.cat-btn');
+
+            // 1. Highlight Active Button
+            buttons.forEach(btn => btn.classList.remove('active'));
+            // Find the button that was clicked and add active class
+            event.target.classList.add('active');
+
+            // 2. Filter Sections
+            sections.forEach(section => {
+                if (category === 'all') {
+                    section.style.display = 'block';
+                } else {
+                    if (section.id === category) {
+                        section.style.display = 'block';
+                    } else {
+                        section.style.display = 'none';
+                    }
+                }
+            });
+        }
     </script>
 </body>
 </html>
-    
