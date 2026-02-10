@@ -5,197 +5,198 @@
 
 <title>Free PDF Merger Online – Reorder & Delete Pages | PDFWala.in</title>
 
-<meta name="description" content="Free online PDF merger by PDFWala.in. Merge multiple PDF files, reorder pages and delete pages instantly. 100% private and secure. All processing happens in your browser.">
-<meta name="keywords" content="pdf merger, merge pdf online, reorder pdf pages, delete pdf pages, free pdf merger, pdfwala, pdfwala.in, merge pdf without upload">
+<meta name="description" content="Free PDF merger tool by PDFWala.in. Merge multiple PDF files, reorder pages and delete pages online. 100% private and secure. No upload, works in your browser.">
+<meta name="keywords" content="pdf merger, merge pdf online, reorder pdf pages, delete pdf pages, free pdf merger, pdfwala, pdfwala.in">
 <meta name="robots" content="index, follow">
-
 <link rel="canonical" href="https://pdfwala.in/pdf-merger.html">
 
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 
-<!-- Open Graph -->
 <meta property="og:title" content="Free PDF Merger – Reorder & Delete Pages | PDFWala.in">
-<meta property="og:description" content="Merge multiple PDF files, reorder pages and delete unwanted pages online. 100% free and private.">
+<meta property="og:description" content="Merge PDF files, reorder and delete pages online. Free, fast and private.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://pdfwala.in/pdf-merger.html">
 
-<!-- Libraries -->
 <script src="https://cdn.jsdelivr.net/npm/pdf-lib@1.17.1/dist/pdf-lib.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/sortablejs@1.15.0/Sortable.min.js"></script>
 
 <style>
 body{
-  font-family:Segoe UI,Arial,sans-serif;
-  background:linear-gradient(135deg,#667eea,#764ba2);
   margin:0;
-  padding:20px;
-  color:#ffffff;
-  min-height:100vh;
+  font-family:system-ui,Segoe UI,Arial,sans-serif;
+  background:#f5f7fb;
+  color:#111;
 }
-.container{
-  max-width:950px;
-  margin:auto;
-  background:rgba(255,255,255,0.15);
-  backdrop-filter:blur(10px);
-  padding:30px;
-  border-radius:18px;
-  box-shadow:0 10px 35px rgba(0,0,0,.3);
+
+.wrapper{
+  max-width:820px;
+  margin:40px auto;
+  padding:0 16px;
 }
+
+.card{
+  background:#fff;
+  border-radius:10px;
+  box-shadow:0 6px 18px rgba(0,0,0,.08);
+  padding:22px;
+}
+
 h1{
   text-align:center;
-  margin-top:0;
-  font-size:2.2rem;
+  margin:0 0 6px;
+  font-size:26px;
 }
+
 .subtitle{
   text-align:center;
-  opacity:.9;
-  margin-bottom:25px;
+  color:#555;
+  margin-bottom:18px;
+  font-size:14px;
 }
-.upload-btn{
-  display:block;
-  width:100%;
-  padding:16px;
-  background:#ffffff;
+
+.pick{
+  border:2px dashed #4f46e5;
   color:#4f46e5;
-  border:3px dashed #a5b4fc;
-  border-radius:12px;
-  font-weight:600;
+  padding:14px;
   text-align:center;
+  border-radius:8px;
   cursor:pointer;
-  margin-bottom:25px;
+  font-weight:600;
+  margin-bottom:18px;
 }
-.upload-btn:hover{
-  background:#f3f4f6;
-  border-color:#6366f1;
-}
+
 #fileInput{display:none;}
 
-.section-title{
-  font-size:1.3rem;
-  margin:20px 0 10px;
-  font-weight:600;
+.section{
+  margin-top:16px;
 }
 
-.file-list,.page-list{
-  background:rgba(0,0,0,.25);
-  border-radius:12px;
-  padding:15px;
-  min-height:90px;
+.section h3{
+  font-size:15px;
+  margin:0 0 8px;
+  color:#333;
+}
+
+.list{
+  border:1px solid #e5e7eb;
+  border-radius:8px;
+  padding:8px;
+  min-height:60px;
+  background:#fafafa;
 }
 
 .file-item,.page-item{
-  background:rgba(255,255,255,.3);
-  padding:12px 15px;
-  border-radius:10px;
-  margin:8px 0;
+  background:#fff;
+  border:1px solid #e5e7eb;
+  border-radius:6px;
+  padding:8px 10px;
+  margin-bottom:6px;
   display:flex;
   justify-content:space-between;
   align-items:center;
+  font-size:13px;
   cursor:grab;
 }
 
-.page-item:active{cursor:grabbing;}
-
-.remove-btn,.page-remove{
+.btn{
   border:none;
-  color:#ffffff;
-  border-radius:8px;
-  padding:6px 12px;
-  cursor:pointer;
   background:#ef4444;
+  color:#fff;
+  padding:4px 8px;
+  border-radius:4px;
+  cursor:pointer;
+  font-size:12px;
 }
 
-.page-remove{background:#dc2626;}
-
-.merge-btn{
+.merge{
+  margin-top:18px;
   width:100%;
-  margin-top:30px;
-  padding:18px;
+  padding:12px;
   border:none;
-  border-radius:12px;
-  font-size:1.2rem;
-  font-weight:700;
-  color:#ffffff;
-  background:#10b981;
+  background:#4f46e5;
+  color:#fff;
+  border-radius:8px;
+  font-size:15px;
+  font-weight:600;
   cursor:pointer;
 }
 
-.merge-btn:hover{background:#059669;}
-
-.merge-btn:disabled{
-  background:#6ee7b7;
+.merge:disabled{
+  background:#a5b4fc;
   cursor:not-allowed;
 }
 
 #status{
+  margin-top:10px;
   text-align:center;
-  margin-top:20px;
-  font-weight:600;
+  font-size:13px;
+  color:#444;
 }
 
 footer{
   text-align:center;
-  margin-top:45px;
-  font-size:.95rem;
-  opacity:.9;
+  margin-top:25px;
+  font-size:13px;
+  color:#666;
 }
 </style>
 </head>
 
 <body>
 
-<main class="container">
+<div class="wrapper">
 
-<h1>Free PDF Merger – Reorder & Delete Pages</h1>
+<div class="card">
 
+<h1>PDF Merger</h1>
 <p class="subtitle">
-Merge multiple PDF files, reorder pages and delete pages directly in your browser.
-No file upload. 100% private and secure.
+Merge PDF files, reorder pages and delete pages.  
+Everything works inside your browser.
 </p>
 
-<label class="upload-btn" for="fileInput">
-📄 Select PDF files (you can select multiple files)
+<label class="pick" for="fileInput">
+Select PDF files
 </label>
+<input id="fileInput" type="file" accept=".pdf" multiple>
 
-<input type="file" id="fileInput" accept=".pdf" multiple>
+<div class="section">
+  <h3>Selected files</h3>
+  <div class="list" id="fileList">No files selected.</div>
+</div>
 
-<section>
-  <div class="section-title">Selected PDF files</div>
-  <div class="file-list" id="fileList">No files selected.</div>
-</section>
+<div class="section">
+  <h3>Page order (drag to reorder)</h3>
+  <div class="list" id="pageList">Pages will appear here.</div>
+</div>
 
-<section>
-  <div class="section-title">Page order (drag to reorder or remove)</div>
-  <div class="page-list" id="pageList">Pages will appear after selecting PDFs.</div>
-</section>
-
-<button class="merge-btn" id="mergeBtn" disabled>
-Merge PDF and Download
-</button>
+<button class="merge" id="mergeBtn" disabled>Merge and download PDF</button>
 
 <div id="status"></div>
 
-</main>
+</div>
 
 <footer>
-© 2026 PDFWala.in – Free & Private PDF Tools
+© 2026 PDFWala.in – Free online PDF tools
 </footer>
 
+</div>
+
 <script>
-const fileInput  = document.getElementById("fileInput");
-const fileListDiv = document.getElementById("fileList");
-const pageListDiv = document.getElementById("pageList");
-const mergeBtn = document.getElementById("mergeBtn");
+const fileInput = document.getElementById("fileInput");
+const fileList  = document.getElementById("fileList");
+const pageList  = document.getElementById("pageList");
+const mergeBtn  = document.getElementById("mergeBtn");
 const statusBox = document.getElementById("status");
 
-let pdfFiles = new Map(); 
-let pageOrder = [];      
+let pdfFiles = new Map();
+let pageOrder = [];
 
-fileInput.addEventListener("change", async (e)=>{
+fileInput.addEventListener("change", async e => {
+
   const files = Array.from(e.target.files || []);
   if(!files.length) return;
 
-  statusBox.textContent = "Loading PDF files...";
+  statusBox.textContent = "Loading files...";
 
   for(const file of files){
 
@@ -203,61 +204,52 @@ fileInput.addEventListener("change", async (e)=>{
 
     try{
       const buffer = await file.arrayBuffer();
-      const pdfDoc = await PDFLib.PDFDocument.load(buffer);
-      const pages = pdfDoc.getPageCount();
+      const doc = await PDFLib.PDFDocument.load(buffer);
+      const pages = doc.getPageCount();
 
-      pdfFiles.set(file.name,{
-        file,
-        buffer,
-        pages
-      });
+      pdfFiles.set(file.name,{file,buffer,pages});
 
       for(let i=0;i<pages;i++){
-        pageOrder.push({
-          fileName:file.name,
-          pageIndex:i
-        });
+        pageOrder.push({fileName:file.name,pageIndex:i});
       }
 
     }catch(err){
       console.error(err);
-      statusBox.textContent = "Failed to load: " + file.name;
+      statusBox.textContent = "Failed to load " + file.name;
     }
   }
 
-  renderFileList();
-  renderPageList();
+  renderFiles();
+  renderPages();
   updateButton();
-  statusBox.textContent="";
+  statusBox.textContent = "";
 });
 
-
-function renderFileList(){
+function renderFiles(){
 
   if(pdfFiles.size===0){
-    fileListDiv.textContent="No files selected.";
+    fileList.textContent="No files selected.";
     return;
   }
 
   let html="";
 
-  pdfFiles.forEach((data,name)=>{
+  pdfFiles.forEach((d,n)=>{
     html+=`
       <div class="file-item">
-        <span>📄 ${name} (${(data.file.size/1024/1024).toFixed(2)} MB, ${data.pages} pages)</span>
-        <button class="remove-btn" onclick="removeFile('${name}')">Remove</button>
+        <span>${n} (${d.pages} pages)</span>
+        <button class="btn" onclick="removeFile('${n}')">Remove</button>
       </div>
     `;
   });
 
-  fileListDiv.innerHTML=html;
+  fileList.innerHTML=html;
 }
 
-
-function renderPageList(){
+function renderPages(){
 
   if(pageOrder.length===0){
-    pageListDiv.textContent="Pages will appear after selecting PDFs.";
+    pageList.textContent="Pages will appear here.";
     return;
   }
 
@@ -265,87 +257,75 @@ function renderPageList(){
 
   pageOrder.forEach((p,i)=>{
     html+=`
-      <div class="page-item" data-index="${i}">
-        <span>📄 ${p.fileName} – Page ${p.pageIndex+1}</span>
-        <button class="page-remove" onclick="removePage(${i})">Remove</button>
+      <div class="page-item">
+        <span>${p.fileName} – page ${p.pageIndex+1}</span>
+        <button class="btn" onclick="removePage(${i})">X</button>
       </div>
     `;
   });
 
-  pageListDiv.innerHTML=html;
+  pageList.innerHTML=html;
 
-  Sortable.create(pageListDiv,{
-    animation:150,
-    onEnd:(evt)=>{
-      const oldI=evt.oldIndex;
-      const newI=evt.newIndex;
-      const moved=pageOrder.splice(oldI,1)[0];
-      pageOrder.splice(newI,0,moved);
-      renderPageList();
+  Sortable.create(pageList,{
+    animation:120,
+    onEnd:e=>{
+      const m = pageOrder.splice(e.oldIndex,1)[0];
+      pageOrder.splice(e.newIndex,0,m);
+      renderPages();
     }
   });
 }
-
-
-window.removeFile=function(name){
-  pdfFiles.delete(name);
-  pageOrder=pageOrder.filter(p=>p.fileName!==name);
-  renderFileList();
-  renderPageList();
-  updateButton();
-}
-
-
-window.removePage=function(i){
-  pageOrder.splice(i,1);
-  renderPageList();
-  updateButton();
-}
-
 
 function updateButton(){
   mergeBtn.disabled = pageOrder.length===0;
 }
 
+window.removeFile = name =>{
+  pdfFiles.delete(name);
+  pageOrder = pageOrder.filter(p=>p.fileName!==name);
+  renderFiles();
+  renderPages();
+  updateButton();
+}
 
-/* Correct merge logic (keeps exact drag order) */
+window.removePage = i =>{
+  pageOrder.splice(i,1);
+  renderPages();
+  updateButton();
+}
+
+/* Correct merge logic – keeps exact drag order */
 mergeBtn.addEventListener("click", async ()=>{
-
-  if(pageOrder.length===0) return;
 
   mergeBtn.disabled=true;
   statusBox.textContent="Merging PDF...";
 
   try{
 
-    const mergedPdf = await PDFLib.PDFDocument.create();
-    const loadedDocs = new Map();
+    const merged = await PDFLib.PDFDocument.create();
+    const cache = new Map();
 
     for(const item of pageOrder){
 
-      if(!loadedDocs.has(item.fileName)){
+      if(!cache.has(item.fileName)){
         const {buffer} = pdfFiles.get(item.fileName);
-        const doc = await PDFLib.PDFDocument.load(buffer);
-        loadedDocs.set(item.fileName,doc);
+        const d = await PDFLib.PDFDocument.load(buffer);
+        cache.set(item.fileName,d);
       }
 
-      const srcDoc = loadedDocs.get(item.fileName);
+      const src = cache.get(item.fileName);
 
-      const [copiedPage] = await mergedPdf.copyPages(
-        srcDoc,
-        [item.pageIndex]
-      );
-
-      mergedPdf.addPage(copiedPage);
+      const [p] = await merged.copyPages(src,[item.pageIndex]);
+      merged.addPage(p);
     }
 
-    const bytes = await mergedPdf.save();
+    const bytes = await merged.save();
     const blob = new Blob([bytes],{type:"application/pdf"});
     const url = URL.createObjectURL(blob);
 
-    const a=document.createElement("a");
-    a.href=url;
-    a.download="pdfwala-merged.pdf";
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = "pdfwala-merged.pdf";
     document.body.appendChild(a);
     a.click();
     a.remove();
@@ -356,7 +336,7 @@ mergeBtn.addEventListener("click", async ()=>{
 
   }catch(e){
     console.error(e);
-    statusBox.textContent="Something went wrong. Please try again.";
+    statusBox.textContent="Something went wrong.";
   }
 
   mergeBtn.disabled=false;
@@ -365,8 +345,3 @@ mergeBtn.addEventListener("click", async ()=>{
 
 </body>
 </html>
-
-    
-              
-               
-                   
