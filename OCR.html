@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+
+<title>OCR PDF Online – Convert Scanned PDF to Text | PDFwala.in</title>
+
+<meta name="description" content="OCR PDF online to extract text from scanned PDF files. Drag and drop your PDF, preview recognized text and download instantly. Secure OCR tool by PDFwala.in.">
+
+<meta name="keywords" content="ocr pdf online, scanned pdf to text, extract text from pdf, pdf ocr free, online ocr tool, convert scanned pdf, pdfwala, pdfwala.in">
+
+<meta name="author" content="PDFwala.in">
+<meta name="robots" content="index, follow">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link rel="canonical" href="https://pdfwala.in/ocr-pdf">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="OCR PDF Online – Convert Scanned PDF to Text | PDFwala.in">
+<meta property="og:description" content="Extract text from scanned PDF using OCR with preview and instant download. Secure OCR PDF tool by PDFwala.in.">
+<meta property="og:url" content="https://pdfwala.in/ocr-pdf">
+<meta property="og:site_name" content="PDFwala.in">
+
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="OCR PDF Online – Convert Scanned PDF to Text | PDFwala.in">
+<meta name="twitter:description" content="Free online OCR PDF tool with preview by PDFwala.in.">
+
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"WebApplication",
+  "name":"OCR PDF Online",
+  "url":"https://pdfwala.in/ocr-pdf",
+  "applicationCategory":"BusinessApplication",
+  "operatingSystem":"All",
+  "description":"OCR PDF tool to extract text from scanned PDF files by PDFwala.in.",
+  "publisher":{
+    "@type":"Organization",
+    "name":"PDFwala.in",
+    "url":"https://pdfwala.in"
+  }
+}
+</script>
+
+<!-- pdf.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+
+<!-- tesseract.js -->
+<script src="https://cdn.jsdelivr.net/npm/tesseract.js@5/dist/tesseract.min.js"></script>
+
+<style>
+:root{
+  --brand:#e53935;
+  --dark:#1f2937;
+  --bg:#f4f7f6;
+  --card:#ffffff;
+  --text:#333;
+  --muted:#6b7280;
+  --border:#e5e7eb;
+}
+*{box-sizing:border-box}
+
+body{
+  margin:0;
+  font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+  background:var(--bg);
+  color:var(--text);
+}
+
+.header{background:var(--dark);color:#fff}
+.header-inner{
+  max-width:1100px;margin:auto;padding:12px 16px;
+  display:flex;justify-content:space-between;align-items:center
+}
+.brand a{color:#fff;text-decoration:none;font-weight:700;font-size:18px}
+.nav{font-size:13px;color:#cbd5e1}
+
+.page{max-width:900px;margin:24px auto;padding:0 12px}
+
+.tool-card{
+  background:var(--card);
+  border-radius:12px;
+  border:1px solid var(--border);
+  padding:22px;
+  box-shadow:0 4px 12px rgba(0,0,0,.05);
+}
+
+.tool-title{
+  display:flex;gap:10px;align-items:center;margin-bottom:12px
+}
+.tool-title .icon{
+  width:36px;height:36px;border-radius:8px;
+  background:rgba(229,57,53,.12);
+  display:flex;align-items:center;justify-content:center;
+  font-weight:700;color:var(--brand)
+}
+.tool-title h1{margin:0;font-size:22px}
+
+.form-grid{display:grid;gap:14px}
+
+label{font-size:13px;color:var(--muted)}
+
+input[type=file]{
+  display:none;
+}
+
+/* Drag area */
+.drop-zone{
+  border:2px dashed var(--border);
+  border-radius:10px;
+  padding:28px 16px;
+  text-align:center;
+  cursor:pointer;
+  background:#fafafa;
+  transition:.2s;
+}
+.drop-zone.drag{
+  border-color:var(--brand);
+  background:#fff5f5;
+}
+.drop-zone strong{
+  display:block;
+  margin-bottom:6px;
+}
+
+.actions{display:flex;gap:12px}
+
+.btn{
+  flex:1;
+  padding:12px 14px;
+  border-radius:8px;
+  border:none;
+  font-size:15px;
+  cursor:pointer;
+}
+.btn-primary{background:var(--brand);color:#fff}
+.btn-outline{background:#fff;color:var(--brand);border:1px solid var(--brand)}
+
+.preview-box{
+  display:none;
+  margin-top:20px;
+  border-top:1px solid var(--border);
+  padding-top:16px;
+}
+.preview-head{
+  display:flex;justify-content:space-between;align-items:center;
+  margin-bottom:8px
+}
+.preview-head h2{margin:0;font-size:16px}
+
+textarea{
+  width:100%;
+  min-height:260px;
+  resize:vertical;
+  border:1px solid var(--border);
+  border-radius:8px;
+  padding:10px;
+  font-size:14px;
+  line-height:1.5;
+}
+
+.progress{
+  font-size:13px;
+  color:#555;
+  margin-bottom:8px;
+}
+
+.file-name{
+  font-size:13px;
+  color:#444;
+  margin-top:6px;
+}
+
+.footer{
+  text-align:center;
+  font-size:13px;
+  color:#777;
+  padding:24px 10px 32px;
+}
+</style>
+</head>
+<body>
+
+<header class="header">
+  <div class="header-inner">
+    <div class="brand">
+      <a href="https://pdfwala.in">PDFwala.in</a>
+    </div>
+    <div class="nav">Home • All PDF Tools • OCR PDF</div>
+  </div>
+</header>
+
+<main class="page">
+
+<section class="tool-card">
+
+  <div class="tool-title">
+    <div class="icon">🔍</div>
+    <h1>OCR PDF</h1>
+  </div>
+
+  <p style="margin-top:0;font-size:14px;color:#555">
+    Drag and drop your scanned PDF and extract text instantly.
+  </p>
+
+  <div class="form-grid">
+
+    <div>
+      <label>Select PDF</label>
+
+      <div id="dropZone" class="drop-zone">
+        <strong>Drag & drop your PDF here</strong>
+        or click to select file
+        <div class="file-name" id="fileName"></div>
+      </div>
+
+      <input id="pdfFile" type="file" accept="application/pdf">
+    </div>
+
+    <div class="actions">
+      <button class="btn btn-primary" onclick="ocrAndPreview()">
+        OCR & Preview
+      </button>
+      <button class="btn btn-outline" onclick="directDownload()">
+        Direct Download
+      </button>
+    </div>
+
+  </div>
+
+  <div class="preview-box" id="previewBox">
+
+    <div class="preview-head">
+      <h2>Recognized text</h2>
+      <button class="btn btn-primary"
+              style="flex:0 0 auto;padding:8px 14px;font-size:13px"
+              onclick="downloadText()">
+        Download TXT
+      </button>
+    </div>
+
+    <div class="progress" id="progress"></div>
+
+    <textarea id="resultText" placeholder="OCR result will appear here..."></textarea>
+
+  </div>
+
+</section>
+
+</main>
+
+<footer class="footer">
+  © 2026 PDFwala.in – Free and secure online PDF tools
+</footer>
+
+<script>
+/* ===========================
+   hidden plan
+   test: ?plan=premium
+=========================== */
+
+const USER_PLAN =
+  new URLSearchParams(location.search).get("plan")==="premium"
+  ? "premium" : "free";
+
+let finalText = "";
+let selectedFile = null;
+
+/* ===========================
+   Drag & Drop
+=========================== */
+
+const dropZone = document.getElementById("dropZone");
+const fileInput = document.getElementById("pdfFile");
+const fileNameBox = document.getElementById("fileName");
+
+dropZone.addEventListener("click", () => fileInput.click());
+
+dropZone.addEventListener("dragover", e=>{
+  e.preventDefault();
+  dropZone.classList.add("drag");
+});
+
+dropZone.addEventListener("dragleave", ()=>{
+  dropZone.classList.remove("drag");
+});
+
+dropZone.addEventListener("drop", e=>{
+  e.preventDefault();
+  dropZone.classList.remove("drag");
+  const file = e.dataTransfer.files[0];
+  if(file && file.type==="application/pdf"){
+    selectedFile = file;
+    fileNameBox.innerText = file.name;
+  }else{
+    alert("Please drop a PDF file.");
+  }
+});
+
+fileInput.addEventListener("change", ()=>{
+  selectedFile = fileInput.files[0];
+  if(selectedFile){
+    fileNameBox.innerText = selectedFile.name;
+  }
+});
+
+/* ===============================
+   FREE USER – browser OCR
+   Auto language attempt:
+   English + Hindi combined
+
+   NOTE:
+   For performance, only first page
+=============================== */
+
+async function browserOCR(file){
+
+  const arrayBuffer = await file.arrayBuffer();
+
+  const pdf = await pdfjsLib.getDocument({data: arrayBuffer}).promise;
+
+  const page = await pdf.getPage(1);
+
+  const viewport = page.getViewport({ scale: 2 });
+
+  const canvas = document.createElement("canvas");
+  const ctx = canvas.getContext("2d");
+  canvas.width = viewport.width;
+  canvas.height = viewport.height;
+
+  await page.render({ canvasContext: ctx, viewport }).promise;
+
+  document.getElementById("progress").innerText =
+    "Running OCR (auto language, first page only)...";
+
+  const result = await Tesseract.recognize(
+    canvas,
+    "eng+hin",
+    {
+      logger: m=>{
+        if(m.status==="recognizing text"){
+          document.getElementById("progress").innerText =
+            "OCR progress: " + Math.round(m.progress*100) + "%";
+        }
+      }
+    }
+  );
+
+  return result.data.text || "";
+}
+
+/* ===============================
+   PREMIUM USER – backend OCR
+=============================== */
+
+async function premiumOCR(file){
+
+  const fd = new FormData();
+  fd.append("pdf",file);
+
+  const r = await fetch("/api/premium-ocr",{
+    method:"POST",
+    body:fd
+  });
+
+  if(!r.ok){
+    alert("Premium OCR service unavailable.");
+    throw new Error("premium ocr failed");
+  }
+
+  const data = await r.json();
+  return data.text;
+}
+
+/* ===============================
+   unified
+=============================== */
+
+async function processOCR(file){
+  if(USER_PLAN==="premium"){
+    return await premiumOCR(file);
+  }else{
+    return await browserOCR(file);
+  }
+}
+
+/* ===============================
+   UI handlers
+=============================== */
+
+async function ocrAndPreview(){
+
+  const file = selectedFile || fileInput.files[0];
+
+  if(!file){
+    alert("Please select a PDF file.");
+    return;
+  }
+
+  document.getElementById("previewBox").style.display="block";
+  document.getElementById("resultText").value="";
+  document.getElementById("progress").innerText="Preparing OCR...";
+
+  finalText = await processOCR(file);
+
+  document.getElementById("resultText").value = finalText;
+  document.getElementById("progress").innerText =
+    USER_PLAN==="premium"
+      ? "Premium OCR completed (all pages)."
+      : "Free OCR completed (first page only).";
+}
+
+async function directDownload(){
+
+  const file = selectedFile || fileInput.files[0];
+
+  if(!file){
+    alert("Please select a PDF file.");
+    return;
+  }
+
+  finalText = await processOCR(file);
+  downloadText();
+}
+
+/* ===============================
+   helpers
+=============================== */
+
+function downloadText(){
+
+  if(!finalText){
+    alert("No OCR text available.");
+    return;
+  }
+
+  const blob = new Blob([finalText],{type:"text/plain;charset=utf-8"});
+  const a = document.createElement("a");
+  a.href = URL.createObjectURL(blob);
+  a.download = "PDFwala.in-ocr.txt";
+  a.click();
+}
+</script>
+
+</body>
+</html>
