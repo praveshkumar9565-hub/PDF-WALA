@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+
+<title>PDF to Word Online – Convert PDF to DOCX Free | PDFwala.in</title>
+
+<meta name="description" content="Convert PDF to Word (DOCX) online for free. Drag and drop your PDF, preview extracted text and download Word file instantly. Secure PDF to Word tool by PDFwala.in.">
+
+<meta name="keywords" content="pdf to word online, convert pdf to docx, pdf to word free, extract text from pdf to word, online pdf to docx, pdfwala, pdfwala.in">
+
+<meta name="author" content="PDFwala.in">
+<meta name="robots" content="index, follow">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link rel="canonical" href="https://pdfwala.in/pdf-to-word">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="PDF to Word – Convert PDF to DOCX | PDFwala.in">
+<meta property="og:description" content="Convert PDF to Word online with preview and instant download by PDFwala.in.">
+<meta property="og:url" content="https://pdfwala.in/pdf-to-word">
+<meta property="og:site_name" content="PDFwala.in">
+
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="PDF to Word – Convert PDF to DOCX | PDFwala.in">
+<meta name="twitter:description" content="Free online PDF to Word converter by PDFwala.in.">
+
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"WebApplication",
+  "name":"PDF to Word Online",
+  "url":"https://pdfwala.in/pdf-to-word",
+  "applicationCategory":"BusinessApplication",
+  "operatingSystem":"All",
+  "description":"Convert PDF to Word documents using online PDF to Word tool by PDFwala.in.",
+  "publisher":{
+    "@type":"Organization",
+    "name":"PDFwala.in",
+    "url":"https://pdfwala.in"
+  }
+}
+</script>
+
+<!-- pdf.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+
+<!-- docx generator -->
+<script src="https://cdn.jsdelivr.net/npm/docx@8.2.2/build/index.umd.js"></script>
+
+<style>
+:root{
+  --brand:#e53935;
+  --dark:#1f2937;
+  --bg:#f4f7f6;
+  --card:#ffffff;
+  --text:#333;
+  --muted:#6b7280;
+  --border:#e5e7eb;
+}
+*{box-sizing:border-box}
+
+body{
+  margin:0;
+  font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+  background:var(--bg);
+  color:var(--text);
+}
+
+.header{background:var(--dark);color:#fff}
+.header-inner{
+  max-width:1100px;margin:auto;padding:12px 16px;
+  display:flex;justify-content:space-between;align-items:center
+}
+.brand a{color:#fff;text-decoration:none;font-weight:700;font-size:18px}
+.nav{font-size:13px;color:#cbd5e1}
+
+.page{max-width:900px;margin:24px auto;padding:0 12px}
+
+.tool-card{
+  background:var(--card);
+  border-radius:12px;
+  border:1px solid var(--border);
+  padding:22px;
+  box-shadow:0 4px 12px rgba(0,0,0,.05);
+}
+
+.tool-title{
+  display:flex;gap:10px;align-items:center;margin-bottom:12px
+}
+.tool-title .icon{
+  width:36px;height:36px;border-radius:8px;
+  background:rgba(229,57,53,.12);
+  display:flex;align-items:center;justify-content:center;
+  font-weight:700;color:var(--brand)
+}
+.tool-title h1{margin:0;font-size:22px}
+
+.form-grid{display:grid;gap:14px}
+
+label{font-size:13px;color:var(--muted)}
+
+input[type=file]{display:none}
+
+.drop-zone{
+  border:2px dashed var(--border);
+  border-radius:10px;
+  padding:28px 16px;
+  text-align:center;
+  cursor:pointer;
+  background:#fafafa;
+}
+.drop-zone.drag{
+  border-color:var(--brand);
+  background:#fff5f5;
+}
+
+.file-name{font-size:13px;color:#444;margin-top:6px}
+
+.actions{display:flex;gap:12px}
+
+.btn{
+  flex:1;
+  padding:12px 14px;
+  border-radius:8px;
+  border:none;
+  font-size:15px;
+  cursor:pointer;
+}
+.btn-primary{background:var(--brand);color:#fff}
+.btn-outline{background:#fff;color:var(--brand);border:1px solid var(--brand)}
+
+.preview-box{
+  display:none;
+  margin-top:20px;
+  border-top:1px solid var(--border);
+  padding-top:16px;
+}
+.preview-head{
+  display:flex;justify-content:space-between;align-items:center;
+  margin-bottom:8px
+}
+.preview-head h2{margin:0;font-size:16px}
+
+textarea{
+  width:100%;
+  min-height:260px;
+  resize:vertical;
+  border:1px solid var(--border);
+  border-radius:8px;
+  padding:10px;
+  font-size:14px;
+  line-height:1.5;
+}
+
+.progress{
+  font-size:13px;
+  color:#555;
+  margin-bottom:8px;
+}
+
+.footer{
+  text-align:center;
+  font-size:13px;
+  color:#777;
+  padding:24px 10px 32px;
+}
+</style>
+</head>
+<body>
+
+<header class="header">
+  <div class="header-inner">
+    <div class="brand">
+      <a href="https://pdfwala.in">PDFwala.in</a>
+    </div>
+    <div class="nav">Home • All PDF Tools • PDF to Word</div>
+  </div>
+</header>
+
+<main class="page">
+
+<section class="tool-card">
+
+  <div class="tool-title">
+    <div class="icon">P→W</div>
+    <h1>PDF to Word</h1>
+  </div>
+
+  <p style="margin-top:0;font-size:14px;color:#555">
+    Convert your PDF into an editable Word document.
+  </p>
+
+  <div class="form-grid">
+
+    <div>
+      <label>Select PDF</label>
+
+      <div id="dropZone" class="drop-zone">
+        <strong>Drag & drop your PDF here</strong><br>
+        or click to select file
+        <div class="file-name" id="fileName"></div>
+      </div>
+
+      <input id="pdfFile" type="file" accept="application/pdf">
+    </div>
+
+    <div class="actions">
+      <button class="btn btn-primary" onclick="convertAndPreview()">
+        Convert & Preview
+      </button>
+      <button class="btn btn-outline" onclick="directDownload()">
+        Direct Download
+      </button>
+    </div>
+
+  </div>
+
+  <div class="preview-box" id="previewBox">
+
+    <div class="preview-head">
+      <h2>Extracted text preview</h2>
+      <button class="btn btn-primary"
+              style="flex:0 0 auto;padding:8px 14px;font-size:13px"
+              onclick="downloadDOCX()">
+        Download Word
+      </button>
+    </div>
+
+    <div class="progress" id="progress"></div>
+
+    <textarea id="previewText" placeholder="Extracted text will appear here..."></textarea>
+
+  </div>
+
+</section>
+
+</main>
+
+<footer class="footer">
+  © 2026 PDFwala.in – Free and secure online PDF tools
+</footer>
+
+<script>
+/* =========================
+   hidden plan
+   test: ?plan=premium
+========================= */
+
+const USER_PLAN =
+  new URLSearchParams(location.search).get("plan")==="premium"
+  ? "premium" : "free";
+
+let selectedFile=null;
+let finalText="";
+let finalDocxBlob=null;
+
+/* =========================
+   Drag & drop
+========================= */
+
+const dropZone=document.getElementById("dropZone");
+const fileInput=document.getElementById("pdfFile");
+const fileNameBox=document.getElementById("fileName");
+
+dropZone.addEventListener("click",()=>fileInput.click());
+
+dropZone.addEventListener("dragover",e=>{
+  e.preventDefault();
+  dropZone.classList.add("drag");
+});
+dropZone.addEventListener("dragleave",()=>{
+  dropZone.classList.remove("drag");
+});
+dropZone.addEventListener("drop",e=>{
+  e.preventDefault();
+  dropZone.classList.remove("drag");
+  const f=e.dataTransfer.files[0];
+  if(f && f.type==="application/pdf"){
+    selectedFile=f;
+    fileNameBox.innerText=f.name;
+  }else{
+    alert("Please drop a PDF file.");
+  }
+});
+
+fileInput.addEventListener("change",()=>{
+  selectedFile=fileInput.files[0];
+  if(selectedFile){
+    fileNameBox.innerText=selectedFile.name;
+  }
+});
+
+/* =========================
+   FREE USER
+   PDF -> text -> DOCX
+========================= */
+
+async function browserPDFtoWord(file){
+
+  const arrayBuffer = await file.arrayBuffer();
+  const pdf = await pdfjsLib.getDocument({data: arrayBuffer}).promise;
+
+  let allText = "";
+
+  for(let i=1;i<=pdf.numPages;i++){
+    const page = await pdf.getPage(i);
+    const textContent = await page.getTextContent();
+    const pageText = textContent.items.map(it=>it.str).join(" ");
+    allText += pageText + "\n\n";
+  }
+
+  const { Document, Packer, Paragraph, TextRun } = window.docx;
+
+  const paragraphs = allText
+    .split(/\n+/)
+    .map(line => new Paragraph({
+      children: [ new TextRun(line) ]
+    }));
+
+  const doc = new Document({
+    sections:[{ children: paragraphs }]
+  });
+
+  const blob = await Packer.toBlob(doc);
+
+  return { text: allText, blob };
+}
+
+/* =========================
+   PREMIUM USER
+   backend conversion
+========================= */
+
+async function premiumPDFtoWord(file){
+
+  const fd=new FormData();
+  fd.append("file",file);
+
+  const r=await fetch("/api/premium-pdf-to-word",{
+    method:"POST",
+    body:fd
+  });
+
+  if(!r.ok){
+    alert("Premium conversion service unavailable.");
+    throw new Error("premium api failed");
+  }
+
+  const blob=await r.blob();
+  return { text:null, blob };
+}
+
+/* =========================
+   unified
+========================= */
+
+async function processPDF(file){
+
+  if(USER_PLAN==="premium"){
+    return await premiumPDFtoWord(file);
+  }else{
+    return await browserPDFtoWord(file);
+  }
+}
+
+/* =========================
+   UI
+========================= */
+
+async function convertAndPreview(){
+
+  const file = selectedFile || fileInput.files[0];
+
+  if(!file){
+    alert("Please select a PDF file.");
+    return;
+  }
+
+  document.getElementById("previewBox").style.display="block";
+  document.getElementById("progress").innerText="Converting...";
+
+  const result = await processPDF(file);
+
+  finalDocxBlob = result.blob;
+
+  if(result.text){
+    finalText = result.text;
+    document.getElementById("previewText").value = finalText;
+  }else{
+    document.getElementById("previewText").value =
+      "Preview is not available in premium mode. Please download the Word file.";
+  }
+
+  document.getElementById("progress").innerText =
+    USER_PLAN==="premium"
+      ? "Premium conversion completed."
+      : "Free conversion completed.";
+}
+
+async function directDownload(){
+
+  const file = selectedFile || fileInput.files[0];
+
+  if(!file){
+    alert("Please select a PDF file.");
+    return;
+  }
+
+  const result = await processPDF(file);
+  finalDocxBlob = result.blob;
+  downloadDOCX();
+}
+
+/* =========================
+   helpers
+========================= */
+
+function downloadDOCX(){
+
+  if(!finalDocxBlob){
+    alert("No Word file generated yet.");
+    return;
+  }
+
+  const a=document.createElement("a");
+  a.href=URL.createObjectURL(finalDocxBlob);
+  a.download="PDFwala.in-pdf-to-word.docx";
+  a.click();
+}
+</script>
+
+</body>
+</html>
