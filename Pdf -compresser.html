@@ -335,7 +335,7 @@ async function sendFile(){
   const f = document.getElementById("file").files[0];
   const buf = await f.arrayBuffer();
 
-  const r = await fetch("https://d1fqxd108l.execute-api.us-east-1.amazonaws.com/default/pdfwala-backend", {
+  const r = await fetch("https://xer42wm4c3f5k2iykgsxhqriey0ydbtg.lambda-url.us-east-1.on.aws/", {
     method: "POST",
     body: buf
   });
