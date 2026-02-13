@@ -2,347 +2,379 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Compress PDF Online – PDFWala.in</title>
-
-<!-- ===== SEO META ===== -->
-<meta name="description" content="Compress PDF online free with preview. Reduce PDF file size easily using PDFWala.in secure and fast PDF compressor.">
-<meta name="keywords" content="compress pdf, reduce pdf size, pdf compressor online, free pdf compressor, pdfwala, pdfwala.in, compress pdf india, online pdf tool">
+<title>PDF Compressor – PDFwala.in</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Compress PDF files online with PDFwala.in">
 <meta name="robots" content="index, follow">
-<meta name="viewport" content="width=device-width, initial-scale=1">
 
 <style>
+*{box-sizing:border-box}
 body{
 margin:0;
-font-family:Arial,Helvetica,sans-serif;
-background:#f3f5f9;
+font-family:system-ui,Arial,sans-serif;
+background:#0f172a;
+color:#fff;
 }
 
 /* header */
-header{
-background:#fff;
-padding:12px 18px;
-display:flex;
-justify-content:space-between;
-align-items:center;
-box-shadow:0 2px 6px rgba(0,0,0,.06);
+.header{
+max-width:1100px;margin:auto;padding:14px;
+display:flex;justify-content:space-between;align-items:center
+}
+.logo{
+text-decoration:none;color:#fff;font-weight:700;
+padding:6px 14px;border-radius:20px;
+background:linear-gradient(135deg,#ff1744,#ff9100)
+}
+.nav a{
+margin-left:8px;text-decoration:none;color:#eee;
+font-size:13px;padding:5px 10px;border-radius:14px;
+background:rgba(255,255,255,.08)
 }
 
-header .logo{
-font-weight:bold;
-color:#e53935;
-font-size:20px;
-}
-
-/* layout */
-.container{
-max-width:950px;
-margin:25px auto;
-padding:15px;
-}
+/* main */
+.wrap{max-width:1100px;margin:auto;padding:0 14px 50px}
 
 .card{
-background:#fff;
-padding:22px;
-border-radius:10px;
-box-shadow:0 5px 15px rgba(0,0,0,.08);
-text-align:center;
-}
-
-.drop{
-border:2px dashed #e53935;
-border-radius:10px;
-padding:35px 10px;
-cursor:pointer;
-}
-
-.drop p{
-margin:0;
-color:#555;
-}
-
-button{
-background:#e53935;
-color:#fff;
-border:none;
-padding:12px 22px;
-border-radius:6px;
-font-size:15px;
-cursor:pointer;
-margin-top:12px;
-}
-
-button:disabled{
-background:#aaa;
-cursor:not-allowed;
-}
-
-progress{
-width:100%;
-height:18px;
-margin-top:12px;
-}
-
-.info{
-margin-top:10px;
-font-size:14px;
-color:#333;
-}
-
-.previewBox{
 margin-top:20px;
-display:none;
+background:rgba(255,255,255,.06);
+border-radius:16px;
+padding:18px;
+border:1px solid rgba(255,255,255,.12);
 }
 
-.previewBox iframe{
-width:100%;
-height:420px;
-border:1px solid #ddd;
-border-radius:8px;
+h1{
+text-align:center;
+margin:0 0 14px;
+font-size:26px;
+color:#ff9100
 }
 
-.sizeBox{
+.upload{
+border:2px dashed rgba(255,255,255,.35);
+border-radius:14px;
+padding:26px;
+text-align:center;
+cursor:pointer;
+}
+
+.info{margin-top:8px;font-size:13px;color:#ccc}
+
+.buttons{margin-top:12px;display:flex;gap:10px}
+button{
+border:none;
+padding:10px 16px;
+border-radius:18px;
+font-weight:600;
+cursor:pointer
+}
+.primary{background:linear-gradient(135deg,#ff1744,#ff9100);color:#fff}
+.secondary{background:rgba(255,255,255,.15);color:#fff}
+
+/* progress */
+.progressBox{
 margin-top:12px;
-background:#f6f7f9;
+background:rgba(0,0,0,.35);
+border-radius:12px;
 padding:10px;
-border-radius:6px;
-font-size:14px;
+display:none
+}
+.row{display:flex;align-items:center;gap:8px;font-size:13px}
+.spinner{
+width:14px;height:14px;
+border:3px solid rgba(255,255,255,.3);
+border-top-color:#ff9100;
+border-radius:50%;
+animation:spin 1s linear infinite
+}
+@keyframes spin{to{transform:rotate(360deg)}}
+.tick{color:#00e676;font-weight:800}
+
+.bar{
+height:7px;
+background:#333;
+border-radius:20px;
+overflow:hidden;
+margin-top:6px
+}
+.fill{
+height:100%;
+width:0%;
+background:linear-gradient(90deg,#ff1744,#ff9100)
 }
 
-/* SEO section */
-.seo-section{
-max-width:950px;
-margin:35px auto;
-background:#fff;
-padding:22px;
-border-radius:10px;
-line-height:1.7;
-font-size:14px;
-color:#444;
+.fileBox{
+margin-top:12px;
+background:rgba(255,255,255,.06);
+border-radius:12px;
+padding:10px;
+border:1px solid rgba(255,255,255,.12);
+white-space:pre-line;
+}
+
+/* footer */
+.footer{
+margin-top:40px;
+background:rgba(255,255,255,.05);
+border-top:1px solid rgba(255,255,255,.12);
+padding:26px 14px
+}
+.footerGrid{
+max-width:1100px;
+margin:auto;
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+gap:18px
+}
+.footer h3{margin-top:0;color:#ff9100}
+.footer p,.footer li{
+font-size:13px;
+color:#ccc;
+line-height:1.6
 }
 </style>
 </head>
 <body>
 
-<!-- ===== HEADER (unchanged style – Home + PDFWala.in) ===== -->
-<header>
-<div class="logo">PDF Wala.in</div>
-<div>Compress PDF</div>
-</header>
+<!-- HEADER -->
+<div class="header">
+  <a class="logo" href="index.html">PDFwala.in</a>
+  <div class="nav">
+    <a href="index.html">Home</a>
+    <a href="index.html">Popular Tools</a>
+    <a href="index.html">All Tools</a>
+  </div>
+</div>
 
-<div class="container">
+<div class="wrap">
 
 <div class="card">
 
-<h1>Compress PDF with Preview</h1>
+<h1>PDF Compressor</h1>
 
-<div class="drop" id="dropBox">
-<p>Click or Drop your PDF here</p>
+<div id="dropBox" class="upload">
+Click or drag &amp; drop your PDF file here
 </div>
 
-<input type="file" id="fileInput" hidden accept="application/pdf">
+<input type="file" id="fileInput" accept="application/pdf" hidden>
 
-<div class="info" id="fileInfo"></div>
-
-<button id="startBtn" disabled>Compress PDF</button>
-
-<div id="progressWrap" style="display:none">
-<progress id="progressBar" value="0" max="100"></progress>
-<div class="info" id="progressText"></div>
+<div id="fileInfo" class="info">
+Only one PDF file is supported at a time.
 </div>
 
-<div class="previewBox" id="previewBox">
-
-<h3>Compressed Preview</h3>
-<iframe id="previewFrame"></iframe>
-
-<div class="sizeBox" id="sizeBox"></div>
-
-<button id="downloadBtn">Download</button>
-
+<div id="progressBox" class="progressBox">
+  <div class="row">
+    <span id="icon" class="spinner"></span>
+    <span id="progressText">Preparing…</span>
+  </div>
+  <div class="bar">
+    <div id="fill" class="fill"></div>
+  </div>
 </div>
 
+<div class="buttons">
+  <button id="convertBtn" class="primary" disabled>Compress PDF</button>
+  <button id="clearBtn" class="secondary">Clear File</button>
+</div>
+
+<div id="result"></div>
+
 </div>
 </div>
 
-<!-- ===== SEO TEXT (visible) ===== -->
-<section class="seo-section">
-<h2>Online PDF Compressor – PDFWala.in</h2>
+<!-- FOOTER (same as your original structure) -->
+<div class="footer">
+<div class="footerGrid">
 
+<div>
+<h3>About this tool</h3>
 <p>
-PDFWala.in offers a fast and secure online PDF compressor to reduce PDF file size with live preview.
-You can easily upload your PDF, check the compressed preview and download the optimized file in one click.
+This PDF Compressor reduces the size of your PDF file while keeping the
+document readable and usable.
+</p>
+</div>
+
+<div>
+<h3>How to use this tool</h3>
+<ul>
+<li>Select your PDF file using the upload box above.</li>
+<li>Click the Compress PDF button.</li>
+<li>Wait until the compression finishes.</li>
+<li>Download your compressed PDF file.</li>
+</ul>
+</div>
+
+<div>
+<h3>Contact us</h3>
+
+<p style="display:flex;align-items:center;gap:8px;margin:0 0 12px 0">
+<span>📧</span>
+<a href="mailto:support@pdfwala.in"
+   style="color:#fff;text-decoration:none;font-weight:600">
+support@pdfwala.in
+</a>
 </p>
 
-<p>
-This free compress PDF tool is helpful for students, offices and professionals who need smaller PDF files
-for email, WhatsApp sharing, online forms and document submissions.
-All processing is done directly in your browser for better privacy.
+<p style="margin:0">
+<a href="https://wa.me/919876543210"
+   target="_blank"
+   style="display:flex;align-items:center;gap:8px;
+          color:#fff;text-decoration:none;font-weight:600">
+
+<svg width="18" height="18" viewBox="0 0 32 32" fill="none">
+<path fill="#25D366"
+d="M16 2.667C8.64 2.667 2.667 8.64 2.667 16c0 2.613.747 5.04 2.027 7.093L2.667 29.333l6.453-1.973A13.26 13.26 0 0 0 16 29.333c7.36 0 13.333-5.973 13.333-13.333S23.36 2.667 16 2.667z"/>
+<path fill="#fff"
+d="M23.253 19.2c-.32-.16-1.893-.933-2.187-1.04-.293-.107-.507-.16-.72.16-.213.32-.827 1.04-1.013 1.253-.187.213-.373.24-.693.08-.32-.16-1.347-.497-2.567-1.587-.947-.843-1.587-1.88-1.773-2.2-.187-.32-.02-.493.14-.653.147-.146.32-.373.48-.56.16-.187.213-.32.32-.533.107-.213.053-.4-.027-.56-.08-.16-.72-1.733-.987-2.373-.26-.627-.52-.54-.72-.55h-.613c-.213 0-.56.08-.853.4-.293.32-1.12 1.093-1.12 2.667 0 1.573 1.147 3.093 1.307 3.307.16.213 2.253 3.44 5.467 4.827.765.33 1.36.527 1.827.673.768.245 1.467.21 2.02.127.617-.093 1.893-.773 2.16-1.52.267-.747.267-1.387.187-1.52-.08-.133-.293-.213-.613-.373z"/>
+</svg>
+
+<span>WhatsApp</span>
+</a>
 </p>
 
-<p>
-Use PDFWala.in for compressing, merging, splitting and converting PDF files with simple and user-friendly tools.
-</p>
-</section>
+</div>
 
-
-<!-- ===== Libraries ===== -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+</div>
+</div>
 
 <script>
-const dropBox = document.getElementById("dropBox");
-const fileInput = document.getElementById("fileInput");
-const fileInfo  = document.getElementById("fileInfo");
+const API_URL = "https://xer42wm4c3f5k2iykgsxhqriey0ydbtg.lambda-url.us-east-1.on.aws/";
 
-const startBtn  = document.getElementById("startBtn");
-const progressWrap = document.getElementById("progressWrap");
-const progressBar  = document.getElementById("progressBar");
-const progressText = document.getElementById("progressText");
+const dropBox=document.getElementById("dropBox");
+const fileInput=document.getElementById("fileInput");
+const fileInfo=document.getElementById("fileInfo");
+const convertBtn=document.getElementById("convertBtn");
+const clearBtn=document.getElementById("clearBtn");
 
-const previewBox   = document.getElementById("previewBox");
-const previewFrame = document.getElementById("previewFrame");
-const sizeBox      = document.getElementById("sizeBox");
-const downloadBtn  = document.getElementById("downloadBtn");
+const progressBox=document.getElementById("progressBox");
+const progressText=document.getElementById("progressText");
+const fill=document.getElementById("fill");
+const icon=document.getElementById("icon");
+const result=document.getElementById("result");
 
-let selectedFile = null;
-let compressedBlob = null;
-let originalSizeMB = 0;
+let file=null;
 
-dropBox.addEventListener("click",()=>fileInput.click());
-
-dropBox.addEventListener("dragover",e=>{
+dropBox.onclick=()=>fileInput.click();
+dropBox.ondragover=e=>e.preventDefault();
+dropBox.ondrop=e=>{
 e.preventDefault();
-});
+setFile(e.dataTransfer.files[0]);
+};
+fileInput.onchange=()=>setFile(fileInput.files[0]);
 
-dropBox.addEventListener("drop",e=>{
-e.preventDefault();
-loadFile(e.dataTransfer.files[0]);
-});
-
-fileInput.addEventListener("change",()=>{
-loadFile(fileInput.files[0]);
-});
-
-function loadFile(file){
-
-if(!file || file.type !== "application/pdf"){
-alert("Please select a PDF file");
+function setFile(f){
+resetUI();
+if(!f || f.type!=="application/pdf"){
+fileInfo.innerText="Please select a valid PDF file only.";
 return;
 }
-
-selectedFile = file;
-originalSizeMB = (file.size / 1024 / 1024).toFixed(2);
-
-fileInfo.innerHTML =
-"<b>File:</b> " + file.name +
-"<br><b>Original size:</b> " + originalSizeMB + " MB";
-
-dropBox.innerText = file.name;
-startBtn.disabled = false;
-
-previewBox.style.display = "none";
-progressWrap.style.display = "none";
+file=f;
+fileInfo.innerText="Selected file: "+f.name;
+convertBtn.disabled=false;
 }
 
-/* =============================
-   Compress + progress + preview
-   ============================= */
+clearBtn.onclick=resetUI;
 
-startBtn.addEventListener("click", async ()=>{
-
-if(!selectedFile) return;
-
-progressWrap.style.display = "block";
-previewBox.style.display = "none";
-progressBar.value = 0;
-progressText.innerText = "Starting compression...";
-
-const buffer = await selectedFile.arrayBuffer();
-const pdf = await pdfjsLib.getDocument({data:buffer}).promise;
-
-const { jsPDF } = window.jspdf;
-const outPdf = new jsPDF();
-
-for(let i=1;i<=pdf.numPages;i++){
-
-const page = await pdf.getPage(i);
-const viewport = page.getViewport({scale:1});
-
-const canvas = document.createElement("canvas");
-const ctx = canvas.getContext("2d");
-
-canvas.width = viewport.width;
-canvas.height = viewport.height;
-
-await page.render({canvasContext:ctx, viewport}).promise;
-
-/* JPEG re-encode for size reduction */
-const img = canvas.toDataURL("image/jpeg",0.65);
-
-if(i>1) outPdf.addPage();
-
-const w = outPdf.internal.pageSize.getWidth();
-const h = outPdf.internal.pageSize.getHeight();
-
-outPdf.addImage(img,"JPEG",0,0,w,h);
-
-let percent = Math.round((i / pdf.numPages) * 100);
-progressBar.value = percent;
-progressText.innerText = "Compressed : " + percent + "%";
+function resetUI(){
+file=null;
+fileInput.value="";
+fileInfo.innerText="Only one PDF file is supported at a time.";
+convertBtn.disabled=true;
+progressBox.style.display="none";
+fill.style.width="0%";
+icon.className="spinner";
+icon.textContent="";
+result.innerHTML="";
 }
 
-/* create compressed blob */
-compressedBlob = outPdf.output("blob");
+convertBtn.onclick=async()=>{
+if(!file) return;
+await startCompression(file);
+};
 
-/* show preview */
-previewFrame.src = URL.createObjectURL(compressedBlob);
+/* ===== clean backend call ===== */
+async function startCompression(file){
 
-/* calculate compressed size */
-const compressedSizeMB = (compressedBlob.size / 1024 / 1024).toFixed(2);
+showProgress();
 
-sizeBox.innerHTML =
-"<b>Before compression:</b> " + originalSizeMB + " MB<br>" +
-"<b>After compression:</b> " + compressedSizeMB + " MB";
+try{
 
-previewBox.style.display = "block";
-progressText.innerText = "Compression completed. Preview ready.";
+setProgress(20,"Uploading PDF…");
 
+const buf = await file.arrayBuffer();
+
+const res = await fetch(API_URL,{
+  method:"POST",
+  headers:{
+    "Content-Type":"application/pdf"
+  },
+  body: buf
 });
 
-/* =============================
-   Download after preview only
-   ============================= */
+setProgress(70,"Receiving file…");
 
-downloadBtn.addEventListener("click",()=>{
+const blob = await res.blob();
 
-if(!compressedBlob) return;
+if(!blob || blob.size === 0){
+  throw new Error("Empty file received from server");
+}
 
+setProgress(100,"Download ready");
+showDone();
+downloadFile(blob);
+
+}catch(e){
+showError("Error : " + e.message);
+}
+
+}
+
+function downloadFile(blob){
+
+const url = URL.createObjectURL(blob);
 const a = document.createElement("a");
-a.href = URL.createObjectURL(compressedBlob);
-
-const base = selectedFile.name.replace(/\.pdf$/i,"");
-a.download = "PDFwala.in_" + base + "_compressed.pdf";
-
+a.href = url;
+a.download = "PDFwala.in_compressed.pdf";
+document.body.appendChild(a);
 a.click();
+a.remove();
+URL.revokeObjectURL(url);
 
-});
-</script>
-<input type="file" id="file">
-<button type="button" onclick="sendFile()">Send file to backend</button>
+const box=document.createElement("div");
+box.className="fileBox";
+box.innerText =
+"Compression finished.\n\nYour file is ready to download.";
+result.appendChild(box);
+}
 
-<script>
-async function sendFile(){
-  const f = document.getElementById("file").files[0];
-  const buf = await f.arrayBuffer();
+function showProgress(){
+progressBox.style.display="block";
+icon.className="spinner";
+icon.textContent="";
+fill.style.width="0%";
+progressText.innerText="Starting…";
+convertBtn.disabled=true;
+result.innerHTML="";
+}
 
-  const r = await fetch("https://xer42wm4c3f5k2iykgsxhqriey0ydbtg.lambda-url.us-east-1.on.aws/", {
-    method: "POST",
-    body: buf
-  });
+function setProgress(p,text){
+fill.style.width=p+"%";
+progressText.innerText=text;
+}
 
-  const j = await r.json();
-  alert(JSON.stringify(j));
+function showDone(){
+icon.className="tick";
+icon.textContent="✔";
+convertBtn.disabled=false;
+}
+
+function showError(msg){
+icon.className="tick";
+icon.textContent="✖";
+progressText.innerText=msg;
+convertBtn.disabled=false;
 }
 </script>
+
 </body>
 </html>
