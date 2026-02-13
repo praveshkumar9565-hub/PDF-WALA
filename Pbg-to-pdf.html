@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>PUB to PDF – PDFWala.in</title>
+
+<!-- SEO -->
+<meta name="description" content="Convert Microsoft Publisher (PUB) to PDF online with preview. PUB to PDF converter by PDFWala.in. Fast and secure tool.">
+<meta name="keywords" content="pub to pdf, microsoft publisher to pdf, convert pub to pdf online, pdfwala, pdfwala.in, publisher to pdf">
+<meta name="robots" content="index, follow">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+body{margin:0;font-family:Arial,Helvetica,sans-serif;background:#f3f5f9}
+
+header{
+background:#fff;
+padding:12px 18px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+box-shadow:0 2px 6px rgba(0,0,0,.06)
+}
+.logo{font-weight:bold;color:#e53935;font-size:20px}
+
+.container{max-width:950px;margin:25px auto;padding:15px}
+
+.card{
+background:#fff;padding:22px;border-radius:10px;
+box-shadow:0 5px 15px rgba(0,0,0,.08);
+text-align:center
+}
+
+.drop{
+border:2px dashed #e53935;border-radius:10px;
+padding:35px 10px;cursor:pointer
+}
+
+button{
+background:#e53935;color:#fff;border:none;
+padding:12px 22px;border-radius:6px;
+font-size:15px;cursor:pointer;margin-top:12px
+}
+button:disabled{background:#aaa}
+
+.info{font-size:14px;color:#333;margin-top:10px}
+
+progress{width:100%;height:18px;margin-top:12px}
+
+.previewBox{margin-top:20px;display:none}
+.previewBox iframe{
+width:100%;height:420px;border:1px solid #ddd;border-radius:8px
+}
+
+.sizeBox{
+margin-top:10px;background:#f6f7f9;
+padding:10px;border-radius:6px;font-size:14px
+}
+
+/* colorful title */
+.tool-title{
+font-size:32px;
+font-weight:800;
+margin-bottom:10px;
+background:linear-gradient(90deg,#ff1744,#ff9100,#00c853,#2979ff);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+text-align:center;
+letter-spacing:.5px;
+}
+
+.seo-section{
+max-width:950px;margin:35px auto;background:#fff;
+padding:22px;border-radius:10px;
+line-height:1.7;font-size:14px;color:#444
+}
+</style>
+</head>
+<body>
+
+<header>
+<div class="logo">PDF Wala.in</div>
+<div>PUB to PDF</div>
+</header>
+
+<div class="container">
+<div class="card">
+
+<h1 class="tool-title">PUB to PDF Converter</h1>
+
+<div class="drop" id="dropBox">
+Click or Drop Microsoft Publisher (PUB) file here
+</div>
+
+<input type="file" id="fileInput" hidden accept=".pub,application/x-mspublisher">
+
+<div class="info" id="fileInfo"></div>
+
+<button id="convertBtn" disabled>Convert to PDF</button>
+
+<div id="progressWrap" style="display:none">
+<progress id="progressBar" value="0" max="100"></progress>
+<div class="info" id="progressText"></div>
+</div>
+
+<div class="previewBox" id="previewBox">
+
+<h3>Converted PDF Preview</h3>
+
+<iframe id="previewFrame"></iframe>
+
+<div class="sizeBox" id="sizeBox"></div>
+
+<button id="downloadBtn">Download PDF</button>
+
+</div>
+
+</div>
+</div>
+
+<section class="seo-section">
+<h2>Convert Microsoft Publisher (PUB) to PDF – PDFWala.in</h2>
+<p>
+PDFWala.in provides a simple and secure PUB to PDF converter. Upload your Microsoft Publisher file,
+convert it to PDF and preview the result before downloading.
+</p>
+<p>
+This tool is useful for designers, offices and printing professionals who need to share Publisher
+documents in PDF format.
+</p>
+</section>
+
+<script>
+const dropBox = document.getElementById("dropBox");
+const fileInput = document.getElementById("fileInput");
+const fileInfo  = document.getElementById("fileInfo");
+
+const convertBtn = document.getElementById("convertBtn");
+
+const progressWrap = document.getElementById("progressWrap");
+const progressBar  = document.getElementById("progressBar");
+const progressText = document.getElementById("progressText");
+
+const previewBox   = document.getElementById("previewBox");
+const previewFrame = document.getElementById("previewFrame");
+const sizeBox      = document.getElementById("sizeBox");
+const downloadBtn  = document.getElementById("downloadBtn");
+
+let selectedFile = null;
+let originalSizeMB = 0;
+let convertedBlob = null;
+
+/* upload */
+
+dropBox.onclick = ()=>fileInput.click();
+
+dropBox.ondragover = e=>e.preventDefault();
+
+dropBox.ondrop = e=>{
+e.preventDefault();
+loadFile(e.dataTransfer.files[0]);
+};
+
+fileInput.onchange = ()=>{
+loadFile(fileInput.files[0]);
+};
+
+function loadFile(file){
+
+if(!file) return;
+
+const name = file.name.toLowerCase();
+
+if(!name.endsWith(".pub")){
+alert("Please upload a Microsoft Publisher (.pub) file");
+return;
+}
+
+selectedFile = file;
+originalSizeMB = (file.size/1024/1024).toFixed(2);
+
+fileInfo.innerHTML =
+"<b>File:</b> " + file.name +
+"<br><b>Original size:</b> " + originalSizeMB + " MB";
+
+dropBox.innerText = file.name;
+convertBtn.disabled = false;
+
+previewBox.style.display="none";
+}
+
+/* convert */
+
+convertBtn.onclick = async ()=>{
+
+if(!selectedFile) return;
+
+/*
+IMPORTANT:
+Real PUB → PDF conversion must be done on server.
+This frontend is API-ready only.
+*/
+
+progressWrap.style.display="block";
+progressBar.value = 10;
+progressText.innerText = "Uploading file...";
+
+const formData = new FormData();
+formData.append("file", selectedFile);
+
+/*
+Later replace this URL with your real backend:
+example:
+https://api.pdfwala.in/pub-to-pdf
+*/
+
+try{
+
+progressText.innerText = "Converting on server...";
+
+const response = await fetch("/api/pub-to-pdf",{
+method:"POST",
+body:formData
+});
+
+if(!response.ok){
+throw new Error("Conversion failed");
+}
+
+progressBar.value = 80;
+
+const blob = await response.blob();
+convertedBlob = blob;
+
+progressBar.value = 100;
+progressText.innerText = "Conversion completed";
+
+previewFrame.src = URL.createObjectURL(blob);
+
+const newSizeMB = (blob.size/1024/1024).toFixed(2);
+
+sizeBox.innerHTML =
+"<b>Before:</b> " + originalSizeMB + " MB<br>" +
+"<b>After:</b> " + newSizeMB + " MB";
+
+previewBox.style.display = "block";
+
+}catch(err){
+
+alert("Backend API not connected yet.\nThis PUB to PDF tool is frontend-ready only.");
+
+progressWrap.style.display="none";
+}
+
+};
+
+/* download */
+
+downloadBtn.onclick = ()=>{
+
+if(!convertedBlob) return;
+
+const base = selectedFile.name.replace(/\.pub$/i,"");
+
+const a = document.createElement("a");
+a.href = URL.createObjectURL(convertedBlob);
+a.download = "PDFwala.in_" + base + ".pdf";
+a.click();
+
+};
+</script>
+
+</body>
+</html>
