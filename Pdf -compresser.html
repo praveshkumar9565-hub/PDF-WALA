@@ -327,6 +327,22 @@ a.click();
 
 });
 </script>
+<input type="file" id="file">
+<button onclick="sendFile()">Send file to backend</button>
 
+<script>
+async function sendFile(){
+  const f = document.getElementById("file").files[0];
+  const buf = await f.arrayBuffer();
+
+  const r = await fetch("https://d1fqxd108l.execute-api.us-east-1.amazonaws.com/default/pdfwala-backend", {
+    method: "POST",
+    body: buf
+  });
+
+  const j = await r.json();
+  alert(JSON.stringify(j));
+}
+</script>
 </body>
 </html>
