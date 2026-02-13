@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>GIF to PDF – PDFWala.in</title>
+
+<meta name="description" content="Convert GIF to PDF online free with preview. Combine multiple GIF images into one optimized PDF using PDFWala.in.">
+<meta name="keywords" content="gif to pdf, convert gif to pdf, image to pdf, pdfwala, pdfwala.in, free gif to pdf">
+<meta name="robots" content="index, follow">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+body{margin:0;font-family:Arial,Helvetica,sans-serif;background:#f3f5f9}
+
+/* ================= Header ================= */
+
+.topbar{
+background:#ffffff;
+padding:10px 16px;
+display:flex;
+align-items:center;
+justify-content:space-between;
+box-shadow:0 6px 20px rgba(0,0,0,.06);
+position:sticky;
+top:0;
+z-index:999;
+}
+
+.brand-btn{
+text-decoration:none;
+background:linear-gradient(135deg,#ff1744,#ff9100);
+color:#fff;
+padding:8px 16px;
+border-radius:999px;
+font-weight:700;
+font-size:16px;
+box-shadow:0 4px 12px rgba(255,23,68,.25);
+}
+
+.nav{display:flex;gap:10px}
+
+.nav a{
+text-decoration:none;
+padding:8px 14px;
+border-radius:999px;
+font-size:14px;
+font-weight:600;
+color:#333;
+background:#f3f5f9;
+transition:.2s;
+}
+.nav a:hover{background:#e53935;color:#fff}
+
+@media(max-width:600px){
+.nav{gap:6px}
+.nav a{padding:6px 10px;font-size:13px}
+}
+
+/* ================= Layout ================= */
+
+.container{max-width:950px;margin:25px auto;padding:15px}
+
+.card{
+background:#fff;
+padding:22px;
+border-radius:12px;
+box-shadow:0 5px 15px rgba(0,0,0,.08);
+text-align:center
+}
+
+.drop{
+border:2px dashed #e53935;
+border-radius:12px;
+padding:35px 10px;
+cursor:pointer
+}
+
+button{
+background:#e53935;
+color:#fff;
+border:none;
+padding:12px 22px;
+border-radius:999px;
+font-size:15px;
+cursor:pointer;
+margin-top:12px
+}
+button:disabled{background:#aaa}
+
+.info{font-size:14px;color:#333;margin-top:10px}
+
+.thumb-list{
+margin-top:12px;
+display:flex;
+gap:8px;
+flex-wrap:wrap;
+justify-content:center
+}
+.thumb-list img{
+width:80px;
+height:80px;
+object-fit:cover;
+border:1px solid #ddd;
+border-radius:8px
+}
+
+.previewBox{margin-top:20px;display:none}
+
+.previewBox iframe{
+width:100%;
+height:420px;
+border:1px solid #ddd;
+border-radius:10px
+}
+
+.sizeBox{
+margin-top:10px;
+background:#f6f7f9;
+padding:10px;
+border-radius:8px;
+font-size:14px
+}
+
+/* colorful title */
+.tool-title{
+font-size:32px;
+font-weight:800;
+margin-bottom:10px;
+background:linear-gradient(90deg,#ff1744,#ff9100,#00c853,#2979ff);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+text-align:center;
+letter-spacing:.5px;
+}
+
+/* ================= Help section ================= */
+
+.help-section{
+max-width:950px;
+margin:30px auto;
+background:#ffffff;
+padding:22px;
+border-radius:12px;
+box-shadow:0 5px 15px rgba(0,0,0,.06);
+}
+
+.help-section h2{
+margin-top:0;
+font-size:22px;
+color:#e53935;
+}
+
+.help-section p{
+font-size:14px;
+line-height:1.7;
+color:#444;
+margin:8px 0;
+}
+
+.help-list{
+padding-left:18px;
+line-height:1.7;
+font-size:14px;
+color:#444;
+}
+
+.contact-btn{
+display:inline-block;
+margin-top:10px;
+padding:8px 14px;
+border-radius:999px;
+background:#e53935;
+color:#fff;
+text-decoration:none;
+font-size:13px;
+font-weight:600;
+}
+
+/* ================= SEO section ================= */
+
+.seo-section{
+max-width:950px;
+margin:35px auto;
+background:#fff;
+padding:22px;
+border-radius:12px;
+line-height:1.7;
+font-size:14px;
+color:#444
+}
+</style>
+</head>
+<body>
+
+<header class="topbar">
+<a href="/" class="brand-btn">PDF Wala.in</a>
+<nav class="nav">
+<a href="/">Home</a>
+<a href="/popular-tools.html">Popular Tools</a>
+<a href="/all-tools.html">All Tools</a>
+</nav>
+</header>
+
+<div class="container">
+<div class="card">
+
+<h1 class="tool-title">GIF to PDF Converter</h1>
+
+<div class="drop" id="dropBox">
+Click or Drop GIF images here
+</div>
+
+<input type="file" id="fileInput" hidden accept="image/gif" multiple>
+
+<div class="info" id="fileInfo"></div>
+
+<div class="thumb-list" id="thumbList"></div>
+
+<button id="convertBtn" disabled>Convert to PDF</button>
+
+<div class="previewBox" id="previewBox">
+
+<h3>PDF Preview</h3>
+<iframe id="previewFrame"></iframe>
+
+<div class="sizeBox" id="sizeBox"></div>
+
+<button id="downloadBtn">Download PDF</button>
+
+</div>
+
+</div>
+</div>
+
+<!-- ================= HELP SECTION (English only) ================= -->
+
+<section class="help-section">
+
+<h2>Help – How to use the GIF to PDF Tool</h2>
+
+<p>
+This tool allows you to convert one or multiple GIF images into a single PDF file.
+The conversion is done directly in your browser and no upload to a server is required.
+</p>
+
+<ul class="help-list">
+<li>Click on the upload box above or simply drag and drop your GIF images into the box.</li>
+<li>You can select and upload multiple GIF files at the same time.</li>
+<li>After uploading, small preview thumbnails of all selected images will appear.</li>
+<li>Click the <b>Convert to PDF</b> button to start the conversion process.</li>
+<li>Once the conversion is complete, a PDF preview will be displayed below.</li>
+<li>Check the preview and then click the <b>Download PDF</b> button to save your file.</li>
+<li>For animated GIF files, only the first frame is converted into the PDF.</li>
+</ul>
+
+<a href="/contact.html" class="contact-btn">Contact Us</a>
+
+</section>
+
+<section class="seo-section">
+<h2>Convert GIF to PDF – PDFWala.in</h2>
+<p>
+Convert one or multiple GIF images into a single optimized PDF file with preview.
+Images are compressed before creating the PDF to keep the file size small.
+</p>
+</section>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+<script>
+const dropBox = document.getElementById("dropBox");
+const fileInput = document.getElementById("fileInput");
+const fileInfo  = document.getElementById("fileInfo");
+const thumbList = document.getElementById("thumbList");
+
+const convertBtn = document.getElementById("convertBtn");
+
+const previewBox   = document.getElementById("previewBox");
+const previewFrame = document.getElementById("previewFrame");
+const sizeBox      = document.getElementById("sizeBox");
+const downloadBtn  = document.getElementById("downloadBtn");
+
+let images = [];
+let originalSizeMB = 0;
+let pdfBlob = null;
+
+dropBox.onclick = ()=>fileInput.click();
+dropBox.ondragover = e=>e.preventDefault();
+dropBox.ondrop = e=>{
+e.preventDefault();
+loadFiles(e.dataTransfer.files);
+};
+fileInput.onchange = ()=>loadFiles(fileInput.files);
+
+function loadFiles(files){
+
+images = [];
+originalSizeMB = 0;
+thumbList.innerHTML = "";
+
+if(!files || !files.length) return;
+
+for(const file of files){
+
+if(file.type !== "image/gif") continue;
+
+images.push(file);
+originalSizeMB += file.size;
+
+const img = document.createElement("img");
+img.src = URL.createObjectURL(file);
+thumbList.appendChild(img);
+}
+
+if(images.length === 0){
+alert("Please select GIF images only");
+return;
+}
+
+originalSizeMB = (originalSizeMB/1024/1024).toFixed(2);
+
+fileInfo.innerHTML =
+"<b>Total images:</b> " + images.length +
+"<br><b>Total size:</b> " + originalSizeMB + " MB";
+
+convertBtn.disabled = false;
+previewBox.style.display="none";
+}
+
+/* ================= Convert ================= */
+
+convertBtn.onclick = async ()=>{
+
+if(images.length === 0) return;
+
+const { jsPDF } = window.jspdf;
+const pdf = new jsPDF("p","mm","a4");
+
+for(let i=0;i<images.length;i++){
+
+const imgData = await readAsCompressedJpeg(images[i]);
+const img = await loadImage(imgData);
+
+const pageWidth  = pdf.internal.pageSize.getWidth();
+const pageHeight = pdf.internal.pageSize.getHeight();
+
+let imgWidth = pageWidth;
+let imgHeight = img.height * imgWidth / img.width;
+
+if(imgHeight > pageHeight){
+imgHeight = pageHeight;
+imgWidth = img.width * imgHeight / img.height;
+}
+
+const x = (pageWidth - imgWidth) / 2;
+const y = (pageHeight - imgHeight) / 2;
+
+if(i>0) pdf.addPage();
+
+pdf.addImage(imgData,"JPEG",x,y,imgWidth,imgHeight);
+}
+
+pdfBlob = pdf.output("blob");
+
+previewFrame.src = URL.createObjectURL(pdfBlob);
+
+const newSizeMB = (pdfBlob.size/1024/1024).toFixed(2);
+
+sizeBox.innerHTML =
+"<b>Before (GIF total):</b> " + originalSizeMB + " MB<br>" +
+"<b>After (PDF):</b> " + newSizeMB + " MB";
+
+previewBox.style.display="block";
+};
+
+downloadBtn.onclick = ()=>{
+
+if(!pdfBlob) return;
+
+const a = document.createElement("a");
+a.href = URL.createObjectURL(pdfBlob);
+a.download = "PDFwala.in_gif_to_pdf.pdf";
+a.click();
+};
+
+/* ================= Helpers ================= */
+
+function loadImage(src){
+return new Promise((resolve,reject)=>{
+const img = new Image();
+img.onload = ()=>resolve(img);
+img.onerror = reject;
+img.src = src;
+});
+}
+
+/* GIF → JPEG (first frame only) */
+async function readAsCompressedJpeg(file){
+
+const url = URL.createObjectURL(file);
+const img = await loadImage(url);
+
+const maxWidth = 1600;
+let w = img.width;
+let h = img.height;
+
+if(w > maxWidth){
+h = h * (maxWidth / w);
+w = maxWidth;
+}
+
+const canvas = document.createElement("canvas");
+canvas.width = w;
+canvas.height = h;
+
+const ctx = canvas.getContext("2d");
+ctx.fillStyle = "#ffffff";
+ctx.fillRect(0,0,w,h);
+ctx.drawImage(img,0,0,w,h);
+
+return canvas.toDataURL("image/jpeg",0.7);
+}
+</script>
+
+</body>
+</html>
