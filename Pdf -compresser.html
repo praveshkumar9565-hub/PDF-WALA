@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Compress PDF Online – PDFWala.in</title>
+
+<!-- ===== SEO META ===== -->
+<meta name="description" content="Compress PDF online free with preview. Reduce PDF file size easily using PDFWala.in secure and fast PDF compressor.">
+<meta name="keywords" content="compress pdf, reduce pdf size, pdf compressor online, free pdf compressor, pdfwala, pdfwala.in, compress pdf india, online pdf tool">
+<meta name="robots" content="index, follow">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<style>
+body{
+margin:0;
+font-family:Arial,Helvetica,sans-serif;
+background:#f3f5f9;
+}
+
+/* header */
+header{
+background:#fff;
+padding:12px 18px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+box-shadow:0 2px 6px rgba(0,0,0,.06);
+}
+
+header .logo{
+font-weight:bold;
+color:#e53935;
+font-size:20px;
+}
+
+/* layout */
+.container{
+max-width:950px;
+margin:25px auto;
+padding:15px;
+}
+
+.card{
+background:#fff;
+padding:22px;
+border-radius:10px;
+box-shadow:0 5px 15px rgba(0,0,0,.08);
+text-align:center;
+}
+
+.drop{
+border:2px dashed #e53935;
+border-radius:10px;
+padding:35px 10px;
+cursor:pointer;
+}
+
+.drop p{
+margin:0;
+color:#555;
+}
+
+button{
+background:#e53935;
+color:#fff;
+border:none;
+padding:12px 22px;
+border-radius:6px;
+font-size:15px;
+cursor:pointer;
+margin-top:12px;
+}
+
+button:disabled{
+background:#aaa;
+cursor:not-allowed;
+}
+
+progress{
+width:100%;
+height:18px;
+margin-top:12px;
+}
+
+.info{
+margin-top:10px;
+font-size:14px;
+color:#333;
+}
+
+.previewBox{
+margin-top:20px;
+display:none;
+}
+
+.previewBox iframe{
+width:100%;
+height:420px;
+border:1px solid #ddd;
+border-radius:8px;
+}
+
+.sizeBox{
+margin-top:12px;
+background:#f6f7f9;
+padding:10px;
+border-radius:6px;
+font-size:14px;
+}
+
+/* SEO section */
+.seo-section{
+max-width:950px;
+margin:35px auto;
+background:#fff;
+padding:22px;
+border-radius:10px;
+line-height:1.7;
+font-size:14px;
+color:#444;
+}
+</style>
+</head>
+<body>
+
+<!-- ===== HEADER (unchanged style – Home + PDFWala.in) ===== -->
+<header>
+<div class="logo">PDF Wala.in</div>
+<div>Compress PDF</div>
+</header>
+
+<div class="container">
+
+<div class="card">
+
+<h1>Compress PDF with Preview</h1>
+
+<div class="drop" id="dropBox">
+<p>Click or Drop your PDF here</p>
+</div>
+
+<input type="file" id="fileInput" hidden accept="application/pdf">
+
+<div class="info" id="fileInfo"></div>
+
+<button id="startBtn" disabled>Compress PDF</button>
+
+<div id="progressWrap" style="display:none">
+<progress id="progressBar" value="0" max="100"></progress>
+<div class="info" id="progressText"></div>
+</div>
+
+<div class="previewBox" id="previewBox">
+
+<h3>Compressed Preview</h3>
+<iframe id="previewFrame"></iframe>
+
+<div class="sizeBox" id="sizeBox"></div>
+
+<button id="downloadBtn">Download</button>
+
+</div>
+
+</div>
+</div>
+
+<!-- ===== SEO TEXT (visible) ===== -->
+<section class="seo-section">
+<h2>Online PDF Compressor – PDFWala.in</h2>
+
+<p>
+PDFWala.in offers a fast and secure online PDF compressor to reduce PDF file size with live preview.
+You can easily upload your PDF, check the compressed preview and download the optimized file in one click.
+</p>
+
+<p>
+This free compress PDF tool is helpful for students, offices and professionals who need smaller PDF files
+for email, WhatsApp sharing, online forms and document submissions.
+All processing is done directly in your browser for better privacy.
+</p>
+
+<p>
+Use PDFWala.in for compressing, merging, splitting and converting PDF files with simple and user-friendly tools.
+</p>
+</section>
+
+
+<!-- ===== Libraries ===== -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+<script>
+const dropBox = document.getElementById("dropBox");
+const fileInput = document.getElementById("fileInput");
+const fileInfo  = document.getElementById("fileInfo");
+
+const startBtn  = document.getElementById("startBtn");
+const progressWrap = document.getElementById("progressWrap");
+const progressBar  = document.getElementById("progressBar");
+const progressText = document.getElementById("progressText");
+
+const previewBox   = document.getElementById("previewBox");
+const previewFrame = document.getElementById("previewFrame");
+const sizeBox      = document.getElementById("sizeBox");
+const downloadBtn  = document.getElementById("downloadBtn");
+
+let selectedFile = null;
+let compressedBlob = null;
+let originalSizeMB = 0;
+
+dropBox.addEventListener("click",()=>fileInput.click());
+
+dropBox.addEventListener("dragover",e=>{
+e.preventDefault();
+});
+
+dropBox.addEventListener("drop",e=>{
+e.preventDefault();
+loadFile(e.dataTransfer.files[0]);
+});
+
+fileInput.addEventListener("change",()=>{
+loadFile(fileInput.files[0]);
+});
+
+function loadFile(file){
+
+if(!file || file.type !== "application/pdf"){
+alert("Please select a PDF file");
+return;
+}
+
+selectedFile = file;
+originalSizeMB = (file.size / 1024 / 1024).toFixed(2);
+
+fileInfo.innerHTML =
+"<b>File:</b> " + file.name +
+"<br><b>Original size:</b> " + originalSizeMB + " MB";
+
+dropBox.innerText = file.name;
+startBtn.disabled = false;
+
+previewBox.style.display = "none";
+progressWrap.style.display = "none";
+}
+
+/* =============================
+   Compress + progress + preview
+   ============================= */
+
+startBtn.addEventListener("click", async ()=>{
+
+if(!selectedFile) return;
+
+progressWrap.style.display = "block";
+previewBox.style.display = "none";
+progressBar.value = 0;
+progressText.innerText = "Starting compression...";
+
+const buffer = await selectedFile.arrayBuffer();
+const pdf = await pdfjsLib.getDocument({data:buffer}).promise;
+
+const { jsPDF } = window.jspdf;
+const outPdf = new jsPDF();
+
+for(let i=1;i<=pdf.numPages;i++){
+
+const page = await pdf.getPage(i);
+const viewport = page.getViewport({scale:1});
+
+const canvas = document.createElement("canvas");
+const ctx = canvas.getContext("2d");
+
+canvas.width = viewport.width;
+canvas.height = viewport.height;
+
+await page.render({canvasContext:ctx, viewport}).promise;
+
+/* JPEG re-encode for size reduction */
+const img = canvas.toDataURL("image/jpeg",0.65);
+
+if(i>1) outPdf.addPage();
+
+const w = outPdf.internal.pageSize.getWidth();
+const h = outPdf.internal.pageSize.getHeight();
+
+outPdf.addImage(img,"JPEG",0,0,w,h);
+
+let percent = Math.round((i / pdf.numPages) * 100);
+progressBar.value = percent;
+progressText.innerText = "Compressed : " + percent + "%";
+}
+
+/* create compressed blob */
+compressedBlob = outPdf.output("blob");
+
+/* show preview */
+previewFrame.src = URL.createObjectURL(compressedBlob);
+
+/* calculate compressed size */
+const compressedSizeMB = (compressedBlob.size / 1024 / 1024).toFixed(2);
+
+sizeBox.innerHTML =
+"<b>Before compression:</b> " + originalSizeMB + " MB<br>" +
+"<b>After compression:</b> " + compressedSizeMB + " MB";
+
+previewBox.style.display = "block";
+progressText.innerText = "Compression completed. Preview ready.";
+
+});
+
+/* =============================
+   Download after preview only
+   ============================= */
+
+downloadBtn.addEventListener("click",()=>{
+
+if(!compressedBlob) return;
+
+const a = document.createElement("a");
+a.href = URL.createObjectURL(compressedBlob);
+
+const base = selectedFile.name.replace(/\.pdf$/i,"");
+a.download = "PDFwala.in_" + base + "_compressed.pdf";
+
+a.click();
+
+});
+</script>
+
+</body>
+</html>
