@@ -2,273 +2,351 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Merge PDF Online – PDFWala.in</title>
-
-<meta name="description" content="Merge PDF files online with reorder and preview before download. Free browser merge and premium server merge. PDFWala.in">
-<meta name="keywords" content="merge pdf, combine pdf, reorder pdf, pdf merger online, pdfwala">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<!-- PDF-lib for browser merge -->
+<title>Merge PDF Files Online Free | Secure PDF Merger - PDFWala.in</title>
+<meta name="description" content="Merge multiple PDF files online for free. Secure client-side PDF merger tool. No upload required.">
+<meta name="keywords" content="merge pdf, combine pdf files, pdf merger online free, secure pdf merge">
+<meta name="author" content="PDFWala.in">
+<link rel="canonical" href="https://pdfwala.in/merge-pdf">
+
 <script src="https://unpkg.com/pdf-lib/dist/pdf-lib.min.js"></script>
 
 <style>
-:root{
-  --brand:#e53935;
-  --bg:#f3f4f6;
-  --card:#ffffff;
-  --border:#e5e7eb;
-  --text:#111827;
+body{
+margin:0;
+font-family:Segoe UI, sans-serif;
+background:linear-gradient(135deg,#061a2e,#0d2d4d,#061a2e);
+color:#fff;
 }
-*{box-sizing:border-box;font-family:system-ui,-apple-system,Segoe UI,Roboto}
 
-body{margin:0;background:var(--bg);color:var(--text);}
+/* HEADER */
+header{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:20px 40px;
+}
+.logo{
+color:#ffc107;
+font-weight:bold;
+font-size:22px;
+}
+nav a{
+margin-left:15px;
+text-decoration:none;
+color:#fff;
+padding:8px 15px;
+border-radius:8px;
+background:#0e2f50;
+transition:0.3s;
+}
+nav a:hover{
+transform:translateY(-3px);
+box-shadow:0 0 15px #fff;
+}
 
-header{background:#fff;border-bottom:1px solid var(--border);}
-.header{max-width:1100px;margin:auto;padding:12px 16px;}
-.logo{color:var(--brand);text-decoration:none;font-weight:700;font-size:20px;}
+/* MAIN */
+.container{
+max-width:900px;
+margin:30px auto;
+background:#102a45;
+padding:30px;
+border-radius:20px;
+box-shadow:0 0 40px rgba(0,0,0,0.6);
+}
 
-.container{max-width:820px;margin:32px auto;padding:0 16px;}
-.card{background:#fff;border-radius:14px;padding:22px;box-shadow:0 8px 20px rgba(0,0,0,.06);}
+h1{
+text-align:center;
+color:#ffc107;
+margin-bottom:20px;
+}
 
-h1{margin-top:0;font-size:24px}
+.drop-area{
+border:2px dashed #ffc107;
+padding:30px;
+text-align:center;
+border-radius:15px;
+cursor:pointer;
+margin-bottom:20px;
+}
 
-.drop{border:2px dashed #d1d5db;border-radius:12px;padding:28px 18px;text-align:center;cursor:pointer;transition:.2s;}
-.drop.drag{border-color:var(--brand);background:#fff5f5;}
-input[type=file]{display:none}
+.file-item{
+background:#1a3a5f;
+padding:12px;
+margin:8px 0;
+border-radius:10px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+cursor:grab;
+}
 
-.list{margin-top:14px;display:flex;flex-direction:column;gap:8px}
-.item{border:1px solid var(--border);padding:10px 12px;border-radius:8px;display:flex;justify-content:space-between;align-items:center;background:#fff;cursor:grab;font-size:14px}
+button{
+padding:10px 20px;
+border:none;
+border-radius:10px;
+cursor:pointer;
+margin:10px 5px;
+background:#0e2f50;
+color:#fff;
+transition:0.3s;
+}
+button:hover{
+transform:translateY(-3px);
+box-shadow:0 0 15px #fff;
+}
+.primary{
+background:#0066ff;
+}
+.success{
+background:#28a745;
+}
 
-.actions{margin-top:16px}
-button{padding:12px 18px;border:none;border-radius:10px;background:var(--brand);color:#fff;font-weight:600;cursor:pointer}
+.progress{
+height:8px;
+background:#222;
+border-radius:10px;
+overflow:hidden;
+margin-top:15px;
+display:none;
+}
+.progress-bar{
+height:100%;
+width:0%;
+background:#28a745;
+transition:0.3s;
+}
 
-.status{margin-top:10px;font-size:14px;color:#374151}
+/* NEW EXTRA PROGRESS INFO */
+.progress-info{
+display:none;
+margin-top:8px;
+font-size:14px;
+display:flex;
+justify-content:space-between;
+opacity:0.9;
+}
 
-/* preview */
-.previewBox{margin-top:18px;display:none}
-.previewBox h3{margin:0 0 8px 0;font-size:16px}
-.previewFrame{width:100%;height:420px;border:1px solid var(--border);border-radius:8px;background:#fff}
-.downloadBtn{margin-top:10px;background:#111827}
+.preview{
+margin-top:20px;
+display:none;
+background:#000;
+padding:15px;
+border-radius:15px;
+}
+iframe{
+width:100%;
+height:400px;
+border:none;
+}
 
-.note{margin-top:10px;font-size:12px;color:#6b7280}
+/* FOOTER */
+footer{
+margin-top:50px;
+padding:30px;
+background:#081a2d;
+display:flex;
+justify-content:space-around;
+flex-wrap:wrap;
+font-size:14px;
+}
+footer div{
+margin:10px;
+max-width:250px;
+}
+footer h3{
+color:#ffc107;
+}
+footer a{
+color:#fff;
+text-decoration:none;
+display:block;
+margin-top:5px;
+}
 </style>
 </head>
+
 <body>
 
 <header>
-  <div class="header">
-    <!-- Always show your full domain and link to home -->
-    <a class="logo" href="https://pdfwala.in">PDFWala.in</a>
-  </div>
+<div class="logo">PDFWala.in</div>
+<nav>
+<a href="/">Home</a>
+<a href="#">All Tools</a>
+<a href="#">Popular Tools</a>
+</nav>
 </header>
 
 <div class="container">
-  <div class="card">
+<h1>Merge PDF Files Online Free</h1>
 
-    <h1>Merge PDF</h1>
-    <p>Upload PDFs, drag to change order, merge and preview before downloading.</p>
-
-    <div class="drop" id="dropBox">
-      <strong>Drop your PDF files here</strong><br>
-      or click to upload
-      <input id="fileInput" type="file" multiple accept="application/pdf">
-    </div>
-
-    <div class="list" id="fileList"></div>
-
-    <div class="actions">
-      <button id="mergeBtn">Merge PDF</button>
-    </div>
-
-    <div class="status" id="status"></div>
-
-    <!-- Preview + Download -->
-    <div class="previewBox" id="previewBox">
-      <h3>Preview your merged PDF</h3>
-      <iframe id="previewFrame" class="previewFrame"></iframe>
-      <button id="downloadBtn" class="downloadBtn">Download PDF</button>
-    </div>
-
-    <div class="note">
-      Drag files up or down to change order before merging.
-    </div>
-
-  </div>
+<div class="drop-area" id="dropArea">
+Click or Drag & Drop PDF Files Here
 </div>
 
+<div id="fileList"></div>
+
+<button class="primary" onclick="mergePDF()">Merge PDF</button>
+<button onclick="clearFiles()">Clear</button>
+
+<div class="progress" id="progressBox">
+<div class="progress-bar" id="progressBar"></div>
+</div>
+
+<!-- NEW PROGRESS TEXT SECTION -->
+<div class="progress-info" id="progressInfo">
+<span id="progressText">Preparing...</span>
+<span id="progressPercent">0%</span>
+</div>
+
+<div class="preview" id="previewBox">
+<h3>Preview</h3>
+<iframe id="pdfFrame"></iframe>
+<br>
+<button class="success" onclick="downloadPDF()">Download PDF</button>
+</div>
+
+</div>
+
+<footer>
+<div>
+<h3>About this tool</h3>
+<p>This tool merges multiple PDF files securely in your browser. No files are uploaded to any server.</p>
+</div>
+<div>
+<h3>How to use</h3>
+<p>1. Select PDF files</p>
+<p>2. Drag to reorder</p>
+<p>3. Click Merge</p>
+<p>4. Preview & Download</p>
+</div>
+<div>
+<h3>Contact</h3>
+<p>Email: support@pdfwala.in</p>
+<p>WhatsApp: +91 9876543210</p>
+</div>
+<div>
+<h3>Legal</h3>
+<a href="#">Privacy Policy</a>
+<a href="#">Terms & Conditions</a>
+</div>
+</footer>
+
 <script>
-/* =======================================================
-   Premium / Free is decided on HOME PAGE only.
-   Here we only read it.
-======================================================= */
-const isPremiumUser = localStorage.getItem("plan") === "premium";
+let files=[];
+let mergedBytes=null;
 
-/* Backend endpoint (used only if premium) */
-const BACKEND_URL = "https://YOUR_BACKEND_DOMAIN/merge";
+const dropArea=document.getElementById("dropArea");
+const fileList=document.getElementById("fileList");
 
-/* State */
-let pdfFiles = [];
-let dragIndex = null;
-let finalBlobURL = null;
-
-/* UI refs */
-const dropBox      = document.getElementById("dropBox");
-const fileInput    = document.getElementById("fileInput");
-const fileList     = document.getElementById("fileList");
-const statusBox    = document.getElementById("status");
-const mergeBtn     = document.getElementById("mergeBtn");
-const previewBox   = document.getElementById("previewBox");
-const previewFrame = document.getElementById("previewFrame");
-const downloadBtn  = document.getElementById("downloadBtn");
-
-/* ---------- Upload ---------- */
-dropBox.onclick = () => fileInput.click();
-
-dropBox.addEventListener("dragover", e=>{
-  e.preventDefault();
-  dropBox.classList.add("drag");
-});
-dropBox.addEventListener("dragleave", ()=>{
-  dropBox.classList.remove("drag");
-});
-dropBox.addEventListener("drop", e=>{
-  e.preventDefault();
-  dropBox.classList.remove("drag");
-  addFiles(e.dataTransfer.files);
-});
-fileInput.addEventListener("change", ()=>{
-  addFiles(fileInput.files);
+dropArea.onclick=createInput;
+dropArea.addEventListener("dragover",e=>e.preventDefault());
+dropArea.addEventListener("drop",e=>{
+e.preventDefault();
+handleFiles(e.dataTransfer.files);
 });
 
-/* ---------- File handling ---------- */
-function addFiles(files){
-  for(const f of files){
-    if(f.type === "application/pdf"){
-      pdfFiles.push(f);
-    }
-  }
-  renderList();
+function createInput(){
+let input=document.createElement("input");
+input.type="file";
+input.multiple=true;
+input.accept="application/pdf";
+input.onchange=e=>handleFiles(e.target.files);
+input.click();
 }
 
-function renderList(){
-  fileList.innerHTML = "";
-  pdfFiles.forEach((file,index)=>{
-    const item = document.createElement("div");
-    item.className = "item";
-    item.draggable = true;
-    item.dataset.index = index;
-    item.innerHTML = `<span>${file.name}</span><small>Drag</small>`;
-    addDragEvents(item);
-    fileList.appendChild(item);
-  });
+function handleFiles(selected){
+for(let f of selected){
+if(f.type==="application/pdf"){
+files.push(f);
+}
+}
+renderFiles();
 }
 
-/* ---------- Drag reorder ---------- */
-function addDragEvents(el){
-  el.addEventListener("dragstart", ()=>{
-    dragIndex = +el.dataset.index;
-  });
-  el.addEventListener("dragover", e=>e.preventDefault());
-  el.addEventListener("drop", e=>{
-    e.preventDefault();
-    const targetIndex = +el.dataset.index;
-    moveItem(dragIndex, targetIndex);
-  });
-}
+function renderFiles(){
+fileList.innerHTML="";
+files.forEach((file,index)=>{
+let div=document.createElement("div");
+div.className="file-item";
+div.draggable=true;
+div.innerHTML=`${file.name} <button onclick="removeFile(${index})">Remove</button>`;
 
-function moveItem(from, to){
-  if(from === to || from == null) return;
-  const item = pdfFiles.splice(from,1)[0];
-  pdfFiles.splice(to,0,item);
-  renderList();
-}
-
-/* ---------- Merge ---------- */
-mergeBtn.addEventListener("click", mergeHandler);
-
-async function mergeHandler(){
-  if(!pdfFiles.length){
-    alert("Please upload PDF files");
-    return;
-  }
-
-  statusBox.textContent = isPremiumUser ?
-    "Merging using server (premium)..." :
-    "Merging in your browser...";
-
-  previewBox.style.display = "none";
-  previewFrame.src = "";
-  finalBlobURL = null;
-
-  try{
-    if(isPremiumUser){
-      await mergeBackend();
-    }else{
-      await mergeFrontend();
-    }
-    statusBox.textContent = "Your merged PDF is ready. Preview below.";
-  }catch(err){
-    console.error(err);
-    statusBox.textContent = "Failed to merge PDF.";
-  }
-}
-
-/* ---------- FREE (frontend) ---------- */
-async function mergeFrontend(){
-  const mergedPdf = await PDFLib.PDFDocument.create();
-  for(const file of pdfFiles){
-    const buf = await file.arrayBuffer();
-    const pdf = await PDFLib.PDFDocument.load(buf);
-    const pages = await mergedPdf.copyPages(pdf, pdf.getPageIndices());
-    pages.forEach(p=>mergedPdf.addPage(p));
-  }
-  const bytes = await mergedPdf.save();
-  const blob = new Blob([bytes],{type:"application/pdf"});
-  showPreview(blob);
-}
-
-/* ---------- PREMIUM (backend) ---------- */
-async function mergeBackend(){
-  const fd = new FormData();
-  pdfFiles.forEach(f=>fd.append("files",f));
-
-  const res = await fetch(BACKEND_URL,{ method:"POST", body:fd });
-  if(!res.ok) throw new Error("Backend merge failed");
-
-  const blob = await res.blob();
-  showPreview(blob);
-}
-
-/* ---------- Preview & Download ---------- */
-function showPreview(blob){
-  finalBlobURL = URL.createObjectURL(blob);
-  previewFrame.src = finalBlobURL;
-  previewBox.style.display = "block";
-}
-
-/* File name: PDFWala.in + tool name + timestamp */
-function buildFileName(toolName){
-  const d = new Date();
-  const pad = n => String(n).padStart(2,"0");
-  const stamp =
-    d.getFullYear() +
-    pad(d.getMonth()+1) +
-    pad(d.getDate()) + "-" +
-    pad(d.getHours()) +
-    pad(d.getMinutes()) +
-    pad(d.getSeconds());
-  return `PDFWala.in-${toolName}-${stamp}.pdf`;
-}
-
-downloadBtn.addEventListener("click", ()=>{
-  if(!finalBlobURL) return;
-  const a = document.createElement("a");
-  a.href = finalBlobURL;
-  a.download = buildFileName("merge");
-  document.body.appendChild(a);
-  a.click();
-  a.remove();
+div.addEventListener("dragstart",e=>{
+e.dataTransfer.setData("text/plain", index);
 });
+
+div.addEventListener("dragover",e=>e.preventDefault());
+
+div.addEventListener("drop",e=>{
+e.preventDefault();
+const fromIndex=parseInt(e.dataTransfer.getData("text/plain"));
+const toIndex=index;
+
+if(isNaN(fromIndex)||fromIndex===toIndex) return;
+if(fromIndex<0||fromIndex>=files.length) return;
+
+const moved=files.splice(fromIndex,1)[0];
+files.splice(toIndex,0,moved);
+
+renderFiles();
+});
+
+fileList.appendChild(div);
+});
+}
+
+function removeFile(i){
+files.splice(i,1);
+renderFiles();
+}
+
+async function mergePDF(){
+if(files.length<2){alert("Select at least 2 PDFs");return;}
+
+document.getElementById("progressBox").style.display="block";
+document.getElementById("progressInfo").style.display="flex";
+
+let bar=document.getElementById("progressBar");
+
+const mergedPdf=await PDFLib.PDFDocument.create();
+
+for(let i=0;i<files.length;i++){
+let bytes=await files[i].arrayBuffer();
+const pdf=await PDFLib.PDFDocument.load(bytes);
+const copied=await mergedPdf.copyPages(pdf,pdf.getPageIndices());
+copied.forEach(page=>mergedPdf.addPage(page));
+
+let percent=Math.round((i+1)/files.length*100);
+bar.style.width=percent+"%";
+document.getElementById("progressPercent").innerText=percent+"%";
+document.getElementById("progressText").innerText="Merging file "+(i+1)+" of "+files.length;
+}
+
+mergedBytes=await mergedPdf.save();
+document.getElementById("progressText").innerText="Merge Complete ✓";
+
+document.getElementById("previewBox").style.display="block";
+document.getElementById("pdfFrame").src=URL.createObjectURL(new Blob([mergedBytes],{type:"application/pdf"}));
+}
+
+function downloadPDF(){
+if(!mergedBytes) return;
+let blob=new Blob([mergedBytes],{type:"application/pdf"});
+let link=document.createElement("a");
+link.href=URL.createObjectURL(blob);
+link.download="PDFWala_merged.pdf";
+link.click();
+}
+
+function clearFiles(){
+files=[];
+fileList.innerHTML="";
+document.getElementById("previewBox").style.display="none";
+document.getElementById("progressBox").style.display="none";
+document.getElementById("progressInfo").style.display="none";
+}
 </script>
 
 </body>
