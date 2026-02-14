@@ -1,392 +1,288 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
 <meta charset="UTF-8">
-
-<title>Split PDF Online Free – Split PDF Pages with Preview | PDFwala.in</title>
-
-<meta name="description" content="Split PDF online for free with live preview. Extract or split PDF pages by page ranges and download instantly. Secure, fast and professional Split PDF tool by PDFwala.in.">
-
-<meta name="keywords" content="split pdf online, split pdf free, extract pdf pages, split pdf pages, pdf splitter online, split pdf by range, online pdf tools, free pdf splitter, secure pdf split, pdfwala, pdfwala.in">
-
-<meta name="author" content="PDFwala.in">
-<meta name="robots" content="index, follow">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<link rel="canonical" href="https://pdfwala.in/split-pdf">
+<title>Split PDF Online Free | Extract Pages from PDF | PDFwala.in</title>
+<meta name="description" content="Split PDF online free. Extract selected pages from PDF files securely in your browser. No upload required. Fast, secure and easy PDF splitter tool.">
+<meta name="keywords" content="Split PDF, Extract PDF Pages, PDF Splitter Online, Separate PDF Pages, Free PDF Tool, PDFwala Split Tool">
 
-<meta property="og:type" content="website">
-<meta property="og:title" content="Split PDF Online – Free & Secure | PDFwala.in">
-<meta property="og:description" content="Split PDF pages online with preview and instant download. Fast and secure Split PDF tool by PDFwala.in.">
-<meta property="og:url" content="https://pdfwala.in/split-pdf">
-<meta property="og:site_name" content="PDFwala.in">
-
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Split PDF Online – Free & Secure | PDFwala.in">
-<meta name="twitter:description" content="Free online Split PDF tool with preview and instant download by PDFwala.in.">
-
-<script type="application/ld+json">
-{
-  "@context":"https://schema.org",
-  "@type":"WebApplication",
-  "name":"Split PDF Online",
-  "url":"https://pdfwala.in/split-pdf",
-  "applicationCategory":"BusinessApplication",
-  "operatingSystem":"All",
-  "description":"Free and professional Split PDF tool with preview and instant download by PDFwala.in.",
-  "publisher":{
-    "@type":"Organization",
-    "name":"PDFwala.in",
-    "url":"https://pdfwala.in"
-  }
-}
-</script>
+<link rel="icon" href="favicon.ico">
 
 <script src="https://unpkg.com/pdf-lib/dist/pdf-lib.min.js"></script>
 
 <style>
-:root{
-  --brand:#e53935;
-  --dark:#1f2937;
-  --bg:#f4f7f6;
-  --card:#ffffff;
-  --text:#333;
-  --muted:#6b7280;
-  --border:#e5e7eb;
-}
-*{box-sizing:border-box}
 body{
-  margin:0;
-  font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
-  background:var(--bg);
-  color:var(--text);
-}
-.header{
-  background:var(--dark);
-  color:#fff;
-}
-.header-inner{
-  max-width:1100px;
-  margin:auto;
-  padding:12px 16px;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-}
-.brand a{
-  color:#fff;
-  text-decoration:none;
-  font-weight:700;
-  font-size:18px;
-}
-.nav{font-size:13px;color:#cbd5e1}
-
-.page{
-  max-width:900px;
-  margin:24px auto;
-  padding:0 12px;
+margin:0;
+font-family:Arial, sans-serif;
+background:linear-gradient(135deg,#071b34,#0b2c52,#071b34);
+color:#fff;
 }
 
-.tool-card{
-  background:var(--card);
-  border-radius:12px;
-  border:1px solid var(--border);
-  padding:22px;
-  box-shadow:0 4px 12px rgba(0,0,0,.05);
+/* HEADER */
+header{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:15px 40px;
+background:rgba(0,0,0,0.3);
+backdrop-filter:blur(10px);
 }
 
-.tool-title{
-  display:flex;
-  gap:10px;
-  align-items:center;
-  margin-bottom:12px;
-}
-.tool-title .icon{
-  width:36px;height:36px;
-  border-radius:8px;
-  background:rgba(229,57,53,.12);
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  font-weight:700;
-  color:var(--brand);
-}
-.tool-title h1{margin:0;font-size:22px}
-
-.form-grid{display:grid;gap:14px}
-
-label{font-size:13px;color:var(--muted)}
-
-input[type=file],input[type=text]{
-  width:100%;
-  padding:12px;
-  border-radius:8px;
-  border:1px solid var(--border);
-  font-size:14px;
+.logo{
+color:#ffc107;
+font-weight:bold;
+font-size:20px;
 }
 
-.actions{
-  display:flex;
-  gap:12px;
+nav a{
+margin-left:15px;
+text-decoration:none;
+color:#fff;
+padding:8px 18px;
+border-radius:10px;
+background:linear-gradient(145deg,#0e3a6d,#08264a);
+box-shadow:0 4px 10px rgba(0,0,0,0.4);
+transition:0.3s;
 }
 
+nav a:hover{
+transform:translateY(-3px);
+box-shadow:0 8px 20px rgba(255,255,255,0.3);
+}
+
+/* CARD */
+.container{
+max-width:800px;
+margin:40px auto;
+background:#0e2f53;
+padding:30px;
+border-radius:20px;
+box-shadow:0 0 40px rgba(0,0,0,0.6);
+}
+
+h1{
+text-align:center;
+color:#ffc107;
+}
+
+.drop-area{
+border:2px dashed #ffc107;
+padding:40px;
+text-align:center;
+border-radius:15px;
+margin:20px 0;
+cursor:pointer;
+}
+
+/* INPUT */
+input{
+padding:10px;
+border-radius:8px;
+border:none;
+margin-top:10px;
+width:100%;
+}
+
+/* BUTTONS */
 .btn{
-  flex:1;
-  padding:12px 14px;
-  border-radius:8px;
-  border:none;
-  font-size:15px;
-  cursor:pointer;
+padding:10px 25px;
+border:none;
+border-radius:12px;
+cursor:pointer;
+background:linear-gradient(145deg,#1e5eff,#0040ff);
+color:#fff;
+margin:10px 5px 0 0;
+transition:0.3s;
+box-shadow:0 4px 10px rgba(0,0,0,0.4);
 }
 
-.btn-primary{
-  background:var(--brand);
-  color:#fff;
+.btn:hover{
+transform:translateY(-4px);
+box-shadow:0 10px 25px rgba(255,255,255,0.4);
 }
 
-.btn-outline{
-  background:#fff;
-  color:var(--brand);
-  border:1px solid var(--brand);
+/* PROGRESS */
+.progress{
+height:8px;
+background:#111;
+border-radius:5px;
+margin-top:20px;
+overflow:hidden;
+display:none;
 }
 
-.hint{font-size:12px;color:#6b7280}
-
-.preview-box{
-  display:none;
-  margin-top:20px;
-  border-top:1px solid var(--border);
-  padding-top:16px;
-}
-.preview-head{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  margin-bottom:8px;
-}
-.preview-head h2{margin:0;font-size:16px}
-
-embed{
-  width:100%;
-  height:420px;
-  border:1px solid var(--border);
-  border-radius:8px;
+.progress-bar{
+height:100%;
+width:0%;
+background:#00ff66;
+transition:0.5s;
 }
 
-.footer{
-  text-align:center;
-  font-size:13px;
-  color:#777;
-  padding:24px 10px 32px;
+/* PREVIEW */
+.preview{
+margin-top:20px;
+display:none;
+background:#000;
+padding:20px;
+border-radius:15px;
+text-align:center;
+}
+
+iframe{
+width:100%;
+height:400px;
+border:none;
+}
+
+/* FOOTER */
+footer{
+margin-top:60px;
+background:#061a2f;
+padding:40px;
+display:flex;
+justify-content:space-around;
+flex-wrap:wrap;
+font-size:14px;
+}
+
+footer h3{
+color:#ffc107;
+}
+
+footer p, footer a{
+color:#ccc;
+text-decoration:none;
 }
 </style>
-
 </head>
+
 <body>
 
-<header class="header" role="banner">
-  <div class="header-inner">
-    <div class="brand">
-      <a href="https://pdfwala.in" aria-label="PDFwala home">PDFwala.in</a>
-    </div>
-    <div class="nav">Home • All PDF Tools • Split PDF</div>
-  </div>
+<header>
+<div class="logo">PDFwala.in</div>
+<nav>
+<a href="index.html">Home</a>
+<a href="#">All Tools</a>
+<a href="#">Popular Tools</a>
+</nav>
 </header>
 
-<main class="page" role="main">
+<div class="container">
+<h1>Split PDF Files Online Free</h1>
 
-<section class="tool-card" aria-labelledby="split-title">
+<div class="drop-area" id="dropArea">
+Click or Drag & Drop PDF File Here
+<input type="file" id="fileInput" hidden accept="application/pdf">
+</div>
 
-  <div class="tool-title">
-    <div class="icon" aria-hidden="true">✂</div>
-    <h1 id="split-title">Split PDF Online</h1>
-  </div>
+<label>Enter Page Range (Example: 1-2 or 3 or 4-6)</label>
+<input type="text" id="pageRange" placeholder="Enter page range">
 
-  <p style="margin-top:0;font-size:14px;color:#555">
-    Split your PDF by selecting page ranges and download instantly. Your files are processed securely.
-  </p>
+<button class="btn" onclick="splitPDF()">Split PDF</button>
+<button class="btn" onclick="resetTool()">Clear</button>
 
-  <div class="form-grid">
+<div class="progress" id="progress">
+<div class="progress-bar" id="progressBar"></div>
+</div>
 
-    <div>
-      <label for="pdfFile">Select PDF file</label>
-      <input id="pdfFile" type="file" accept="application/pdf">
-    </div>
+<div class="preview" id="preview">
+<h3>Preview</h3>
+<iframe id="pdfFrame"></iframe>
+<button class="btn" id="downloadBtn">Download PDF</button>
+</div>
 
-    <div>
-      <label for="pagesInput">Page ranges (example: 1-3,5,8)</label>
-      <input id="pagesInput" type="text" placeholder="1-3,5,8">
-      <div class="hint">Use comma and hyphen to define ranges.</div>
-    </div>
+</div>
 
-    <div class="actions">
-      <button class="btn btn-primary" onclick="splitAndPreview()">Split & Preview</button>
-      <button class="btn btn-outline" onclick="directDownload()">Direct Download</button>
-    </div>
+<footer>
+<div>
+<h3>About this tool</h3>
+<p>This tool allows you to split PDF files securely in your browser. No file is uploaded to any server.</p>
+</div>
 
-  </div>
+<div>
+<h3>How to use</h3>
+<p>1. Upload PDF file<br>
+2. Enter page range<br>
+3. Click Split PDF<br>
+4. Preview & Download</p>
+</div>
 
-  <div class="preview-box" id="previewBox">
-    <div class="preview-head">
-      <h2>Preview</h2>
-      <button class="btn btn-primary"
-              style="flex:0 0 auto;padding:8px 14px;font-size:13px"
-              onclick="downloadFromPreview()">
-        Download
-      </button>
-    </div>
+<div>
+<h3>Contact</h3>
+<p>Email: support@pdfwala.in<br>
+WhatsApp: +91 9876543210</p>
+</div>
 
-    <embed id="previewFrame" type="application/pdf">
-  </div>
-
-</section>
-
-</main>
-
-<footer class="footer" role="contentinfo">
-  © 2026 PDFwala.in – Free and secure online PDF tools
+<div>
+<h3>Legal</h3>
+<p><a href="#">Privacy Policy</a><br>
+<a href="#">Terms & Conditions</a></p>
+</div>
 </footer>
 
 <script>
-/* ======================================================
-   Hidden user plan (future: cookie / backend)
-   Test:
-   ?plan=premium
-====================================================== */
+let selectedFile;
 
-const USER_PLAN =
-  new URLSearchParams(location.search).get("plan")==="premium"
-  ? "premium" : "free";
+document.getElementById("dropArea").onclick = () => fileInput.click();
 
-let finalBlob=null;
+fileInput.onchange = (e)=>{
+selectedFile = e.target.files[0];
+};
 
-/* ------------------ helpers ------------------ */
+async function splitPDF(){
+if(!selectedFile) return alert("Upload PDF first");
 
-function parsePages(str){
-  let out=[];
-  str.split(",").forEach(p=>{
-    if(p.includes("-")){
-      let a=parseInt(p.split("-")[0]);
-      let b=parseInt(p.split("-")[1]);
-      for(let i=a;i<=b;i++) out.push(i);
-    }else{
-      out.push(parseInt(p));
-    }
-  });
-  return out.filter(n=>!isNaN(n));
+let range = document.getElementById("pageRange").value;
+if(!range) return alert("Enter page range");
+
+document.getElementById("progress").style.display="block";
+document.getElementById("progressBar").style.width="30%";
+
+const arrayBuffer = await selectedFile.arrayBuffer();
+const pdfDoc = await PDFLib.PDFDocument.load(arrayBuffer);
+const newPdf = await PDFLib.PDFDocument.create();
+
+let pages = parseRange(range);
+
+for(let p of pages){
+const [copiedPage] = await newPdf.copyPages(pdfDoc,[p-1]);
+newPdf.addPage(copiedPage);
 }
 
-/* ======================================================
-   FREE / NORMAL USER → browser based
-====================================================== */
+document.getElementById("progressBar").style.width="100%";
 
-async function browserSplit(file,pagesStr){
+const pdfBytes = await newPdf.save();
+const blob = new Blob([pdfBytes],{type:"application/pdf"});
+const url = URL.createObjectURL(blob);
 
-  const bytes=await file.arrayBuffer();
-  const src=await PDFLib.PDFDocument.load(bytes);
-  const out=await PDFLib.PDFDocument.create();
+document.getElementById("preview").style.display="block";
+document.getElementById("pdfFrame").src = url;
 
-  const pages=parsePages(pagesStr);
-
-  for(let p of pages){
-    if(p<1||p>src.getPageCount()) continue;
-    const [cp]=await out.copyPages(src,[p-1]);
-    out.addPage(cp);
-  }
-
-  const outBytes=await out.save();
-  return new Blob([outBytes],{type:"application/pdf"});
+document.getElementById("downloadBtn").onclick = ()=>{
+let a = document.createElement("a");
+a.href = url;
+a.download = "PDFwala_split.pdf";
+a.click();
+};
 }
 
-/* ======================================================
-   PREMIUM USER → backend API (future cloud)
-====================================================== */
-
-async function premiumSplit(file,pagesStr){
-
-  const fd=new FormData();
-  fd.append("pdf",file);
-  fd.append("pages",pagesStr);
-
-  const r=await fetch("/api/premium-split",{
-    method:"POST",
-    body:fd
-  });
-
-  if(!r.ok){
-    alert("Premium service unavailable.");
-    throw new Error("premium api failed");
-  }
-
-  return await r.blob();
+function parseRange(range){
+let pages=[];
+if(range.includes("-")){
+let parts = range.split("-");
+let start = parseInt(parts[0]);
+let end = parseInt(parts[1]);
+for(let i=start;i<=end;i++) pages.push(i);
+}else{
+pages.push(parseInt(range));
+}
+return pages;
 }
 
-/* ======================================================
-   Unified processing
-====================================================== */
-
-async function processSplit(file,pagesStr){
-  if(USER_PLAN==="premium"){
-    return await premiumSplit(file,pagesStr);
-  }else{
-    return await browserSplit(file,pagesStr);
-  }
-}
-
-/* ======================================================
-   Split & Preview
-====================================================== */
-
-async function splitAndPreview(){
-
-  const file=document.getElementById("pdfFile").files[0];
-  const pagesStr=document.getElementById("pagesInput").value.trim();
-
-  if(!file||!pagesStr){
-    alert("Please select a PDF and enter page ranges.");
-    return;
-  }
-
-  finalBlob=await processSplit(file,pagesStr);
-
-  document.getElementById("previewFrame").src=
-    URL.createObjectURL(finalBlob);
-
-  document.getElementById("previewBox").style.display="block";
-}
-
-/* ======================================================
-   Direct Download
-====================================================== */
-
-async function directDownload(){
-
-  const file=document.getElementById("pdfFile").files[0];
-  const pagesStr=document.getElementById("pagesInput").value.trim();
-
-  if(!file||!pagesStr){
-    alert("Please select a PDF and enter page ranges.");
-    return;
-  }
-
-  const blob=await processSplit(file,pagesStr);
-  downloadBlob(blob);
-}
-
-/* ======================================================
-   Download helpers
-====================================================== */
-
-function downloadFromPreview(){
-  if(finalBlob) downloadBlob(finalBlob);
-}
-
-function downloadBlob(blob){
-  const a=document.createElement("a");
-  a.href=URL.createObjectURL(blob);
-  a.download="PDFwala.in-split.pdf";
-  a.click();
+function resetTool(){
+location.reload();
 }
 </script>
 
