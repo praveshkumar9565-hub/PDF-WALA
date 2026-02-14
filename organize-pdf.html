@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Organize PDF Pages Online Free | PDFwala.in</title>
+
+<meta name="description" content="Organize PDF pages online free. Rearrange, delete and reorder PDF pages securely in your browser. No upload required.">
+<meta name="keywords" content="organize pdf, reorder pdf pages, delete pdf pages, rearrange pdf online, free pdf tool, pdfwala">
+<meta name="author" content="PDFwala.in">
+
+<script src="https://unpkg.com/pdf-lib/dist/pdf-lib.min.js"></script>
+
+<style>
+body{
+margin:0;
+font-family:Arial, sans-serif;
+background:linear-gradient(135deg,#071b34,#0b2a4d);
+color:#fff;
+}
+
+/* HEADER */
+header{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:15px 40px;
+background:rgba(0,0,0,0.4);
+}
+.logo{
+color:#ffc107;
+font-weight:bold;
+font-size:20px;
+}
+nav a{
+margin-left:15px;
+padding:8px 16px;
+border-radius:8px;
+text-decoration:none;
+color:#fff;
+background:linear-gradient(145deg,#0e3b68,#0b2c4f);
+box-shadow:4px 4px 8px #051423,-4px -4px 8px #113c6b;
+transition:0.3s;
+}
+nav a:hover{
+transform:translateY(-2px);
+box-shadow:0 0 12px #fff;
+}
+
+/* MAIN CARD */
+.container{
+max-width:850px;
+margin:40px auto;
+padding:30px;
+background:rgba(255,255,255,0.05);
+border-radius:20px;
+box-shadow:0 0 40px rgba(0,0,0,0.6);
+}
+
+h1{
+text-align:center;
+color:#ffc107;
+margin-bottom:20px;
+}
+
+.upload-box{
+border:2px dashed #ffc107;
+padding:25px;
+text-align:center;
+border-radius:12px;
+cursor:pointer;
+}
+
+.page-list{
+display:flex;
+flex-wrap:wrap;
+gap:10px;
+margin-top:20px;
+}
+
+.page-item{
+background:#12395f;
+padding:10px 15px;
+border-radius:8px;
+cursor:grab;
+display:flex;
+align-items:center;
+gap:8px;
+}
+
+.page-item span{
+background:red;
+padding:2px 6px;
+border-radius:4px;
+cursor:pointer;
+}
+
+/* BUTTON STYLE */
+.btn{
+margin-top:20px;
+padding:10px 25px;
+border:none;
+border-radius:10px;
+cursor:pointer;
+font-weight:bold;
+color:#fff;
+background:linear-gradient(145deg,#1f5fa8,#133e6c);
+box-shadow:4px 4px 10px #061423,-4px -4px 10px #1c4d80;
+transition:0.3s;
+}
+.btn:hover{
+transform:translateY(-3px);
+box-shadow:0 0 15px #fff;
+}
+
+/* PROGRESS */
+.progress{
+width:100%;
+background:#222;
+border-radius:20px;
+margin-top:20px;
+overflow:hidden;
+display:none;
+}
+.progress-bar{
+height:10px;
+width:0%;
+background:#28a745;
+transition:width 0.4s;
+}
+
+/* PREVIEW */
+.preview{
+margin-top:30px;
+display:none;
+}
+embed{
+width:100%;
+height:450px;
+border-radius:12px;
+}
+
+/* FOOTER */
+footer{
+margin-top:60px;
+padding:40px;
+background:#081a30;
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+gap:30px;
+}
+footer h3{
+color:#ffc107;
+}
+footer p, footer li{
+font-size:14px;
+color:#ccc;
+}
+footer ul{
+list-style:none;
+padding:0;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<div class="logo">PDFwala.in</div>
+<nav>
+<a href="index.html">Home</a>
+<a href="#">All Tools</a>
+<a href="#">Popular Tools</a>
+</nav>
+</header>
+
+<div class="container">
+<h1>Organize PDF Pages</h1>
+
+<div class="upload-box" onclick="document.getElementById('pdfInput').click()">
+Click or Drag & Drop PDF File Here
+<input type="file" id="pdfInput" hidden accept="application/pdf">
+</div>
+
+<div id="fileInfo"></div>
+
+<div class="page-list" id="pageList"></div>
+
+<button class="btn" onclick="organizePDF()">Organize PDF</button>
+
+<div class="progress">
+<div class="progress-bar" id="progressBar"></div>
+</div>
+
+<div class="preview" id="previewBox"></div>
+
+</div>
+
+<footer>
+<div>
+<h3>About this tool</h3>
+<p>Organize PDF pages securely in your browser. No upload to server.</p>
+</div>
+
+<div>
+<h3>How to use</h3>
+<ul>
+<li>1. Upload PDF</li>
+<li>2. Drag pages to reorder</li>
+<li>3. Delete unwanted pages</li>
+<li>4. Click Organize</li>
+<li>5. Preview & Download</li>
+</ul>
+</div>
+
+<div>
+<h3>Contact</h3>
+<p>Email: support@pdfwala.in</p>
+<p>WhatsApp: +91 9876543210</p>
+</div>
+
+<div>
+<h3>Legal</h3>
+<p>Privacy Policy</p>
+<p>Terms & Conditions</p>
+</div>
+</footer>
+
+<script>
+let pdfFile;
+let pageOrder=[];
+let outputBytes;
+
+document.getElementById("pdfInput").addEventListener("change",async function(e){
+pdfFile=e.target.files[0];
+if(!pdfFile) return;
+
+const arrayBuffer=await pdfFile.arrayBuffer();
+const pdfDoc=await PDFLib.PDFDocument.load(arrayBuffer);
+const totalPages=pdfDoc.getPageCount();
+
+document.getElementById("fileInfo").innerHTML=
+"<p>"+pdfFile.name+" | Total Pages: "+totalPages+"</p>";
+
+pageOrder=[];
+const list=document.getElementById("pageList");
+list.innerHTML="";
+
+for(let i=1;i<=totalPages;i++){
+pageOrder.push(i);
+const div=document.createElement("div");
+div.className="page-item";
+div.draggable=true;
+div.dataset.page=i;
+div.innerHTML=i+" <span onclick='deletePage("+i+")'>X</span>";
+list.appendChild(div);
+}
+enableDrag();
+});
+
+function deletePage(num){
+pageOrder=pageOrder.filter(p=>p!==num);
+document.querySelector(`[data-page='${num}']`).remove();
+}
+
+function enableDrag(){
+const items=document.querySelectorAll(".page-item");
+items.forEach(item=>{
+item.addEventListener("dragstart",()=>item.classList.add("dragging"));
+item.addEventListener("dragend",()=>{
+item.classList.remove("dragging");
+updateOrder();
+});
+});
+document.getElementById("pageList").addEventListener("dragover",e=>{
+e.preventDefault();
+const dragging=document.querySelector(".dragging");
+const after=getDragAfterElement(e.clientX);
+if(after==null){
+pageList.appendChild(dragging);
+}else{
+pageList.insertBefore(dragging,after);
+}
+});
+}
+
+function getDragAfterElement(x){
+const elements=[...document.querySelectorAll(".page-item:not(.dragging)")];
+return elements.reduce((closest,child)=>{
+const box=child.getBoundingClientRect();
+const offset=x-box.left-box.width/2;
+if(offset<0&&offset>closest.offset){
+return {offset:offset,element:child};
+}else{
+return closest;
+}
+},{offset:Number.NEGATIVE_INFINITY}).element;
+}
+
+function updateOrder(){
+pageOrder=[];
+document.querySelectorAll(".page-item").forEach(el=>{
+pageOrder.push(parseInt(el.dataset.page));
+});
+}
+
+async function organizePDF(){
+if(!pdfFile) return alert("Upload PDF first");
+
+document.querySelector(".progress").style.display="block";
+document.getElementById("progressBar").style.width="40%";
+
+const arrayBuffer=await pdfFile.arrayBuffer();
+const pdfDoc=await PDFLib.PDFDocument.load(arrayBuffer);
+const newPdf=await PDFLib.PDFDocument.create();
+
+for(let p of pageOrder){
+const [copied]=await newPdf.copyPages(pdfDoc,[p-1]);
+newPdf.addPage(copied);
+}
+
+document.getElementById("progressBar").style.width="100%";
+
+outputBytes=await newPdf.save();
+
+const blob=new Blob([outputBytes],{type:"application/pdf"});
+const url=URL.createObjectURL(blob);
+
+document.getElementById("previewBox").style.display="block";
+document.getElementById("previewBox").innerHTML=
+`<h3>Preview</h3>
+<embed src="${url}" type="application/pdf">
+<br><br>
+<button class="btn" onclick="window.open('${url}')">Open Full Screen</button>
+<button class="btn" onclick="downloadPDF()">Download PDF</button>`;
+}
+
+function downloadPDF(){
+const blob=new Blob([outputBytes],{type:"application/pdf"});
+const link=document.createElement("a");
+link.href=URL.createObjectURL(blob);
+link.download="PDFwala_organized.pdf";
+link.click();
+}
+</script>
+
+</body>
+</html>
