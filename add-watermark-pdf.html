@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Add Watermark to PDF Online Free – Drag, Resize & Rotate | PDFwala.in</title>
+
+<meta name="description" content="Add watermark to PDF online free. Drag, resize, rotate, change color and adjust opacity before download. 100% secure client-side PDF watermark tool by PDFwala.in.">
+
+<meta name="keywords" content="Add watermark to PDF, PDF watermark tool online, drag watermark PDF, resize watermark PDF, rotate watermark PDF, free PDF watermark editor">
+
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://pdfwala.in/add-watermark-pdf.html">
+
+<meta property="og:title" content="Add Watermark to PDF Online Free">
+<meta property="og:description" content="Drag, resize, rotate and customize watermark before downloading. Secure browser-based PDF watermark tool.">
+<meta property="og:type" content="website">
+
+<meta name="twitter:card" content="summary_large_image">
+
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": "SoftwareApplication",
+ "name": "Add Watermark to PDF",
+ "operatingSystem": "Web",
+ "applicationCategory": "BusinessApplication",
+ "offers": {
+   "@type": "Offer",
+   "price": "0",
+   "priceCurrency": "USD"
+ }
+}
+</script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+<style>
+body{
+margin:0;
+font-family:Arial, sans-serif;
+background:linear-gradient(135deg,#071a2f,#0b2b4a,#071a2f);
+color:#fff;
+}
+
+header{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:15px 20px;
+background:rgba(0,0,0,0.4);
+flex-wrap:wrap;
+}
+
+.logo{color:#ffc107;font-weight:bold;font-size:18px;}
+
+nav a{
+margin:5px;
+padding:8px 14px;
+border-radius:20px;
+background:#123a63;
+color:#fff;
+text-decoration:none;
+font-size:14px;
+}
+
+.container{
+max-width:1000px;
+margin:30px auto;
+padding:20px;
+background:rgba(255,255,255,0.05);
+border-radius:15px;
+}
+
+.upload-box{
+border:2px dashed #ffc107;
+padding:30px;
+text-align:center;
+border-radius:10px;
+cursor:pointer;
+font-size:16px;
+}
+
+.file-info{
+margin-top:15px;
+display:none;
+background:rgba(0,0,0,0.4);
+padding:10px;
+border-radius:8px;
+font-size:14px;
+}
+
+input{
+width:100%;
+margin-top:8px;
+padding:8px;
+border-radius:8px;
+border:none;
+}
+
+.btn{
+margin-top:15px;
+padding:12px;
+border:none;
+border-radius:25px;
+background:#123a63;
+color:#fff;
+cursor:pointer;
+width:100%;
+}
+
+canvas{
+margin-top:20px;
+border-radius:8px;
+background:#fff;
+width:100%;
+height:auto;
+}
+
+.section{
+margin-top:50px;
+line-height:1.8;
+font-size:15px;
+}
+
+footer{
+margin-top:60px;
+padding:30px;
+background:rgba(0,0,0,.85);
+display:flex;
+flex-wrap:wrap;
+gap:30px;
+}
+
+.footer-column{flex:1;min-width:250px;}
+footer h3{color:#ffc107;}
+footer p{font-size:14px;}
+
+.contact-btn{
+display:block;
+margin-top:10px;
+padding:10px;
+background:#123a63;
+border-radius:25px;
+color:#fff;
+text-decoration:none;
+text-align:center;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<div class="logo">PDFwala.in</div>
+<nav>
+<a href="index.html">Home</a>
+<a href="merge-pdf.html">Merge PDF</a>
+<a href="compress-pdf.html">Compress PDF</a>
+</nav>
+</header>
+
+<div class="container">
+
+<h1>Add Watermark to PDF Online</h1>
+
+<div class="upload-box" onclick="fileInput.click()">
+Tap or Click to Upload PDF
+<input type="file" id="fileInput" accept="application/pdf" hidden>
+</div>
+
+<div class="file-info" id="fileInfo"></div>
+
+<input type="text" id="wmText" placeholder="Enter Watermark Text">
+<label>Color</label>
+<input type="color" id="wmColor" value="#ff0000">
+<label>Font Size</label>
+<input type="range" id="wmSize" min="20" max="150" value="40">
+<label>Opacity</label>
+<input type="range" id="wmOpacity" min="0.1" max="1" step="0.1" value="0.5">
+<label>Rotation</label>
+<input type="range" id="wmRotate" min="-180" max="180" value="0">
+
+<button class="btn" onclick="downloadPDF()">Download Watermarked PDF</button>
+
+<canvas id="canvas"></canvas>
+
+<div class="section">
+
+<h2>How to Use</h2>
+<p>Upload your PDF file. Enter watermark text. Adjust size, rotation, color, and opacity. Drag watermark to desired position. Download final PDF.</p>
+
+<h2>Privacy Policy</h2>
+<p>All PDF processing is performed locally in your browser. Files are not uploaded or stored on any server.</p>
+
+<h2>Terms & Conditions</h2>
+<p>By using this tool, you agree to use it lawfully. PDFwala.in is not responsible for misuse.</p>
+
+</div>
+
+</div>
+
+<footer>
+<div class="footer-column">
+<h3>About PDFwala.in</h3>
+<p>Free online PDF tools including merge, split, compress, watermark and more.</p>
+</div>
+
+<div class="footer-column">
+<h3>Contact</h3>
+<a href="mailto:support@pdfwala.in" class="contact-btn">Email Support</a>
+<a href="https://wa.me/919876543210" target="_blank" class="contact-btn">WhatsApp Support</a>
+</div>
+</footer>
+
+<script>
+let pdfDoc,page;
+let canvas=document.getElementById("canvas");
+let ctx=canvas.getContext("2d");
+
+let baseCanvas=document.createElement("canvas");
+let baseCtx=baseCanvas.getContext("2d");
+
+let wm={ text:"", x:150, y:150, size:40, color:"#ff0000", opacity:0.5, rotate:0 };
+
+let dragging=false;
+let offsetX=0;
+let offsetY=0;
+
+fileInput.addEventListener("change", async function(e){
+const file=e.target.files[0];
+fileInfo.style.display="block";
+fileInfo.innerHTML="File: "+file.name+" | Size: "+(file.size/1024/1024).toFixed(2)+" MB";
+
+const reader=new FileReader();
+reader.onload=async function(){
+pdfDoc=await pdfjsLib.getDocument(new Uint8Array(this.result)).promise;
+page=await pdfDoc.getPage(1);
+const viewport=page.getViewport({scale:1.5});
+
+canvas.width=viewport.width;
+canvas.height=viewport.height;
+baseCanvas.width=viewport.width;
+baseCanvas.height=viewport.height;
+
+await page.render({canvasContext:baseCtx,viewport:viewport}).promise;
+draw();
+};
+reader.readAsArrayBuffer(file);
+});
+
+function draw(){
+ctx.clearRect(0,0,canvas.width,canvas.height);
+ctx.drawImage(baseCanvas,0,0);
+
+ctx.save();
+ctx.globalAlpha=wm.opacity;
+ctx.translate(wm.x,wm.y);
+ctx.rotate(wm.rotate*Math.PI/180);
+ctx.fillStyle=wm.color;
+ctx.font=wm.size+"px Arial";
+ctx.fillText(wm.text,0,0);
+ctx.restore();
+}
+
+function startDrag(x,y){
+ctx.font=wm.size+"px Arial";
+let textWidth=ctx.measureText(wm.text).width;
+let textHeight=wm.size;
+
+if(
+x > wm.x &&
+x < wm.x + textWidth &&
+y < wm.y &&
+y > wm.y - textHeight
+){
+dragging=true;
+offsetX=x-wm.x;
+offsetY=y-wm.y;
+}
+}
+
+canvas.addEventListener("mousedown",e=>startDrag(e.offsetX,e.offsetY));
+canvas.addEventListener("mousemove",e=>{
+if(dragging){
+wm.x=e.offsetX-offsetX;
+wm.y=e.offsetY-offsetY;
+draw();
+}
+});
+canvas.addEventListener("mouseup",()=>dragging=false);
+canvas.addEventListener("mouseleave",()=>dragging=false);
+
+canvas.addEventListener("touchstart",e=>{
+let rect=canvas.getBoundingClientRect();
+let touch=e.touches[0];
+startDrag(touch.clientX-rect.left,touch.clientY-rect.top);
+});
+
+canvas.addEventListener("touchmove",e=>{
+if(dragging){
+let rect=canvas.getBoundingClientRect();
+let touch=e.touches[0];
+wm.x=touch.clientX-rect.left-offsetX;
+wm.y=touch.clientY-rect.top-offsetY;
+draw();
+}
+});
+canvas.addEventListener("touchend",()=>dragging=false);
+
+wmText.oninput=e=>{ wm.text=e.target.value; draw(); };
+wmSize.oninput=e=>{ wm.size=e.target.value; draw(); };
+wmColor.oninput=e=>{ wm.color=e.target.value; draw(); };
+wmOpacity.oninput=e=>{ wm.opacity=e.target.value; draw(); };
+wmRotate.oninput=e=>{ wm.rotate=e.target.value; draw(); };
+
+async function downloadPDF(){
+const { jsPDF } = window.jspdf;
+let pdf=new jsPDF();
+pdf.addImage(canvas.toDataURL("image/png"),'PNG',0,0,210,297);
+pdf.save("PDFwala_Watermarked.pdf");
+}
+</script>
+
+</body>
+</html>
