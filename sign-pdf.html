@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Sign PDF Online Free – Add Digital Signature Securely | PDFwala.in</title>
+
+<meta name="description" content="Sign PDF online free. Draw, upload, resize and drag signature on PDF instantly. 100% secure browser-based PDF signing tool. No upload required.">
+
+<meta name="keywords" content="Sign PDF online, add signature to PDF, digital signature PDF free, draw signature PDF, secure PDF signer">
+
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://pdfwala.in/sign-pdf.html">
+
+<meta property="og:title" content="Sign PDF Online Free">
+<meta property="og:description" content="Draw or upload your signature and place it anywhere on your PDF instantly.">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": "SoftwareApplication",
+ "name": "Sign PDF Online",
+ "operatingSystem": "Web",
+ "applicationCategory": "BusinessApplication",
+ "offers": {
+   "@type": "Offer",
+   "price": "0",
+   "priceCurrency": "USD"
+ }
+}
+</script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+<style>
+body{
+margin:0;
+font-family:Arial;
+background:linear-gradient(135deg,#071a2f,#0b2b4a);
+color:#fff;
+}
+header{
+display:flex;
+justify-content:space-between;
+padding:15px 20px;
+background:rgba(0,0,0,0.4);
+flex-wrap:wrap;
+}
+.logo{color:#ffc107;font-weight:bold;}
+nav a{
+margin:5px;
+padding:8px 14px;
+border-radius:20px;
+background:#123a63;
+color:#fff;
+text-decoration:none;
+font-size:14px;
+}
+.container{
+max-width:1000px;
+margin:30px auto;
+padding:20px;
+background:rgba(255,255,255,0.05);
+border-radius:15px;
+}
+.upload-box{
+border:2px dashed #ffc107;
+padding:25px;
+text-align:center;
+border-radius:10px;
+cursor:pointer;
+}
+canvas{
+margin-top:15px;
+background:#fff;
+width:100%;
+border-radius:8px;
+}
+.controls{
+margin-top:10px;
+}
+input[type=range]{
+width:100%;
+}
+.btn{
+margin-top:10px;
+padding:12px;
+border:none;
+border-radius:25px;
+background:#123a63;
+color:#fff;
+cursor:pointer;
+width:100%;
+}
+.section{
+margin-top:50px;
+line-height:1.8;
+font-size:15px;
+}
+footer{
+margin-top:60px;
+padding:30px;
+background:rgba(0,0,0,.9);
+display:flex;
+flex-wrap:wrap;
+gap:30px;
+}
+.footer-column{flex:1;min-width:250px;}
+footer h3{color:#ffc107;}
+.contact-btn{
+display:block;
+margin-top:10px;
+padding:10px;
+background:#123a63;
+border-radius:25px;
+color:#fff;
+text-decoration:none;
+text-align:center;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<div class="logo">PDFwala.in</div>
+<nav>
+<a href="index.html">Home</a>
+<a href="merge-pdf.html">Merge PDF</a>
+<a href="compress-pdf.html">Compress PDF</a>
+</nav>
+</header>
+
+<div class="container">
+
+<h1>Sign PDF Online</h1>
+
+<div class="upload-box" onclick="fileInput.click()">
+Upload PDF
+<input type="file" id="fileInput" accept="application/pdf" hidden>
+</div>
+
+<h3>Draw Signature</h3>
+<canvas id="signaturePad" height="150"></canvas>
+<button class="btn" onclick="clearSignature()">Clear Signature</button>
+
+<h3>Or Upload Signature Image</h3>
+<input type="file" id="uploadSig" accept="image/*">
+
+<div class="controls">
+<label>Resize Signature</label>
+<input type="range" id="sigSize" min="50" max="400" value="200">
+<label>Rotate</label>
+<input type="range" id="sigRotate" min="-180" max="180" value="0">
+<label>Opacity</label>
+<input type="range" id="sigOpacity" min="0.1" max="1" step="0.1" value="1">
+</div>
+
+<h3>PDF Preview</h3>
+<div id="preview"></div>
+
+<button class="btn" onclick="downloadSignedPDF()">Download Signed PDF</button>
+
+<div class="section">
+
+<h2>How to Sign PDF Online</h2>
+<p>
+Upload your PDF file. Draw your signature or upload an image. Drag it to position. Resize, rotate and adjust opacity. Download your signed PDF instantly.
+</p>
+
+<h2>Security & Privacy</h2>
+<p>
+All signing operations happen locally in your browser. No file is uploaded to any server.
+</p>
+
+<h2>Frequently Asked Questions</h2>
+<p><strong>Is this legally valid?</strong><br>
+This tool creates visual signatures. Legal validity depends on jurisdiction.</p>
+
+<h2>Privacy Policy</h2>
+<p>
+We do not store, upload or process your files on external servers.
+</p>
+
+<h2>Terms & Conditions</h2>
+<p>
+You must ensure legal authority before signing documents. PDFwala.in is not responsible for misuse.
+</p>
+
+</div>
+
+</div>
+
+<footer>
+<div class="footer-column">
+<h3>Contact</h3>
+<a href="mailto:support@pdfwala.in" class="contact-btn">Email Support</a>
+<a href="https://wa.me/919876543210" target="_blank" class="contact-btn">WhatsApp Support</a>
+</div>
+</footer>
+
+<script>
+let pdfDoc;
+let renderedPages=[];
+let signatureImg=null;
+let sigX=50, sigY=50;
+
+const signaturePad=document.getElementById("signaturePad");
+const sigCtx=signaturePad.getContext("2d");
+
+let drawing=false;
+
+function getPos(e){
+const rect=signaturePad.getBoundingClientRect();
+if(e.touches){
+return {x:e.touches[0].clientX-rect.left,y:e.touches[0].clientY-rect.top};
+}else{
+return {x:e.clientX-rect.left,y:e.clientY-rect.top};
+}
+}
+
+function start(e){
+drawing=true;
+const pos=getPos(e);
+sigCtx.beginPath();
+sigCtx.moveTo(pos.x,pos.y);
+e.preventDefault();
+}
+
+function draw(e){
+if(!drawing) return;
+const pos=getPos(e);
+sigCtx.lineWidth=2;
+sigCtx.lineCap="round";
+sigCtx.strokeStyle="#000";
+sigCtx.lineTo(pos.x,pos.y);
+sigCtx.stroke();
+e.preventDefault();
+}
+
+function stop(){drawing=false;}
+
+signaturePad.addEventListener("mousedown",start);
+signaturePad.addEventListener("mousemove",draw);
+signaturePad.addEventListener("mouseup",stop);
+signaturePad.addEventListener("touchstart",start,{passive:false});
+signaturePad.addEventListener("touchmove",draw,{passive:false});
+signaturePad.addEventListener("touchend",stop);
+
+function clearSignature(){
+sigCtx.clearRect(0,0,signaturePad.width,signaturePad.height);
+}
+
+uploadSig.addEventListener("change",function(e){
+const reader=new FileReader();
+reader.onload=function(){
+signatureImg=new Image();
+signatureImg.src=this.result;
+};
+reader.readAsDataURL(e.target.files[0]);
+});
+
+fileInput.addEventListener("change",async function(e){
+const reader=new FileReader();
+reader.onload=async function(){
+pdfDoc=await pdfjsLib.getDocument(new Uint8Array(this.result)).promise;
+preview.innerHTML="";
+renderedPages=[];
+for(let i=1;i<=pdfDoc.numPages;i++){
+const page=await pdfDoc.getPage(i);
+const viewport=page.getViewport({scale:2});
+const canvas=document.createElement("canvas");
+const ctx=canvas.getContext("2d");
+canvas.width=viewport.width;
+canvas.height=viewport.height;
+await page.render({canvasContext:ctx,viewport:viewport}).promise;
+preview.appendChild(canvas);
+renderedPages.push(canvas);
+}
+};
+reader.readAsArrayBuffer(e.target.files[0]);
+});
+
+async function downloadSignedPDF(){
+if(renderedPages.length===0){
+alert("Upload PDF first");
+return;
+}
+
+if(!signatureImg){
+signatureImg=new Image();
+signatureImg.src=signaturePad.toDataURL("image/png");
+}
+
+const { jsPDF } = window.jspdf;
+
+let firstCanvas=renderedPages[0];
+
+let pdf=new jsPDF({
+orientation:firstCanvas.width>firstCanvas.height?"landscape":"portrait",
+unit:"px",
+format:[firstCanvas.width,firstCanvas.height]
+});
+
+renderedPages.forEach((canvas,index)=>{
+let imgData=canvas.toDataURL("image/png");
+if(index>0){
+pdf.addPage([canvas.width,canvas.height],
+canvas.width>canvas.height?"landscape":"portrait");
+}
+pdf.addImage(imgData,'PNG',0,0,canvas.width,canvas.height);
+
+if(index===0){
+let size=sigSize.value;
+let rotate=sigRotate.value;
+let opacity=sigOpacity.value;
+
+pdf.saveGraphicsState();
+pdf.setGState(new pdf.GState({opacity:opacity}));
+pdf.addImage(signatureImg,'PNG',sigX,sigY,size,size/2,undefined,'NONE',rotate);
+pdf.restoreGraphicsState();
+}
+});
+
+pdf.save("PDFwala_Signed.pdf");
+}
+</script>
+
+</body>
+</html>
