@@ -2,441 +2,244 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-
-<title>JPG to PDF Online – Convert Images to PDF Free | PDFwala.in</title>
-
-<meta name="description" content="Convert JPG images to PDF online for free. Drag and drop images, preview and download PDF instantly. Secure JPG to PDF tool by PDFwala.in.">
-
-<meta name="keywords" content="jpg to pdf online, image to pdf free, convert jpg to pdf, photos to pdf, online jpg to pdf, pdfwala, pdfwala.in">
-
-<meta name="author" content="PDFwala.in">
-<meta name="robots" content="index, follow">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<link rel="canonical" href="https://pdfwala.in/jpg-to-pdf">
+<title>JPG to PDF Online Free – Convert Images to PDF | PDFwala.in</title>
+<meta name="description" content="Convert JPG images to PDF online free. Merge multiple images into a single PDF securely in your browser.">
+<meta name="keywords" content="jpg to pdf, image to pdf online, convert jpg to pdf free, merge images to pdf, pdfwala jpg to pdf">
+<meta name="robots" content="index, follow">
+<meta name="author" content="PDFwala.in">
 
-<meta property="og:type" content="website">
-<meta property="og:title" content="JPG to PDF – Convert Images to PDF | PDFwala.in">
-<meta property="og:description" content="Convert JPG images to PDF online with preview and instant download by PDFwala.in.">
-<meta property="og:url" content="https://pdfwala.in/jpg-to-pdf">
-<meta property="og:site_name" content="PDFwala.in">
-
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="JPG to PDF – Convert Images to PDF | PDFwala.in">
-<meta name="twitter:description" content="Free online JPG to PDF tool by PDFwala.in.">
-
-<script type="application/ld+json">
-{
-  "@context":"https://schema.org",
-  "@type":"WebApplication",
-  "name":"JPG to PDF Online",
-  "url":"https://pdfwala.in/jpg-to-pdf",
-  "applicationCategory":"BusinessApplication",
-  "operatingSystem":"All",
-  "description":"Convert JPG images to PDF using online JPG to PDF tool by PDFwala.in.",
-  "publisher":{
-    "@type":"Organization",
-    "name":"PDFwala.in",
-    "url":"https://pdfwala.in"
-  }
-}
-</script>
-
-<!-- jsPDF -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf-lib/1.17.1/pdf-lib.min.js"></script>
 
 <style>
-:root{
-  --brand:#e53935;
-  --dark:#1f2937;
-  --bg:#f4f7f6;
-  --card:#ffffff;
-  --text:#333;
-  --muted:#6b7280;
-  --border:#e5e7eb;
-}
-*{box-sizing:border-box}
+body{margin:0;font-family:system-ui;background:#0f172a;color:#fff}
 
-body{
-  margin:0;
-  font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
-  background:var(--bg);
-  color:var(--text);
-}
+/* HEADER */
+.header{max-width:1100px;margin:auto;padding:14px;display:flex;justify-content:space-between;align-items:center}
+.logo{text-decoration:none;color:#fff;font-weight:700;padding:6px 14px;border-radius:20px;background:linear-gradient(135deg,#2563eb,#1e40af)}
+.nav a{margin-left:8px;text-decoration:none;color:#eee;font-size:13px;padding:6px 12px;border-radius:14px;background:rgba(255,255,255,.08)}
 
-.header{background:var(--dark);color:#fff}
-.header-inner{
-  max-width:1100px;margin:auto;padding:12px 16px;
-  display:flex;justify-content:space-between;align-items:center
-}
-.brand a{color:#fff;text-decoration:none;font-weight:700;font-size:18px}
-.nav{font-size:13px;color:#cbd5e1}
+/* MAIN */
+.wrap{max-width:1100px;margin:auto;padding:20px}
+.card{background:rgba(255,255,255,.05);border-radius:18px;padding:20px;border:1px solid rgba(255,255,255,.12)}
 
-.page{max-width:900px;margin:24px auto;padding:0 12px}
-
-.tool-card{
-  background:var(--card);
-  border-radius:12px;
-  border:1px solid var(--border);
-  padding:22px;
-  box-shadow:0 4px 12px rgba(0,0,0,.05);
+.titleBox{
+display:flex;
+align-items:center;
+justify-content:center;
+gap:12px;
+flex-wrap:wrap;
 }
 
-.tool-title{
-  display:flex;gap:10px;align-items:center;margin-bottom:12px
-}
-.tool-title .icon{
-  width:36px;height:36px;border-radius:8px;
-  background:rgba(229,57,53,.12);
-  display:flex;align-items:center;justify-content:center;
-  font-weight:700;color:var(--brand)
-}
-.tool-title h1{margin:0;font-size:22px}
-
-.form-grid{display:grid;gap:14px}
-label{font-size:13px;color:var(--muted)}
-
-input[type=file]{display:none}
-
-.drop-zone{
-  border:2px dashed var(--border);
-  border-radius:10px;
-  padding:28px 16px;
-  text-align:center;
-  cursor:pointer;
-  background:#fafafa;
-}
-.drop-zone.drag{
-  border-color:var(--brand);
-  background:#fff5f5;
+.toolLogo{
+width:50px;
+height:50px;
+filter:drop-shadow(0 0 10px #3b82f6);
 }
 
-.file-name{font-size:13px;color:#444;margin-top:6px}
+h1{text-align:center;color:#3b82f6;margin:0}
 
-.actions{display:flex;gap:12px}
+.upload{border:2px dashed rgba(255,255,255,.35);border-radius:14px;padding:25px;text-align:center;cursor:pointer;margin-top:20px}
 
+.previewGrid{
+display:grid;
+grid-template-columns:repeat(auto-fill,minmax(120px,1fr));
+gap:12px;
+margin-top:15px;
+}
+
+.thumb{
+position:relative;
+border-radius:10px;
+overflow:hidden;
+border:1px solid rgba(255,255,255,.2);
+}
+
+.thumb img{width:100%;display:block}
+
+.removeBtn{
+position:absolute;
+top:5px;right:5px;
+background:red;border:none;border-radius:50%;
+color:#fff;width:20px;height:20px;
+cursor:pointer;font-size:12px;
+}
+
+/* BUTTON */
 .btn{
-  flex:1;
-  padding:12px 14px;
-  border-radius:8px;
-  border:none;
-  font-size:15px;
-  cursor:pointer;
+border:none;padding:10px 18px;border-radius:16px;font-weight:600;cursor:pointer;
+background:linear-gradient(135deg,#2563eb,#1e3a8a);
+color:#fff;box-shadow:0 0 15px rgba(255,255,255,.2);transition:.3s
 }
-.btn-primary{background:var(--brand);color:#fff}
-.btn-outline{background:#fff;color:var(--brand);border:1px solid var(--brand)}
+.btn:hover{transform:translateY(-3px);box-shadow:0 0 25px #fff}
 
-.preview-box{
-  display:none;
-  margin-top:20px;
-  border-top:1px solid var(--border);
-  padding-top:16px;
-}
-.preview-head{
-  display:flex;justify-content:space-between;align-items:center;
-  margin-bottom:8px
-}
-.preview-head h2{margin:0;font-size:16px}
+/* PROGRESS */
+.progressBox{margin-top:12px;display:none}
+.bar{height:8px;background:#333;border-radius:20px;overflow:hidden}
+.fill{height:100%;width:0%;background:linear-gradient(90deg,#2563eb,#1e40af)}
+.percent{margin-top:4px;font-size:13px}
 
-.thumb-list{
-  display:grid;
-  grid-template-columns:repeat(auto-fill,minmax(90px,1fr));
-  gap:10px;
-}
-.thumb-list img{
-  width:100%;
-  height:120px;
-  object-fit:cover;
-  border-radius:6px;
-  border:1px solid var(--border);
-}
+/* PDF PREVIEW */
+.pdfPreview{margin-top:20px;display:none}
+iframe{width:100%;height:500px;border:none;border-radius:12px;background:#111}
 
-.progress{
-  font-size:13px;
-  color:#555;
-  margin-bottom:8px;
-}
-
+/* FOOTER */
 .footer{
-  text-align:center;
-  font-size:13px;
-  color:#777;
-  padding:24px 10px 32px;
+margin-top:40px;
+background:rgba(255,255,255,.05);
+padding:30px;
+border-top:1px solid rgba(255,255,255,.1);
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+gap:20px;
 }
+.footer h3{color:#3b82f6}
+.footer p{font-size:13px;color:#ccc}
 </style>
 </head>
+
 <body>
 
-<header class="header">
-  <div class="header-inner">
-    <div class="brand">
-      <a href="https://pdfwala.in">PDFwala.in</a>
-    </div>
-    <div class="nav">Home • All PDF Tools • JPG to PDF</div>
-  </div>
-</header>
+<div class="header">
+<a class="logo" href="/">PDFwala.in</a>
+<div class="nav">
+<a href="/">Home</a>
+<a href="#">Popular Tools</a>
+<a href="#">All Tools</a>
+</div>
+</div>
 
-<main class="page">
+<div class="wrap">
+<div class="card">
 
-<section class="tool-card">
+<div class="titleBox">
+<svg class="toolLogo" viewBox="0 0 100 100">
+<rect x="15" y="15" width="40" height="60" rx="6" fill="#2563eb"/>
+<circle cx="35" cy="35" r="8" fill="#fff"/>
+<rect x="65" y="15" width="20" height="60" rx="4" fill="#1e3a8a"/>
+<text x="50" y="95" text-anchor="middle" fill="#3b82f6" font-size="14">PDF</text>
+</svg>
+<h1>JPG to PDF Converter</h1>
+</div>
 
-  <div class="tool-title">
-    <div class="icon">🖼</div>
-    <h1>JPG to PDF</h1>
-  </div>
+<div class="upload" onclick="fileInput.click()">
+Click or Drag & Drop JPG Images Here
+</div>
+<input type="file" id="fileInput" hidden accept="image/jpeg,image/png" multiple>
 
-  <p style="margin-top:0;font-size:14px;color:#555">
-    Convert your JPG images into a single PDF file.
-  </p>
+<div class="previewGrid" id="previewGrid"></div>
 
-  <div class="form-grid">
+<button class="btn" onclick="convertToPDF()">Convert to PDF</button>
 
-    <div>
-      <label>Select images</label>
+<div class="progressBox" id="progressBox">
+<div class="bar"><div class="fill" id="fill"></div></div>
+<div class="percent" id="percent">0%</div>
+</div>
 
-      <div id="dropZone" class="drop-zone">
-        <strong>Drag & drop JPG images here</strong><br>
-        or click to select files
-        <div class="file-name" id="fileName"></div>
-      </div>
+<div class="pdfPreview" id="pdfPreview">
+<h3 style="color:#3b82f6;">PDF Preview</h3>
+<iframe id="pdfFrame"></iframe>
+<br><br>
+<button class="btn" onclick="downloadPDF()">Download PDF</button>
+</div>
 
-      <input id="imgFiles" type="file" accept="image/jpeg,image/png" multiple>
-    </div>
+</div>
+</div>
 
-    <div class="actions">
-      <button class="btn btn-primary" onclick="convertAndPreview()">
-        Convert & Preview
-      </button>
-      <button class="btn btn-outline" onclick="directDownload()">
-        Direct Download
-      </button>
-    </div>
-
-  </div>
-
-  <div class="preview-box" id="previewBox">
-
-    <div class="preview-head">
-      <h2>Selected images</h2>
-      <button class="btn btn-primary"
-              style="flex:0 0 auto;padding:8px 14px;font-size:13px"
-              onclick="downloadPDF()">
-        Download PDF
-      </button>
-    </div>
-
-    <div class="progress" id="progress"></div>
-
-    <div class="thumb-list" id="thumbs"></div>
-
-  </div>
-
-</section>
-
-</main>
-
-<footer class="footer">
-  © 2026 PDFwala.in – Free and secure online PDF tools
-</footer>
+<div class="footer">
+<div>
+<h3>About this tool</h3>
+<p>Convert JPG images to PDF securely in your browser without uploading to server.</p>
+</div>
+<div>
+<h3>How to Use</h3>
+<p>Upload images → Click Convert → Preview → Download</p>
+</div>
+<div>
+<h3>Contact</h3>
+<p>Email: support@pdfwala.in</p>
+<p>WhatsApp: +91 9876543210</p>
+</div>
+<div>
+<h3>Legal</h3>
+<p>Privacy Policy</p>
+<p>Terms & Conditions</p>
+</div>
+</div>
 
 <script>
-/* =========================
-   hidden plan
-   test: ?plan=premium
-========================= */
 
-const USER_PLAN =
-  new URLSearchParams(location.search).get("plan")==="premium"
-  ? "premium" : "free";
+let images=[];
+let finalPdfBytes=null;
 
-let selectedFiles = [];
-let generatedPDFBlob = null;
-
-/* =========================
-   Drag & drop
-========================= */
-
-const dropZone = document.getElementById("dropZone");
-const fileInput = document.getElementById("imgFiles");
-const fileNameBox = document.getElementById("fileName");
-
-dropZone.addEventListener("click",()=>fileInput.click());
-
-dropZone.addEventListener("dragover",e=>{
-  e.preventDefault();
-  dropZone.classList.add("drag");
-});
-dropZone.addEventListener("dragleave",()=>{
-  dropZone.classList.remove("drag");
-});
-dropZone.addEventListener("drop",e=>{
-  e.preventDefault();
-  dropZone.classList.remove("drag");
-  const files = [...e.dataTransfer.files].filter(f=>f.type.startsWith("image/"));
-  if(files.length){
-    selectedFiles = files;
-    fileNameBox.innerText = files.length + " image(s) selected";
-  }else{
-    alert("Please drop JPG or PNG images.");
-  }
+fileInput.addEventListener("change",function(e){
+for(let file of e.target.files){
+images.push(file);
+addPreview(file);
+}
 });
 
-fileInput.addEventListener("change",()=>{
-  selectedFiles = [...fileInput.files];
-  if(selectedFiles.length){
-    fileNameBox.innerText = selectedFiles.length + " image(s) selected";
-  }
-});
+function addPreview(file){
+let reader=new FileReader();
+reader.onload=function(e){
+let div=document.createElement("div");
+div.className="thumb";
+div.innerHTML='<img src="'+e.target.result+'"><button class="removeBtn">×</button>';
+previewGrid.appendChild(div);
 
-/* =========================
-   FREE USER
-   browser JPG -> PDF
-========================= */
-
-async function browserImagesToPDF(files){
-
-  const { jsPDF } = window.jspdf;
-  const pdf = new jsPDF({orientation:"portrait",unit:"pt",format:"a4"});
-
-  let first = true;
-
-  for(const file of files){
-
-    const imgData = await readAsDataURL(file);
-    const img = await loadImage(imgData);
-
-    const pageWidth = pdf.internal.pageSize.getWidth();
-    const pageHeight = pdf.internal.pageSize.getHeight();
-
-    const ratio = Math.min(pageWidth/img.width, pageHeight/img.height);
-    const w = img.width * ratio;
-    const h = img.height * ratio;
-
-    const x = (pageWidth - w)/2;
-    const y = (pageHeight - h)/2;
-
-    if(!first) pdf.addPage();
-    first = false;
-
-    pdf.addImage(imgData, "JPEG", x, y, w, h);
-  }
-
-  return pdf.output("blob");
+div.querySelector(".removeBtn").onclick=function(){
+div.remove();
+images.splice([...previewGrid.children].indexOf(div),1);
+};
+};
+reader.readAsDataURL(file);
 }
 
-/* =========================
-   PREMIUM USER
-   backend hook
-========================= */
+async function convertToPDF(){
 
-async function premiumImagesToPDF(files){
+if(images.length===0) return alert("Upload images first");
 
-  const fd = new FormData();
-  files.forEach(f=>fd.append("images",f));
+let fill=document.getElementById("fill");
+let percent=document.getElementById("percent");
+let box=document.getElementById("progressBox");
+box.style.display="block";
 
-  const r = await fetch("/api/premium-jpg-to-pdf",{
-    method:"POST",
-    body:fd
-  });
+const pdfDoc=await PDFLib.PDFDocument.create();
 
-  if(!r.ok){
-    alert("Premium conversion service unavailable.");
-    throw new Error("premium api failed");
-  }
+for(let i=0;i<images.length;i++){
 
-  return await r.blob();
+let imgBytes=await images[i].arrayBuffer();
+let img=images[i].type==="image/png"
+?await pdfDoc.embedPng(imgBytes)
+:await pdfDoc.embedJpg(imgBytes);
+
+let dims=img.scale(1);
+let page=pdfDoc.addPage([dims.width,dims.height]);
+page.drawImage(img,{x:0,y:0,width:dims.width,height:dims.height});
+
+fill.style.width=((i+1)/images.length*100)+"%";
+percent.innerText=Math.floor((i+1)/images.length*100)+"%";
 }
 
-/* =========================
-   unified
-========================= */
+finalPdfBytes=await pdfDoc.save();
 
-async function processImages(files){
+const blob=new Blob([finalPdfBytes],{type:"application/pdf"});
+const url=URL.createObjectURL(blob);
 
-  if(USER_PLAN==="premium"){
-    return await premiumImagesToPDF(files);
-  }else{
-    return await browserImagesToPDF(files);
-  }
-}
-
-/* =========================
-   UI
-========================= */
-
-async function convertAndPreview(){
-
-  if(!selectedFiles.length){
-    alert("Please select image files.");
-    return;
-  }
-
-  document.getElementById("previewBox").style.display="block";
-  document.getElementById("progress").innerText="Preparing images...";
-
-  showThumbs(selectedFiles);
-
-  generatedPDFBlob = await processImages(selectedFiles);
-
-  document.getElementById("progress").innerText =
-    USER_PLAN==="premium"
-      ? "Premium conversion completed."
-      : "Free conversion completed.";
-}
-
-async function directDownload(){
-
-  if(!selectedFiles.length){
-    alert("Please select image files.");
-    return;
-  }
-
-  generatedPDFBlob = await processImages(selectedFiles);
-  downloadPDF();
-}
-
-/* =========================
-   helpers
-========================= */
-
-function showThumbs(files){
-  const box = document.getElementById("thumbs");
-  box.innerHTML = "";
-  files.forEach(f=>{
-    const img = document.createElement("img");
-    img.src = URL.createObjectURL(f);
-    box.appendChild(img);
-  });
+document.getElementById("pdfPreview").style.display="block";
+document.getElementById("pdfFrame").src=url;
 }
 
 function downloadPDF(){
-
-  if(!generatedPDFBlob){
-    alert("No PDF generated yet.");
-    return;
-  }
-
-  const a=document.createElement("a");
-  a.href=URL.createObjectURL(generatedPDFBlob);
-  a.download="PDFwala.in-jpg-to-pdf.pdf";
-  a.click();
+if(!finalPdfBytes) return;
+let blob=new Blob([finalPdfBytes],{type:"application/pdf"});
+let link=document.createElement("a");
+link.href=URL.createObjectURL(blob);
+link.download="PDFwala_images.pdf";
+link.click();
 }
 
-function readAsDataURL(file){
-  return new Promise(res=>{
-    const r=new FileReader();
-    r.onload=()=>res(r.result);
-    r.readAsDataURL(file);
-  });
-}
-
-function loadImage(src){
-  return new Promise(res=>{
-    const img=new Image();
-    img.onload=()=>res(img);
-    img.src=src;
-  });
-}
 </script>
 
 </body>
