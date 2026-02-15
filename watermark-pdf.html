@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Remove Watermark from PDF Online Free | Secure PDF Watermark Remover | PDFwala.in</title>
+
+<meta name="description" content="Remove watermark from PDF online free using simple masking tool. Select watermark area and hide it instantly. Secure, private and 100% browser-based PDF watermark remover.">
+
+<meta name="keywords" content="Remove watermark from PDF, PDF watermark remover online, hide watermark PDF free, delete watermark PDF tool, remove PDF stamp">
+
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://pdfwala.in/remove-watermark-pdf.html">
+
+<meta property="og:title" content="Remove Watermark from PDF Online Free">
+<meta property="og:description" content="Select watermark area and hide it instantly using secure browser-based PDF tool.">
+<meta property="og:type" content="website">
+
+<meta name="twitter:card" content="summary_large_image">
+
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": "SoftwareApplication",
+ "name": "Remove Watermark from PDF",
+ "operatingSystem": "Web",
+ "applicationCategory": "BusinessApplication",
+ "offers": {
+   "@type": "Offer",
+   "price": "0",
+   "priceCurrency": "USD"
+ }
+}
+</script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+<style>
+body{
+margin:0;
+font-family:Arial, sans-serif;
+background:linear-gradient(135deg,#071a2f,#0b2b4a,#071a2f);
+color:#fff;
+}
+
+header{
+display:flex;
+justify-content:space-between;
+padding:15px 20px;
+background:rgba(0,0,0,0.4);
+flex-wrap:wrap;
+}
+
+.logo{color:#ffc107;font-weight:bold;}
+nav a{
+margin:5px;
+padding:8px 14px;
+border-radius:20px;
+background:#123a63;
+color:#fff;
+text-decoration:none;
+font-size:14px;
+}
+
+.container{
+max-width:1000px;
+margin:30px auto;
+padding:20px;
+background:rgba(255,255,255,0.05);
+border-radius:15px;
+}
+
+.upload-box{
+border:2px dashed #ffc107;
+padding:30px;
+text-align:center;
+border-radius:10px;
+cursor:pointer;
+}
+
+.file-info{
+margin-top:15px;
+display:none;
+background:rgba(0,0,0,0.4);
+padding:10px;
+border-radius:8px;
+}
+
+canvas{
+margin-top:20px;
+background:#fff;
+width:100%;
+height:auto;
+border-radius:8px;
+}
+
+.btn{
+margin-top:10px;
+padding:12px;
+border:none;
+border-radius:25px;
+background:#123a63;
+color:#fff;
+cursor:pointer;
+width:100%;
+}
+
+.section{
+margin-top:40px;
+line-height:1.8;
+font-size:15px;
+}
+
+footer{
+margin-top:60px;
+padding:30px;
+background:rgba(0,0,0,.9);
+display:flex;
+flex-wrap:wrap;
+gap:30px;
+}
+
+.footer-column{flex:1;min-width:250px;}
+footer h3{color:#ffc107;}
+footer p{font-size:14px;}
+.contact-btn{
+display:block;
+margin-top:10px;
+padding:10px;
+background:#123a63;
+border-radius:25px;
+color:#fff;
+text-decoration:none;
+text-align:center;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<div class="logo">PDFwala.in</div>
+<nav>
+<a href="index.html">Home</a>
+<a href="merge-pdf.html">Merge PDF</a>
+<a href="compress-pdf.html">Compress PDF</a>
+</nav>
+</header>
+
+<div class="container">
+
+<h1>Remove Watermark from PDF Online</h1>
+
+<div class="upload-box" onclick="fileInput.click()">
+Click or Tap to Upload PDF
+<input type="file" id="fileInput" accept="application/pdf" hidden>
+</div>
+
+<div class="file-info" id="fileInfo"></div>
+
+<button class="btn" onclick="undoMask()">Undo Last Mask</button>
+<button class="btn" onclick="downloadPDF()">Download Clean PDF</button>
+
+<canvas id="canvas"></canvas>
+
+<div class="section">
+
+<h2>How to Remove Watermark from PDF</h2>
+<p>
+This tool allows you to visually remove watermarks by masking the watermark area with a white overlay. Simply upload your PDF, drag over the watermark area, and apply a clean mask.
+</p>
+
+<h2>Is This Tool Secure?</h2>
+<p>
+Yes. All PDF processing happens locally in your browser. Your files are never uploaded to any server. We do not store, access, or analyze your documents.
+</p>
+
+<h2>Frequently Asked Questions</h2>
+<p><strong>Does this permanently delete watermark?</strong><br>
+No. It visually hides watermark by applying a mask.</p>
+
+<p><strong>Are my files stored?</strong><br>
+No. Files stay on your device.</p>
+
+<p><strong>Is it free?</strong><br>
+Yes, completely free.</p>
+
+</div>
+
+</div>
+
+<footer>
+
+<div class="footer-column">
+<h3>Privacy Policy</h3>
+<p>
+PDFwala.in respects your privacy. All document processing is performed locally within your browser environment. We do not upload, store, share, or collect any files or personal information. No tracking scripts are embedded in the tool interface.
+</p>
+</div>
+
+<div class="footer-column">
+<h3>Terms & Conditions</h3>
+<p>
+By using this tool, you agree to use it for lawful purposes only. You must have the legal right to modify the document you upload. PDFwala.in is not responsible for misuse, copyright violations, or damages resulting from improper use.
+</p>
+</div>
+
+<div class="footer-column">
+<h3>Contact</h3>
+<a href="mailto:support@pdfwala.in" class="contact-btn">Email Support</a>
+<a href="https://wa.me/919876543210" target="_blank" class="contact-btn">WhatsApp Support</a>
+</div>
+
+</footer>
+
+<script>
+let pdfDoc,page;
+let canvas=document.getElementById("canvas");
+let ctx=canvas.getContext("2d");
+
+let baseCanvas=document.createElement("canvas");
+let baseCtx=baseCanvas.getContext("2d");
+
+let masks=[];
+let isDrawing=false;
+let startX,startY;
+
+fileInput.addEventListener("change", async function(e){
+const file=e.target.files[0];
+fileInfo.style.display="block";
+fileInfo.innerHTML="File: "+file.name+" | Size: "+(file.size/1024/1024).toFixed(2)+" MB";
+
+const reader=new FileReader();
+reader.onload=async function(){
+pdfDoc=await pdfjsLib.getDocument(new Uint8Array(this.result)).promise;
+page=await pdfDoc.getPage(1);
+
+const viewport=page.getViewport({scale:1.5});
+canvas.width=viewport.width;
+canvas.height=viewport.height;
+baseCanvas.width=viewport.width;
+baseCanvas.height=viewport.height;
+
+await page.render({canvasContext:baseCtx,viewport:viewport}).promise;
+draw();
+};
+reader.readAsArrayBuffer(file);
+});
+
+function draw(){
+ctx.clearRect(0,0,canvas.width,canvas.height);
+ctx.drawImage(baseCanvas,0,0);
+
+masks.forEach(m=>{
+ctx.fillStyle="#ffffff";
+ctx.fillRect(m.x,m.y,m.w,m.h);
+});
+}
+
+canvas.addEventListener("mousedown",e=>{
+isDrawing=true;
+startX=e.offsetX;
+startY=e.offsetY;
+});
+
+canvas.addEventListener("mousemove",e=>{
+if(!isDrawing) return;
+draw();
+ctx.strokeStyle="red";
+ctx.strokeRect(startX,startY,e.offsetX-startX,e.offsetY-startY);
+});
+
+canvas.addEventListener("mouseup",e=>{
+if(!isDrawing) return;
+isDrawing=false;
+masks.push({
+x:startX,
+y:startY,
+w:e.offsetX-startX,
+h:e.offsetY-startY
+});
+draw();
+});
+
+canvas.addEventListener("touchstart",e=>{
+let rect=canvas.getBoundingClientRect();
+let touch=e.touches[0];
+startX=touch.clientX-rect.left;
+startY=touch.clientY-rect.top;
+isDrawing=true;
+});
+
+canvas.addEventListener("touchmove",e=>{
+if(!isDrawing) return;
+let rect=canvas.getBoundingClientRect();
+let touch=e.touches[0];
+draw();
+ctx.strokeStyle="red";
+ctx.strokeRect(startX,startY,
+touch.clientX-rect.left-startX,
+touch.clientY-rect.top-startY);
+});
+
+canvas.addEventListener("touchend",()=>isDrawing=false);
+
+function undoMask(){
+masks.pop();
+draw();
+}
+
+async function downloadPDF(){
+const { jsPDF } = window.jspdf;
+let pdf=new jsPDF({
+orientation:canvas.width>canvas.height?"landscape":"portrait",
+unit:"px",
+format:[canvas.width,canvas.height]
+});
+pdf.addImage(canvas.toDataURL("image/png"),'PNG',0,0,canvas.width,canvas.height);
+pdf.save("PDFwala_Clean.pdf");
+}
+</script>
+
+</body>
+</html>
