@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Flatten PDF Online Free – Make PDF Non Editable | PDFwala.in</title>
+
+<meta name="description" content="Flatten PDF online free. Convert editable PDF forms, annotations and layers into permanent non-editable PDF. Secure 100% browser-based PDF flatten tool by PDFwala.in.">
+
+<meta name="keywords" content="Flatten PDF, make PDF non editable, lock PDF form, remove PDF annotations, PDF form flatten online free, secure PDF flatten tool">
+
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://pdfwala.in/flatten-pdf.html">
+
+<meta property="og:title" content="Flatten PDF Online Free – Make PDF Non Editable">
+<meta property="og:description" content="Convert editable PDF forms and annotations into permanent non-editable PDF instantly.">
+<meta property="og:type" content="website">
+
+<meta name="twitter:card" content="summary_large_image">
+
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": "SoftwareApplication",
+ "name": "Flatten PDF",
+ "operatingSystem": "Web",
+ "applicationCategory": "BusinessApplication",
+ "offers": {
+   "@type": "Offer",
+   "price": "0",
+   "priceCurrency": "USD"
+ }
+}
+</script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+<style>
+body{
+margin:0;
+font-family:Arial, sans-serif;
+background:linear-gradient(135deg,#071a2f,#0b2b4a,#071a2f);
+color:#fff;
+}
+
+header{
+display:flex;
+justify-content:space-between;
+padding:15px 20px;
+background:rgba(0,0,0,0.4);
+flex-wrap:wrap;
+}
+
+.logo{color:#ffc107;font-weight:bold;}
+nav a{
+margin:5px;
+padding:8px 14px;
+border-radius:20px;
+background:#123a63;
+color:#fff;
+text-decoration:none;
+font-size:14px;
+}
+
+.container{
+max-width:1000px;
+margin:30px auto;
+padding:20px;
+background:rgba(255,255,255,0.05);
+border-radius:15px;
+}
+
+.upload-box{
+border:2px dashed #ffc107;
+padding:30px;
+text-align:center;
+border-radius:10px;
+cursor:pointer;
+}
+
+.file-info{
+margin-top:15px;
+display:none;
+background:rgba(0,0,0,0.4);
+padding:10px;
+border-radius:8px;
+}
+
+canvas{
+margin-top:15px;
+width:100%;
+height:auto;
+border-radius:8px;
+background:#fff;
+}
+
+.btn{
+margin-top:15px;
+padding:12px;
+border:none;
+border-radius:25px;
+background:#123a63;
+color:#fff;
+cursor:pointer;
+width:100%;
+}
+
+.section{
+margin-top:50px;
+line-height:1.8;
+font-size:15px;
+}
+
+footer{
+margin-top:60px;
+padding:30px;
+background:rgba(0,0,0,.9);
+display:flex;
+flex-wrap:wrap;
+gap:30px;
+}
+
+.footer-column{flex:1;min-width:250px;}
+footer h3{color:#ffc107;}
+footer p{font-size:14px;}
+.contact-btn{
+display:block;
+margin-top:10px;
+padding:10px;
+background:#123a63;
+border-radius:25px;
+color:#fff;
+text-decoration:none;
+text-align:center;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<div class="logo">PDFwala.in</div>
+<nav>
+<a href="index.html">Home</a>
+<a href="merge-pdf.html">Merge PDF</a>
+<a href="compress-pdf.html">Compress PDF</a>
+<a href="split-pdf.html">Split PDF</a>
+</nav>
+</header>
+
+<div class="container">
+
+<h1>Flatten PDF Online – Make PDF Non Editable</h1>
+
+<div class="upload-box" onclick="fileInput.click()">
+Click or Tap to Upload PDF
+<input type="file" id="fileInput" accept="application/pdf" hidden>
+</div>
+
+<div class="file-info" id="fileInfo"></div>
+
+<button class="btn" onclick="flattenPDF()">Flatten & Download</button>
+
+<div id="preview"></div>
+
+<div class="section">
+
+<h2>What Does Flatten PDF Mean?</h2>
+<p>
+Flattening a PDF converts all interactive elements such as form fields, annotations, checkboxes, digital signatures, and layers into static content. After flattening, the document becomes non-editable and secure for sharing.
+</p>
+
+<h2>Why Should You Flatten a PDF?</h2>
+<p>
+Flattening ensures that recipients cannot modify form inputs or remove annotations. It preserves layout integrity and prevents accidental changes to important documents.
+</p>
+
+<h2>How to Use This Tool</h2>
+<p>
+Upload your PDF file. Click the Flatten & Download button. The tool renders each page as a static image and generates a new non-editable PDF file instantly.
+</p>
+
+<h2>Security & Privacy</h2>
+<p>
+This tool processes files directly inside your browser using client-side rendering technology. No files are uploaded, stored, or transmitted to any server.
+</p>
+
+<h2>Frequently Asked Questions</h2>
+<p><strong>Does flattening remove edit access?</strong><br>Yes, all form fields and layers become permanent.</p>
+<p><strong>Is it safe?</strong><br>Yes, processing is done locally.</p>
+<p><strong>Is it free?</strong><br>Yes, completely free.</p>
+
+</div>
+
+</div>
+
+<footer>
+
+<div class="footer-column">
+<h3>Privacy Policy</h3>
+<p>
+PDFwala.in does not collect, store, or process your documents on external servers. All file operations occur locally within your browser. No document content or personal information is transmitted to third parties.
+</p>
+</div>
+
+<div class="footer-column">
+<h3>Terms & Conditions</h3>
+<p>
+By using this tool, you confirm that you have the legal right to modify the uploaded document. PDFwala.in shall not be held responsible for copyright violations or misuse of the service. The tool is provided “as is” without warranties.
+</p>
+</div>
+
+<div class="footer-column">
+<h3>Contact Us</h3>
+<a href="mailto:support@pdfwala.in" class="contact-btn">Email Support</a>
+<a href="https://wa.me/919876543210" target="_blank" class="contact-btn">WhatsApp Support</a>
+</div>
+
+</footer>
+
+<script>
+let pdfDoc;
+let renderedPages=[];
+
+fileInput.addEventListener("change", async function(e){
+const file=e.target.files[0];
+fileInfo.style.display="block";
+fileInfo.innerHTML="File: "+file.name+" | "+(file.size/1024/1024).toFixed(2)+" MB";
+
+const reader=new FileReader();
+
+reader.onload=async function(){
+pdfDoc=await pdfjsLib.getDocument(new Uint8Array(this.result)).promise;
+renderedPages=[];
+preview.innerHTML="";
+
+for(let i=1;i<=pdfDoc.numPages;i++){
+const page=await pdfDoc.getPage(i);
+const viewport=page.getViewport({scale:2});
+
+const canvas=document.createElement("canvas");
+const ctx=canvas.getContext("2d");
+
+canvas.width=viewport.width;
+canvas.height=viewport.height;
+
+await page.render({canvasContext:ctx,viewport:viewport}).promise;
+
+preview.appendChild(canvas);
+
+renderedPages.push({
+canvas:canvas,
+width:viewport.width,
+height:viewport.height
+});
+}
+};
+
+reader.readAsArrayBuffer(file);
+});
+
+async function flattenPDF(){
+
+if(renderedPages.length===0){
+alert("Upload PDF first");
+return;
+}
+
+const { jsPDF } = window.jspdf;
+
+let firstPage=renderedPages[0];
+
+let pdf=new jsPDF({
+orientation:firstPage.width>firstPage.height?"landscape":"portrait",
+unit:"px",
+format:[firstPage.width,firstPage.height]
+});
+
+renderedPages.forEach((page,index)=>{
+
+let imgData=page.canvas.toDataURL("image/png");
+
+if(index>0){
+pdf.addPage([page.width,page.height],
+page.width>page.height?"landscape":"portrait");
+}
+
+pdf.addImage(imgData,'PNG',0,0,page.width,page.height);
+
+});
+
+pdf.save("PDFwala_Flattened.pdf");
+}
+</script>
+
+</body>
+</html>
