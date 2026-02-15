@@ -2,291 +2,289 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>PNG to PDF – PDFWala.in</title>
-
-<meta name="description" content="Convert PNG to PDF online free with preview. Combine multiple PNG images into one optimized PDF using PDFWala.in.">
-<meta name="keywords" content="png to pdf, convert png to pdf, image to pdf, pdfwala, pdfwala.in, free png to pdf">
-<meta name="robots" content="index, follow">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<style>
-body{margin:0;font-family:Arial,Helvetica,sans-serif;background:#f3f5f9}
-
-header{
-background:#fff;
-padding:12px 18px;
-display:flex;
-justify-content:space-between;
-align-items:center;
-box-shadow:0 2px 6px rgba(0,0,0,.06)
-}
-.logo{font-weight:bold;color:#e53935;font-size:20px}
-
-.container{max-width:950px;margin:25px auto;padding:15px}
-
-.card{
-background:#fff;padding:22px;border-radius:10px;
-box-shadow:0 5px 15px rgba(0,0,0,.08);text-align:center
-}
-
-.drop{
-border:2px dashed #e53935;border-radius:10px;
-padding:35px 10px;cursor:pointer
-}
-
-button{
-background:#e53935;color:#fff;border:none;
-padding:12px 22px;border-radius:6px;
-font-size:15px;cursor:pointer;margin-top:12px
-}
-button:disabled{background:#aaa}
-
-.info{font-size:14px;color:#333;margin-top:10px}
-
-.thumb-list{
-margin-top:12px;display:flex;gap:8px;
-flex-wrap:wrap;justify-content:center
-}
-.thumb-list img{
-width:80px;height:80px;object-fit:cover;
-border:1px solid #ddd;border-radius:6px
-}
-
-.previewBox{margin-top:20px;display:none}
-.previewBox iframe{
-width:100%;height:420px;border:1px solid #ddd;border-radius:8px
-}
-
-.sizeBox{
-margin-top:10px;background:#f6f7f9;
-padding:10px;border-radius:6px;font-size:14px
-}
-
-/* colorful heading */
-.tool-title{
-font-size:32px;
-font-weight:800;
-margin-bottom:10px;
-background:linear-gradient(90deg,#ff1744,#ff9100,#00c853,#2979ff);
--webkit-background-clip:text;
--webkit-text-fill-color:transparent;
-text-align:center;
-letter-spacing:.5px;
-}
-
-.seo-section{
-max-width:950px;margin:35px auto;background:#fff;
-padding:22px;border-radius:10px;
-line-height:1.7;font-size:14px;color:#444
-}
-</style>
-</head>
-<body>
-
-<header>
-<div class="logo">PDF Wala.in</div>
-<div>PNG to PDF</div>
-</header>
-
-<div class="container">
-<div class="card">
-
-<h1 class="tool-title">PNG to PDF Converter</h1>
-
-<div class="drop" id="dropBox">
-Click or Drop PNG images here
-</div>
-
-<input type="file" id="fileInput" hidden accept="image/png" multiple>
-
-<div class="info" id="fileInfo"></div>
-
-<div class="thumb-list" id="thumbList"></div>
-
-<button id="convertBtn" disabled>Convert to PDF</button>
-
-<div class="previewBox" id="previewBox">
-<h3>PDF Preview</h3>
-<iframe id="previewFrame"></iframe>
-<div class="sizeBox" id="sizeBox"></div>
-<button id="downloadBtn">Download PDF</button>
-</div>
-
-</div>
-</div>
-
-<section class="seo-section">
-<h2>Convert PNG to PDF – PDFWala.in</h2>
-<p>
-Convert PNG images into a single optimized PDF file with preview.
-This tool compresses images before creating the PDF to reduce file size.
-</p>
-</section>
+<title>PNG to PDF Converter Online Free | PDFwala.in</title>
+<meta name="description" content="Convert PNG to PDF online free. Secure client-side PNG to PDF converter with preview and download. No upload required.">
+<meta name="keywords" content="PNG to PDF, convert PNG to PDF online, free PNG to PDF converter, image to PDF tool, PDFwala PNG converter">
+<meta name="author" content="PDFwala.in">
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 
+<style>
+body{
+margin:0;
+font-family:Arial;
+background:linear-gradient(135deg,#071a2f,#0b2b4a,#071a2f);
+color:#fff;
+}
+
+header{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:15px 30px;
+background:rgba(0,0,0,0.4);
+backdrop-filter:blur(8px);
+}
+
+.logo{
+font-weight:bold;
+font-size:20px;
+color:#ffc107;
+}
+
+nav button{
+margin-left:10px;
+padding:8px 18px;
+border:none;
+border-radius:25px;
+background:#123a63;
+color:#fff;
+cursor:pointer;
+transition:.3s;
+box-shadow:0 4px 12px rgba(0,0,0,.4);
+}
+
+nav button:hover{
+transform:translateY(-2px);
+box-shadow:0 0 15px rgba(255,255,255,.4);
+}
+
+.container{
+max-width:900px;
+margin:40px auto;
+background:rgba(255,255,255,0.05);
+padding:30px;
+border-radius:15px;
+box-shadow:0 0 30px rgba(0,0,0,0.6);
+}
+
+h1{
+text-align:center;
+color:#ffc107;
+}
+
+.upload-box{
+border:2px dashed #ffc107;
+padding:40px;
+text-align:center;
+margin-top:20px;
+border-radius:10px;
+cursor:pointer;
+}
+
+.preview-images{
+display:flex;
+flex-wrap:wrap;
+gap:15px;
+margin-top:20px;
+}
+
+.preview-images img{
+max-width:120px;
+border-radius:8px;
+box-shadow:0 0 10px rgba(0,0,0,.6);
+}
+
+.btn{
+margin-top:20px;
+padding:12px 25px;
+border:none;
+border-radius:30px;
+background:linear-gradient(145deg,#1b5fd6,#0d3d9c);
+color:#fff;
+cursor:pointer;
+font-weight:bold;
+transition:.3s;
+box-shadow:
+0 4px 15px rgba(0,0,0,.4),
+0 0 15px rgba(255,255,255,.2);
+}
+
+.btn:hover{
+transform:translateY(-3px);
+box-shadow:
+0 8px 20px rgba(0,0,0,.6),
+0 0 25px rgba(255,255,255,.4);
+}
+
+.progress-bar{
+width:100%;
+height:8px;
+background:#0a1f36;
+border-radius:5px;
+margin-top:20px;
+overflow:hidden;
+}
+
+.progress{
+height:100%;
+width:0%;
+background:#00ff6a;
+transition:.4s;
+}
+
+.pdf-preview{
+margin-top:25px;
+height:400px;
+background:#000;
+border-radius:10px;
+overflow:hidden;
+display:none;
+}
+
+.pdf-preview iframe{
+width:100%;
+height:100%;
+border:none;
+}
+
+footer{
+margin-top:60px;
+padding:30px;
+background:rgba(0,0,0,.6);
+display:flex;
+justify-content:space-around;
+flex-wrap:wrap;
+}
+
+footer h3{
+color:#ffc107;
+}
+
+footer div{
+margin:10px;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<div class="logo">PDFwala.in</div>
+<nav>
+<button>Home</button>
+<button>All Tools</button>
+<button>Popular Tools</button>
+</nav>
+</header>
+
+<div class="container">
+<h1>PNG to PDF Converter</h1>
+
+<div class="upload-box" onclick="document.getElementById('fileInput').click()">
+Click or Drag & Drop PNG Images Here
+<input type="file" id="fileInput" accept="image/png" multiple hidden>
+</div>
+
+<div class="preview-images" id="preview"></div>
+
+<button class="btn" onclick="convert()">Convert to PDF</button>
+
+<div class="progress-bar">
+<div class="progress" id="progress"></div>
+</div>
+
+<div class="pdf-preview" id="pdfPreview">
+<iframe id="pdfFrame"></iframe>
+</div>
+
+<button class="btn" id="downloadBtn" style="display:none;">Download PDF</button>
+
+</div>
+
+<footer>
+<div>
+<h3>About this tool</h3>
+<p>Convert PNG images to PDF securely in your browser. No file is uploaded.</p>
+</div>
+
+<div>
+<h3>How to Use</h3>
+<p>1. Upload PNG files<br>
+2. Click Convert<br>
+3. Preview PDF<br>
+4. Download</p>
+</div>
+
+<div>
+<h3>Contact</h3>
+<p>Email: support@pdfwala.in<br>
+WhatsApp: +91 9876543210</p>
+</div>
+
+<div>
+<h3>Legal</h3>
+<p>Privacy Policy<br>Terms & Conditions</p>
+</div>
+</footer>
+
 <script>
-const dropBox = document.getElementById("dropBox");
-const fileInput = document.getElementById("fileInput");
-const fileInfo  = document.getElementById("fileInfo");
-const thumbList = document.getElementById("thumbList");
+let files=[];
 
-const convertBtn = document.getElementById("convertBtn");
+document.getElementById("fileInput").addEventListener("change",function(e){
+files=[...e.target.files];
+showPreview();
+});
 
-const previewBox   = document.getElementById("previewBox");
-const previewFrame = document.getElementById("previewFrame");
-const sizeBox      = document.getElementById("sizeBox");
-const downloadBtn  = document.getElementById("downloadBtn");
-
-let images = [];
-let originalSizeMB = 0;
-let pdfBlob = null;
-
-dropBox.onclick = ()=>fileInput.click();
-
-dropBox.ondragover = e=>{ e.preventDefault(); };
-
-dropBox.ondrop = e=>{
-e.preventDefault();
-loadFiles(e.dataTransfer.files);
+function showPreview(){
+let container=document.getElementById("preview");
+container.innerHTML="";
+files.forEach(file=>{
+let reader=new FileReader();
+reader.onload=function(e){
+let img=document.createElement("img");
+img.src=e.target.result;
+container.appendChild(img);
 };
-
-fileInput.onchange = ()=>{
-loadFiles(fileInput.files);
-};
-
-function loadFiles(files){
-
-images = [];
-originalSizeMB = 0;
-thumbList.innerHTML = "";
-
-if(!files || !files.length) return;
-
-for(const file of files){
-
-if(file.type !== "image/png") continue;
-
-images.push(file);
-originalSizeMB += file.size;
-
-const img = document.createElement("img");
-img.src = URL.createObjectURL(file);
-thumbList.appendChild(img);
-}
-
-if(images.length === 0){
-alert("Please select PNG images only");
-return;
-}
-
-originalSizeMB = (originalSizeMB/1024/1024).toFixed(2);
-
-fileInfo.innerHTML =
-"<b>Total images:</b> " + images.length +
-"<br><b>Total size:</b> " + originalSizeMB + " MB";
-
-convertBtn.disabled = false;
-previewBox.style.display="none";
-}
-
-/* =========================
-   Optimized convert
-   ========================= */
-
-convertBtn.onclick = async ()=>{
-
-if(images.length === 0) return;
-
-const { jsPDF } = window.jspdf;
-const pdf = new jsPDF("p","mm","a4");
-
-for(let i=0;i<images.length;i++){
-
-const imgData = await readAsCompressedJpeg(images[i]);
-const img = await loadImage(imgData);
-
-const pageWidth  = pdf.internal.pageSize.getWidth();
-const pageHeight = pdf.internal.pageSize.getHeight();
-
-let imgWidth = pageWidth;
-let imgHeight = img.height * imgWidth / img.width;
-
-if(imgHeight > pageHeight){
-imgHeight = pageHeight;
-imgWidth = img.width * imgHeight / img.height;
-}
-
-const x = (pageWidth - imgWidth) / 2;
-const y = (pageHeight - imgHeight) / 2;
-
-if(i>0) pdf.addPage();
-
-pdf.addImage(imgData,"JPEG",x,y,imgWidth,imgHeight);
-}
-
-pdfBlob = pdf.output("blob");
-
-previewFrame.src = URL.createObjectURL(pdfBlob);
-
-const newSizeMB = (pdfBlob.size/1024/1024).toFixed(2);
-
-sizeBox.innerHTML =
-"<b>Before (PNG total):</b> " + originalSizeMB + " MB<br>" +
-"<b>After (PDF):</b> " + newSizeMB + " MB";
-
-previewBox.style.display="block";
-};
-
-downloadBtn.onclick = ()=>{
-
-if(!pdfBlob) return;
-
-const a = document.createElement("a");
-a.href = URL.createObjectURL(pdfBlob);
-a.download = "PDFwala.in_png_to_pdf.pdf";
-a.click();
-};
-
-/* =========================
-   Helpers
-   ========================= */
-
-function loadImage(src){
-return new Promise((resolve,reject)=>{
-const img = new Image();
-img.onload = ()=>resolve(img);
-img.onerror = reject;
-img.src = src;
+reader.readAsDataURL(file);
 });
 }
 
-/* MAIN FIX – PNG → JPEG compression */
-async function readAsCompressedJpeg(file){
-
-const url = URL.createObjectURL(file);
-const img = await loadImage(url);
-
-const maxWidth = 1600;   // resize limit
-let w = img.width;
-let h = img.height;
-
-if(w > maxWidth){
-h = h * (maxWidth / w);
-w = maxWidth;
+async function convert(){
+if(files.length==0){
+alert("Upload PNG first");
+return;
 }
 
-const canvas = document.createElement("canvas");
-canvas.width = w;
-canvas.height = h;
+const { jsPDF } = window.jspdf;
+let pdf=new jsPDF();
 
-const ctx = canvas.getContext("2d");
-ctx.fillStyle = "#ffffff";
-ctx.fillRect(0,0,w,h);
-ctx.drawImage(img,0,0,w,h);
+for(let i=0;i<files.length;i++){
+let imgData=await new Promise(resolve=>{
+let reader=new FileReader();
+reader.onload=e=>resolve(e.target.result);
+reader.readAsDataURL(files[i]);
+});
 
-/* quality = 0.7 (best balance) */
-return canvas.toDataURL("image/jpeg",0.7);
+let img=new Image();
+img.src=imgData;
+await new Promise(res=>img.onload=res);
+
+let width=pdf.internal.pageSize.getWidth();
+let height=(img.height*width)/img.width;
+
+if(i>0) pdf.addPage();
+pdf.addImage(imgData,'PNG',0,0,width,height);
+
+document.getElementById("progress").style.width=((i+1)/files.length*100)+"%";
+}
+
+let blob=pdf.output("blob");
+let url=URL.createObjectURL(blob);
+
+document.getElementById("pdfPreview").style.display="block";
+document.getElementById("pdfFrame").src=url;
+
+let btn=document.getElementById("downloadBtn");
+btn.style.display="inline-block";
+btn.onclick=function(){
+let a=document.createElement("a");
+a.href=url;
+a.download="PDFwala_PNG_to_PDF.pdf";
+a.click();
+}
 }
 </script>
 
