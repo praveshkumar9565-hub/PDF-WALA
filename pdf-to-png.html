@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>PDF to PNG Converter Online Free | PDFwala.in</title>
+<meta name="description" content="Convert PDF to PNG online free using PDFwala.in. Secure client-side PDF to PNG converter with preview and download.">
+<meta name="keywords" content="PDF to PNG, convert PDF to PNG online, free PDF to PNG tool">
+<meta name="author" content="PDFwala.in">
+<meta name="robots" content="index, follow">
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.min.js"></script>
+
+<style>
+body{
+margin:0;
+font-family:Arial;
+background:linear-gradient(135deg,#071a2f,#0b2b4a,#071a2f);
+color:#fff;
+}
+
+header{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:15px 30px;
+background:rgba(0,0,0,0.4);
+}
+
+.logo{
+font-weight:bold;
+font-size:20px;
+color:#ffc107;
+}
+
+nav a{
+margin-left:10px;
+padding:8px 18px;
+border-radius:25px;
+background:#123a63;
+color:#fff;
+text-decoration:none;
+transition:.3s;
+box-shadow:0 4px 12px rgba(0,0,0,.4);
+}
+
+nav a:hover{
+transform:translateY(-2px);
+box-shadow:0 0 15px rgba(255,255,255,.4);
+}
+
+.container{
+max-width:900px;
+margin:40px auto;
+background:rgba(255,255,255,0.05);
+padding:30px;
+border-radius:15px;
+box-shadow:0 0 30px rgba(0,0,0,0.6);
+}
+
+h1{text-align:center;color:#ffc107}
+
+.upload-box{
+border:2px dashed #ffc107;
+padding:40px;
+text-align:center;
+margin-top:20px;
+border-radius:10px;
+cursor:pointer;
+}
+
+.file-info{
+margin-top:15px;
+padding:12px;
+background:rgba(0,0,0,0.4);
+border-radius:8px;
+font-size:14px;
+display:none;
+}
+
+.preview-area{
+margin-top:20px;
+display:flex;
+flex-wrap:wrap;
+gap:15px;
+}
+
+.preview-area img{
+max-width:150px;
+border-radius:8px;
+box-shadow:0 0 10px rgba(0,0,0,.6);
+}
+
+.btn{
+margin-top:20px;
+padding:12px 25px;
+border:none;
+border-radius:30px;
+background:linear-gradient(145deg,#1b5fd6,#0d3d9c);
+color:#fff;
+cursor:pointer;
+font-weight:bold;
+transition:.3s;
+box-shadow:
+0 4px 15px rgba(0,0,0,.4),
+0 0 15px rgba(255,255,255,.2);
+}
+
+.btn:hover{
+transform:translateY(-3px);
+box-shadow:
+0 8px 20px rgba(0,0,0,.6),
+0 0 25px rgba(255,255,255,.4);
+}
+
+.progress-bar{
+width:100%;
+height:8px;
+background:#0a1f36;
+border-radius:5px;
+margin-top:20px;
+overflow:hidden;
+}
+
+.progress{
+height:100%;
+width:0%;
+background:#00ff6a;
+transition:.4s;
+}
+
+footer{
+margin-top:60px;
+padding:40px;
+background:rgba(0,0,0,.7);
+display:flex;
+justify-content:space-between;
+flex-wrap:wrap;
+gap:30px;
+}
+
+.footer-column{max-width:250px;}
+
+footer h3{color:#ffc107;}
+
+footer p{
+font-size:14px;
+line-height:1.6;
+color:#ddd;
+}
+
+.contact-btn{
+display:block;
+margin-top:10px;
+padding:10px 18px;
+border-radius:25px;
+background:linear-gradient(145deg,#1b5fd6,#0d3d9c);
+color:#fff;
+text-decoration:none;
+font-weight:600;
+transition:.3s;
+box-shadow:
+0 4px 15px rgba(0,0,0,.4),
+0 0 12px rgba(255,255,255,.15);
+}
+
+.contact-btn:hover{
+transform:translateY(-2px);
+box-shadow:
+0 8px 20px rgba(0,0,0,.6),
+0 0 20px rgba(255,255,255,.35);
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<div class="logo">PDFwala.in</div>
+<nav>
+<a href="index.html">Home</a>
+<a href="index.html">All Tools</a>
+<a href="index.html">Popular Tools</a>
+</nav>
+</header>
+
+<div class="container">
+<h1>PDF to PNG Converter</h1>
+
+<div class="upload-box" onclick="document.getElementById('fileInput').click()">
+Click or Drag & Drop PDF File Here
+<input type="file" id="fileInput" accept="application/pdf" hidden>
+</div>
+
+<div class="file-info" id="fileInfo"></div>
+
+<button class="btn" onclick="convert()">Convert to PNG</button>
+
+<div class="progress-bar">
+<div class="progress" id="progress"></div>
+</div>
+
+<div class="preview-area" id="preview"></div>
+
+<button class="btn" id="downloadBtn" style="display:none;">Download PNG Files</button>
+
+</div>
+
+<footer>
+
+<div class="footer-column">
+<h3>About this Tool</h3>
+<p>This tool converts PDF pages into PNG images directly in your browser. No file is uploaded or stored.</p>
+</div>
+
+<div class="footer-column">
+<h3>How to Use</h3>
+<p>1. Upload PDF<br>2. Click Convert<br>3. Preview<br>4. Download</p>
+</div>
+
+<div class="footer-column">
+<h3>Legal</h3>
+<p><strong>Privacy Policy:</strong> All processing is local.</p>
+<p><strong>Terms:</strong> Use responsibly.</p>
+</div>
+
+<div class="footer-column">
+<h3>Contact Us</h3>
+<a href="mailto:support@pdfwala.in" class="contact-btn">📧 Email Support</a>
+<a href="https://wa.me/919876543210" target="_blank" class="contact-btn">💬 WhatsApp Support</a>
+</div>
+
+</footer>
+
+<script>
+let pdfFile;
+let generatedImages=[];
+
+document.getElementById("fileInput").addEventListener("change", function(e){
+pdfFile = e.target.files[0];
+if(!pdfFile) return;
+
+document.getElementById("fileInfo").style.display="block";
+document.getElementById("fileInfo").innerHTML = `
+<strong>File Name:</strong> ${pdfFile.name}<br>
+<strong>File Size:</strong> ${(pdfFile.size/1024/1024).toFixed(2)} MB
+`;
+});
+
+async function convert(){
+if(!pdfFile){ alert("Upload PDF first"); return; }
+
+generatedImages=[];
+document.getElementById("preview").innerHTML="";
+document.getElementById("progress").style.width="0%";
+document.getElementById("downloadBtn").style.display="none";
+
+const reader = new FileReader();
+reader.onload = async function(){
+const typedarray = new Uint8Array(this.result);
+const pdf = await pdfjsLib.getDocument(typedarray).promise;
+
+document.getElementById("fileInfo").innerHTML += `<br><strong>Total Pages:</strong> ${pdf.numPages}`;
+
+for(let i=1;i<=pdf.numPages;i++){
+const page = await pdf.getPage(i);
+const viewport = page.getViewport({scale:1.5});
+const canvas = document.createElement("canvas");
+const context = canvas.getContext("2d");
+
+canvas.height = viewport.height;
+canvas.width = viewport.width;
+
+await page.render({canvasContext:context,viewport:viewport}).promise;
+
+let imgData = canvas.toDataURL("image/png");
+generatedImages.push(imgData);
+
+let img = document.createElement("img");
+img.src = imgData;
+document.getElementById("preview").appendChild(img);
+
+document.getElementById("progress").style.width=(i/pdf.numPages*100)+"%";
+}
+
+document.getElementById("downloadBtn").style.display="inline-block";
+};
+reader.readAsArrayBuffer(pdfFile);
+}
+
+document.getElementById("downloadBtn").onclick = function(){
+generatedImages.forEach((imgData,index)=>{
+let a=document.createElement("a");
+a.href=imgData;
+a.download="PDFwala_page_"+(index+1)+".png";
+a.click();
+});
+};
+</script>
+
+</body>
+</html>
