@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>TIFF to PDF Converter Online Free | PDFwala.in</title>
-<meta name="description" content="Convert TIFF to PDF online free. Secure client-side TIFF to PDF converter with preview and download.">
+<meta name="description" content="Convert TIFF to PDF online free using PDFwala.in. Secure client-side TIFF to PDF converter with preview and download.">
 <meta name="keywords" content="TIFF to PDF, convert TIFF to PDF online, free TIFF to PDF tool, image to PDF converter">
 <meta name="author" content="PDFwala.in">
 <meta name="robots" content="index, follow">
@@ -15,7 +15,7 @@
 <style>
 body{
 margin:0;
-font-family:Arial;
+font-family:Arial, sans-serif;
 background:linear-gradient(135deg,#071a2f,#0b2b4a,#071a2f);
 color:#fff;
 }
@@ -45,7 +45,6 @@ color:#fff;
 text-decoration:none;
 transition:.3s;
 box-shadow:0 4px 12px rgba(0,0,0,.4);
-display:inline-block;
 }
 
 nav a:hover{
@@ -63,10 +62,7 @@ border-radius:15px;
 box-shadow:0 0 30px rgba(0,0,0,0.6);
 }
 
-h1{
-text-align:center;
-color:#ffc107;
-}
+h1{text-align:center;color:#ffc107}
 
 .upload-box{
 border:2px dashed #ffc107;
@@ -149,20 +145,49 @@ border:none;
 /* FOOTER */
 footer{
 margin-top:60px;
-padding:30px;
-background:rgba(0,0,0,.6);
+padding:40px;
+background:rgba(0,0,0,.7);
 display:flex;
-justify-content:space-around;
+justify-content:space-between;
 flex-wrap:wrap;
+gap:30px;
+}
+
+.footer-column{
+max-width:250px;
 }
 
 footer h3{
 color:#ffc107;
+margin-bottom:10px;
 }
 
-footer div{
-margin:10px;
-max-width:250px;
+footer p{
+font-size:14px;
+line-height:1.6;
+color:#ddd;
+}
+
+.contact-btn{
+display:block;
+margin-top:10px;
+padding:10px 18px;
+border-radius:25px;
+background:linear-gradient(145deg,#1b5fd6,#0d3d9c);
+color:#fff;
+text-decoration:none;
+font-weight:600;
+transition:.3s;
+box-shadow:
+0 4px 15px rgba(0,0,0,.4),
+0 0 12px rgba(255,255,255,.15);
+}
+
+.contact-btn:hover{
+transform:translateY(-2px);
+box-shadow:
+0 8px 20px rgba(0,0,0,.6),
+0 0 20px rgba(255,255,255,.35);
 }
 </style>
 </head>
@@ -203,29 +228,43 @@ Click or Drag & Drop TIFF Images Here
 </div>
 
 <footer>
-<div>
-<h3>About this tool</h3>
-<p>Convert TIFF images to PDF securely in your browser. No file is uploaded.</p>
+
+<div class="footer-column">
+<h3>About this Tool</h3>
+<p>
+This tool works completely inside your browser. No files are uploaded or stored.
+Your documents remain private and secure.
+</p>
 </div>
 
-<div>
+<div class="footer-column">
 <h3>How to Use</h3>
-<p>1. Upload TIFF files<br>
-2. Click Convert<br>
-3. Preview PDF<br>
-4. Download</p>
+<p>
+1. Upload your TIFF images.<br>
+2. Click Convert.<br>
+3. Preview the generated PDF.<br>
+4. Download the final PDF.
+</p>
 </div>
 
-<div>
-<h3>Contact</h3>
-<p>Email: support@pdfwala.in<br>
-WhatsApp: +91 9876543210</p>
-</div>
-
-<div>
+<div class="footer-column">
 <h3>Legal</h3>
-<p>Privacy Policy<br>Terms & Conditions</p>
+<p>
+<strong>Privacy Policy:</strong><br>
+All processing happens locally in your browser.
+</p>
+<p style="margin-top:10px;">
+<strong>Terms & Conditions:</strong><br>
+Use this tool legally and responsibly.
+</p>
 </div>
+
+<div class="footer-column">
+<h3>Contact Us</h3>
+<a href="mailto:support@pdfwala.in" class="contact-btn">📧 Email Support</a>
+<a href="https://wa.me/919876543210" target="_blank" class="contact-btn">💬 WhatsApp Support</a>
+</div>
+
 </footer>
 
 <script>
@@ -251,10 +290,7 @@ reader.readAsDataURL(file);
 }
 
 async function convert(){
-if(files.length==0){
-alert("Upload TIFF first");
-return;
-}
+if(files.length==0){ alert("Upload TIFF first"); return; }
 
 const { jsPDF } = window.jspdf;
 let pdf=new jsPDF();
