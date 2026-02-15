@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Edit PDF Online Free | PDFwala.in</title>
+<meta name="description" content="Edit PDF online free. Add text to PDF securely using PDFwala.in. No file upload required.">
+<meta name="keywords" content="Edit PDF online, add text to PDF, free PDF editor, PDF text editor">
+<meta name="author" content="PDFwala.in">
+<meta name="robots" content="index, follow">
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+<style>
+body{
+margin:0;
+font-family:Arial;
+background:linear-gradient(135deg,#071a2f,#0b2b4a,#071a2f);
+color:#fff;
+}
+
+header{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:15px 30px;
+background:rgba(0,0,0,0.4);
+}
+
+.logo{
+font-weight:bold;
+font-size:20px;
+color:#ffc107;
+}
+
+nav a{
+margin-left:10px;
+padding:8px 18px;
+border-radius:25px;
+background:#123a63;
+color:#fff;
+text-decoration:none;
+transition:.3s;
+box-shadow:0 4px 12px rgba(0,0,0,.4);
+}
+
+nav a:hover{
+transform:translateY(-2px);
+box-shadow:0 0 15px rgba(255,255,255,.4);
+}
+
+.container{
+max-width:900px;
+margin:40px auto;
+background:rgba(255,255,255,0.05);
+padding:30px;
+border-radius:15px;
+box-shadow:0 0 30px rgba(0,0,0,0.6);
+}
+
+h1{text-align:center;color:#ffc107}
+
+.upload-box{
+border:2px dashed #ffc107;
+padding:40px;
+text-align:center;
+margin-top:20px;
+border-radius:10px;
+cursor:pointer;
+}
+
+.file-info{
+margin-top:15px;
+padding:12px;
+background:rgba(0,0,0,0.4);
+border-radius:8px;
+font-size:14px;
+display:none;
+}
+
+.editor-area{
+margin-top:20px;
+display:none;
+}
+
+canvas{
+max-width:100%;
+border-radius:8px;
+margin-top:15px;
+}
+
+.text-input{
+margin-top:15px;
+padding:10px;
+width:100%;
+border-radius:8px;
+border:none;
+}
+
+.btn{
+margin-top:15px;
+padding:10px 20px;
+border:none;
+border-radius:25px;
+background:linear-gradient(145deg,#1b5fd6,#0d3d9c);
+color:#fff;
+cursor:pointer;
+font-weight:bold;
+transition:.3s;
+box-shadow:0 4px 15px rgba(0,0,0,.4),
+0 0 15px rgba(255,255,255,.2);
+}
+
+.btn:hover{
+transform:translateY(-3px);
+box-shadow:0 8px 20px rgba(0,0,0,.6),
+0 0 25px rgba(255,255,255,.4);
+}
+
+footer{
+margin-top:60px;
+padding:40px;
+background:rgba(0,0,0,.85);
+display:flex;
+justify-content:space-between;
+flex-wrap:wrap;
+gap:30px;
+}
+
+.footer-column{
+max-width:260px;
+}
+
+footer h3{
+color:#ffc107;
+margin-bottom:10px;
+}
+
+footer p{
+font-size:14px;
+line-height:1.6;
+color:#ddd;
+}
+
+.contact-btn{
+display:block;
+margin-top:10px;
+padding:10px 18px;
+border-radius:25px;
+background:linear-gradient(145deg,#1b5fd6,#0d3d9c);
+color:#fff;
+text-decoration:none;
+font-weight:600;
+transition:.3s;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<div class="logo">PDFwala.in</div>
+<nav>
+<a href="index.html">Home</a>
+<a href="index.html">All Tools</a>
+<a href="index.html">Popular Tools</a>
+</nav>
+</header>
+
+<div class="container">
+<h1>Edit PDF</h1>
+
+<div class="upload-box" onclick="document.getElementById('fileInput').click()">
+Click or Upload PDF File
+<input type="file" id="fileInput" accept="application/pdf" hidden>
+</div>
+
+<div class="file-info" id="fileInfo"></div>
+
+<div class="editor-area" id="editorArea">
+<canvas id="pdfCanvas"></canvas>
+
+<input type="text" id="textInput" class="text-input" placeholder="Enter text to add">
+
+<button class="btn" onclick="addText()">Add Text</button>
+<button class="btn" onclick="downloadPDF()">Download Edited PDF</button>
+</div>
+
+</div>
+
+<footer>
+
+<div class="footer-column">
+<h3>About this Tool</h3>
+<p>
+The Edit PDF tool allows you to add text overlays to your PDF documents directly within your browser. This lightweight editor is designed for quick annotations, adding simple notes, or inserting additional information without installing any software.
+</p>
+</div>
+
+<div class="footer-column">
+<h3>How to Use</h3>
+<p>
+1. Click the upload area and select your PDF file.<br>
+2. The file name and size will appear after upload.<br>
+3. The first page will load in the preview area.<br>
+4. Enter your text and click "Add Text" to place it on the PDF.<br>
+5. Click "Download Edited PDF" to save the modified document.
+</p>
+</div>
+
+<div class="footer-column">
+<h3>Privacy Policy</h3>
+<p>
+We are committed to protecting your privacy. All PDF editing and processing operations are performed locally in your browser using client-side technology. We do not upload, store, monitor, or access your documents in any way. Your files remain on your device at all times. No personal information is collected during the use of this tool. By using this service, you agree that your data remains solely under your control.
+</p>
+</div>
+
+<div class="footer-column">
+<h3>Terms & Conditions</h3>
+<p>
+By accessing and using PDFwala.in tools, you agree to use them for lawful purposes only. You are solely responsible for the content you upload and modify. PDFwala.in shall not be held liable for any misuse of this service, data loss, or damages resulting from improper usage. This tool is provided "as is" without warranties of any kind. We reserve the right to update or modify the service at any time without prior notice.
+</p>
+
+<h3 style="margin-top:20px;">Contact</h3>
+<a href="mailto:support@pdfwala.in" class="contact-btn">📧 Email Support</a>
+<a href="https://wa.me/919876543210" target="_blank" class="contact-btn">💬 WhatsApp Support</a>
+</div>
+
+</footer>
+
+<script>
+let pdfFile;
+let canvas=document.getElementById("pdfCanvas");
+let ctx=canvas.getContext("2d");
+
+document.getElementById("fileInput").addEventListener("change",function(e){
+pdfFile=e.target.files[0];
+if(!pdfFile) return;
+
+document.getElementById("fileInfo").style.display="block";
+document.getElementById("fileInfo").innerHTML=`
+<strong>File Name:</strong> ${pdfFile.name}<br>
+<strong>File Size:</strong> ${(pdfFile.size/1024/1024).toFixed(2)} MB
+`;
+
+renderPDF();
+});
+
+async function renderPDF(){
+const reader=new FileReader();
+reader.onload=async function(){
+const typedarray=new Uint8Array(this.result);
+const pdf=await pdfjsLib.getDocument(typedarray).promise;
+const page=await pdf.getPage(1);
+
+const viewport=page.getViewport({scale:1.5});
+canvas.height=viewport.height;
+canvas.width=viewport.width;
+
+await page.render({canvasContext:ctx,viewport:viewport}).promise;
+
+document.getElementById("editorArea").style.display="block";
+};
+reader.readAsArrayBuffer(pdfFile);
+}
+
+function addText(){
+let text=document.getElementById("textInput").value;
+ctx.fillStyle="red";
+ctx.font="20px Arial";
+ctx.fillText(text,50,50);
+}
+
+function downloadPDF(){
+const { jsPDF } = window.jspdf;
+let pdf=new jsPDF();
+pdf.addImage(canvas.toDataURL("image/png"),'PNG',0,0,210,297);
+pdf.save("PDFwala_Edited.pdf");
+}
+</script>
+
+</body>
+</html>
