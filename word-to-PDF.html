@@ -2,150 +2,373 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-
-<title>Word to PDF Online – Convert DOCX to PDF Free | PDFwala.in</title>
-
-<meta name="description" content="Convert Word (DOCX) to PDF online for free. Drag and drop your Word file, preview and download instantly. Secure Word to PDF tool by PDFwala.in.">
-
-<meta name="keywords" content="word to pdf online, docx to pdf free, convert word to pdf, word file to pdf, online word to pdf converter, pdfwala, pdfwala.in">
-
-<meta name="author" content="PDFwala.in">
-<meta name="robots" content="index, follow">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<link rel="canonical" href="https://pdfwala.in/word-to-pdf">
+<title>Word to PDF Converter Online Free | PDFwala.in</title>
 
+<meta name="description" content="Convert Word to PDF online free. Secure DOCX to PDF converter by PDFwala.in. No upload required. Fast and browser-based conversion.">
+<meta name="keywords" content="word to pdf online free, docx to pdf converter, convert word file to pdf, free word to pdf tool">
+<meta name="robots" content="index, follow">
+<meta name="author" content="PDFwala.in">
+<link rel="canonical" href="https://pdfwala.in/word-to-pdf.html">
+
+<meta property="og:title" content="Word to PDF Converter Online – PDFwala.in">
+<meta property="og:description" content="Secure browser-based Word to PDF converter. Free and fast.">
 <meta property="og:type" content="website">
-<meta property="og:title" content="Word to PDF – Convert DOCX to PDF | PDFwala.in">
-<meta property="og:description" content="Convert Word to PDF online with preview and instant download by PDFwala.in.">
-<meta property="og:url" content="https://pdfwala.in/word-to-pdf">
-<meta property="og:site_name" content="PDFwala.in">
-
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Word to PDF – Convert DOCX to PDF | PDFwala.in">
-<meta name="twitter:description" content="Free online Word to PDF tool by PDFwala.in.">
 
 <script type="application/ld+json">
 {
-  "@context":"https://schema.org",
-  "@type":"WebApplication",
-  "name":"Word to PDF Online",
-  "url":"https://pdfwala.in/word-to-pdf",
-  "applicationCategory":"BusinessApplication",
-  "operatingSystem":"All",
-  "description":"Convert Word documents to PDF using online Word to PDF tool by PDFwala.in.",
-  "publisher":{
-    "@type":"Organization",
-    "name":"PDFwala.in",
-    "url":"https://pdfwala.in"
-  }
+ "@context":"https://schema.org",
+ "@type":"SoftwareApplication",
+ "name":"Word to PDF Converter",
+ "operatingSystem":"All",
+ "applicationCategory":"BusinessApplication",
+ "offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}
 }
 </script>
 
-<!-- DOCX -> HTML -->
-<script src="https://unpkg.com/mammoth/mammoth.browser.min.js"></script>
-
-<!-- HTML -> PDF -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
-
 <style>
-:root{
-  --brand:#e53935;
-  --dark:#1f2937;
-  --bg:#f4f7f6;
-  --card:#ffffff;
-  --text:#333;
-  --muted:#6b7280;
-  --border:#e5e7eb;
-}
-*{box-sizing:border-box}
-
 body{
-  margin:0;
-  font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
-  background:var(--bg);
-  color:var(--text);
+margin:0;
+font-family:Arial,sans-serif;
+background:linear-gradient(135deg,#081b33,#0d2d50);
+color:#fff;
 }
 
-.header{background:var(--dark);color:#fff}
-.header-inner{
-  max-width:1100px;margin:auto;padding:12px 16px;
-  display:flex;justify-content:space-between;align-items:center
-}
-.brand a{color:#fff;text-decoration:none;font-weight:700;font-size:18px}
-.nav{font-size:13px;color:#cbd5e1}
-
-.page{max-width:900px;margin:24px auto;padding:0 12px}
-
-.tool-card{
-  background:var(--card);
-  border-radius:12px;
-  border:1px solid var(--border);
-  padding:22px;
-  box-shadow:0 4px 12px rgba(0,0,0,.05);
+.top-bar{
+background:#ff9800;
+color:#000;
+padding:8px;
+overflow:hidden;
+white-space:nowrap;
+font-weight:bold;
 }
 
-.tool-title{
-  display:flex;gap:10px;align-items:center;margin-bottom:12px
-}
-.tool-title .icon{
-  width:36px;height:36px;border-radius:8px;
-  background:rgba(229,57,53,.12);
-  display:flex;align-items:center;justify-content:center;
-  font-weight:700;color:var(--brand)
-}
-.tool-title h1{margin:0;font-size:22px}
-
-.form-grid{display:grid;gap:14px}
-
-label{font-size:13px;color:var(--muted)}
-
-input[type=file]{display:none}
-
-/* drag area */
-.drop-zone{
-  border:2px dashed var(--border);
-  border-radius:10px;
-  padding:28px 16px;
-  text-align:center;
-  cursor:pointer;
-  background:#fafafa;
-}
-.drop-zone.drag{
-  border-color:var(--brand);
-  background:#fff5f5;
+.top-bar span{
+display:inline-block;
+padding-left:100%;
+animation:scrollText 12s linear infinite;
 }
 
-.file-name{font-size:13px;color:#444;margin-top:6px}
-
-.actions{display:flex;gap:12px}
-
-.btn{
-  flex:1;
-  padding:12px 14px;
-  border-radius:8px;
-  border:none;
-  font-size:15px;
-  cursor:pointer;
+@keyframes scrollText{
+0%{transform:translateX(0);}
+100%{transform:translateX(-100%);}
 }
-.btn-primary{background:var(--brand);color:#fff}
-.btn-outline{background:#fff;color:var(--brand);border:1px solid var(--brand)}
 
-.preview-box{
-  display:none;
-  margin-top:20px;
-  border-top:1px solid var(--border);
-  padding-top:16px;
+header{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:15px 30px;
+background:#0b1f3a;
 }
-.preview-head{
-  display:flex;justify-content:space-between;align-items:center;
-  margin-bottom:8px
-}
-.preview-head h2{margin:0;font-size:16px}
 
-.preview-area{
-  border:1px solid var(--border);
-  border-radius:8px;
+.logo{color:#4da6ff;font-weight:bold;font-size:20px;}
+
+nav a{
+text-decoration:none;
+color:white;
+padding:8px 14px;
+margin-left:10px;
+border-radius:8px;
+background:#122b4d;
+transition:0.3s;
+}
+
+nav a:hover{
+box-shadow:0 0 12px white;
+transform:translateY(-2px);
+}
+
+.container{
+max-width:1000px;
+margin:40px auto;
+background:#112c4f;
+padding:30px;
+border-radius:20px;
+box-shadow:0 0 30px rgba(0,0,0,0.4);
+}
+
+h1{text-align:center;color:#ffd54f;}
+
+.upload{
+border:2px dashed #ffd54f;
+padding:30px;
+text-align:center;
+margin:20px 0;
+border-radius:15px;
+cursor:pointer;
+}
+
+button{
+padding:10px 20px;
+border:none;
+border-radius:10px;
+cursor:pointer;
+background:#1e88e5;
+color:white;
+transition:0.3s;
+}
+
+button:hover{
+box-shadow:0 0 15px white;
+transform:translateY(-2px);
+}
+
+.progress{
+width:100%;
+height:8px;
+background:#333;
+border-radius:10px;
+margin-top:20px;
+}
+
+.progress-bar{
+height:8px;
+width:0%;
+background:#00e676;
+border-radius:10px;
+transition:0.4s;
+}
+
+footer{
+margin-top:60px;
+background:#0b1f3a;
+padding:30px;
+}
+
+.footer-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+gap:20px;
+}
+
+.contact-btn{
+display:inline-block;
+padding:10px 18px;
+background:#1e88e5;
+border-radius:8px;
+text-decoration:none;
+color:#fff;
+font-weight:bold;
+transition:0.3s;
+}
+
+.contact-btn:hover{
+box-shadow:0 0 12px #fff;
+transform:translateY(-2px);
+}
+</style>
+</head>
+
+<body>
+
+<div class="top-bar">
+<span>🚀 Advanced Word Formatting Version Coming Soon – Better Layout & Font Support</span>
+</div>
+
+<header>
+<div class="logo">PDFwala.in</div>
+<nav>
+<a href="index.html">Home</a>
+<a href="index.html">All Tools</a>
+<a href="index.html">Popular Tools</a>
+</nav>
+</header>
+
+<div class="container">
+
+<h1>Word to PDF Converter</h1>
+
+<div class="upload" onclick="document.getElementById('fileInput').click()">
+Click or Drag & Drop DOCX File Here
+<input type="file" id="fileInput" accept=".doc,.docx" hidden>
+</div>
+
+<div id="fileInfo"></div>
+
+<button onclick="convertWord()">Convert to PDF</button>
+
+<div class="progress">
+<div class="progress-bar" id="progressBar"></div>
+</div>
+
+  </div>
+  <footer>
+<div class="footer-grid">
+
+<div>
+<h3>Contact Support</h3>
+
+<a class="contact-btn"
+href="mailto:Praveshhelp4u@gmail.com">
+📧 Email Support
+</a>
+
+<br><br>
+
+<a class="contact-btn"
+href="https://wa.me/918318158236"
+target="_blank">
+💬 WhatsApp Chat
+</a>
+
+</div>
+
+<div>
+<h3>Security</h3>
+<p>
+All Word to PDF conversion happens locally in your browser.
+We do not upload or store your documents.
+</p>
+</div>
+
+<div>
+<h3>Legal</h3>
+<p>
+By using this tool, you agree to our privacy policy and terms described below.
+</p>
+</div>
+
+</div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/docx/7.7.0/docx.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+<script>
+let selectedFile;
+
+document.getElementById('fileInput').addEventListener('change',function(e){
+selectedFile=e.target.files[0];
+document.getElementById("fileInfo").innerText="Uploaded: "+selectedFile.name;
+});
+
+async function convertWord(){
+if(!selectedFile){
+alert("Upload DOCX file first.");
+return;
+}
+
+let progressBar=document.getElementById("progressBar");
+progressBar.style.width="20%";
+
+const reader = new FileReader();
+reader.onload = async function(event){
+progressBar.style.width="50%";
+
+const text = event.target.result;
+
+const { jsPDF } = window.jspdf;
+const doc = new jsPDF();
+
+doc.text(text.substring(0,5000), 10, 10);
+
+progressBar.style.width="80%";
+
+doc.save("PDFwala.in_Word_to_PDF.pdf");
+
+progressBar.style.width="100%";
+};
+
+reader.readAsText(selectedFile);
+}
+</script>
+
+
+<div class="container">
+
+<h2>What is Word to PDF Converter?</h2>
+<p>
+Word to PDF conversion allows you to transform editable Word documents (.doc or .docx)
+into secure and shareable PDF files. PDF format ensures consistent formatting
+across devices and platforms.
+</p>
+
+<h2>Why Use PDFwala.in Word to PDF Tool?</h2>
+<p>
+Unlike many online converters that upload files to external servers,
+PDFwala.in performs conversion directly inside your browser.
+This ensures better privacy, faster processing, and no data storage.
+</p>
+
+<h2>Key Features</h2>
+<ul>
+<li>Convert DOCX to PDF instantly</li>
+<li>Secure browser-based processing</li>
+<li>No file upload required</li>
+<li>Fast conversion</li>
+<li>Free to use</li>
+<li>Mobile & Desktop compatible</li>
+</ul>
+
+<h2>How to Convert Word to PDF?</h2>
+<ol>
+<li>Upload your Word file.</li>
+<li>Click Convert to PDF.</li>
+<li>Wait for conversion progress.</li>
+<li>Download the generated PDF file.</li>
+</ol>
+
+<h2>Frequently Asked Questions</h2>
+
+<h3>Is this Word to PDF converter free?</h3>
+<p>Yes, it is completely free.</p>
+
+<h3>Are my files uploaded?</h3>
+<p>No. Conversion happens locally in your browser.</p>
+
+<h3>Does formatting stay same?</h3>
+<p>Basic formatting is supported. Advanced layout version coming soon.</p>
+
+<h3>Does it work on mobile?</h3>
+<p>Yes, fully responsive.</p>
+
+<h2>Privacy Policy</h2>
+<p>
+PDFwala.in does not store, upload, or share your Word documents.
+All conversion processing is done locally in your browser.
+We may collect minimal anonymous analytics data for performance improvement,
+but document content remains private.
+</p>
+
+<h2>Terms and Conditions</h2>
+<p>
+Users must ensure they have the legal rights to convert the documents uploaded.
+PDFwala.in is not responsible for copyright violations or misuse.
+The service is provided “as is” without warranties.
+</p>
+
+<h2>Disclaimer</h2>
+<p>
+Conversion accuracy may vary depending on document complexity.
+Users should verify formatting before official submission.
+</p>
+
+<h2>Related Tools</h2>
+<ul>
+<li><a href="compress-pdf.html">Compress PDF</a></li>
+<li><a href="split-pdf.html">Split PDF</a></li>
+<li><a href="merge-pdf.html">Merge PDF</a></li>
+<li><a href="ocr-pdf.html">OCR PDF</a></li>
+</ul>
+
+</div>
+
+<script type="application/ld+json">
+{
+ "@context":"https://schema.org",
+ "@type":"FAQPage",
+ "mainEntity":[
+  {"@type":"Question","name":"Is this Word to PDF converter free?","acceptedAnswer":{"@type":"Answer","text":"Yes, it is completely free."}},
+  {"@type":"Question","name":"Are files uploaded to server?","acceptedAnswer":{"@type":"Answer","text":"No. Conversion happens locally in browser."}},
+  {"@type":"Question","name":"Does it work on mobile?","acceptedAnswer":{"@type":"Answer","text":"Yes, it is mobile friendly."}}
+ ]
+}
+</script>
+
+</body>
+</html>  border-radius:8px;
   padding:12px;
   background:#fff;
   max-height:420px;
