@@ -2,431 +2,435 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-
-<title>PDF to Word Online – Convert PDF to DOCX Free | PDFwala.in</title>
-
-<meta name="description" content="Convert PDF to Word (DOCX) online for free. Drag and drop your PDF, preview extracted text and download Word file instantly. Secure PDF to Word tool by PDFwala.in.">
-
-<meta name="keywords" content="pdf to word online, convert pdf to docx, pdf to word free, extract text from pdf to word, online pdf to docx, pdfwala, pdfwala.in">
-
-<meta name="author" content="PDFwala.in">
-<meta name="robots" content="index, follow">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<link rel="canonical" href="https://pdfwala.in/pdf-to-word">
+<title>PDF to Word Converter Online Free – Secure Browser Tool | PDFwala.in</title>
 
+<meta name="description" content="Convert PDF to Word online free using secure browser-based PDF to DOC converter. Preview before download. No file upload required.">
+<meta name="keywords" content="pdf to word online free, convert pdf to doc, browser pdf to word converter, secure pdf converter">
+<meta name="robots" content="index, follow">
+<meta name="author" content="PDFwala.in">
+<link rel="canonical" href="https://pdfwala.in/pdf-to-word.html">
+
+<!-- Open Graph -->
+<meta property="og:title" content="PDF to Word Converter Online – PDFwala.in">
+<meta property="og:description" content="Secure browser-based PDF to Word converter with preview before download.">
 <meta property="og:type" content="website">
-<meta property="og:title" content="PDF to Word – Convert PDF to DOCX | PDFwala.in">
-<meta property="og:description" content="Convert PDF to Word online with preview and instant download by PDFwala.in.">
-<meta property="og:url" content="https://pdfwala.in/pdf-to-word">
-<meta property="og:site_name" content="PDFwala.in">
+<meta property="og:url" content="https://pdfwala.in/pdf-to-word.html">
 
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="PDF to Word – Convert PDF to DOCX | PDFwala.in">
-<meta name="twitter:description" content="Free online PDF to Word converter by PDFwala.in.">
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="PDF to Word Converter – PDFwala.in">
+<meta name="twitter:description" content="Convert PDF to Word online free. No upload required.">
 
+<!-- Schema: SoftwareApplication -->
 <script type="application/ld+json">
 {
-  "@context":"https://schema.org",
-  "@type":"WebApplication",
-  "name":"PDF to Word Online",
-  "url":"https://pdfwala.in/pdf-to-word",
-  "applicationCategory":"BusinessApplication",
-  "operatingSystem":"All",
-  "description":"Convert PDF to Word documents using online PDF to Word tool by PDFwala.in.",
-  "publisher":{
-    "@type":"Organization",
-    "name":"PDFwala.in",
-    "url":"https://pdfwala.in"
-  }
+ "@context":"https://schema.org",
+ "@type":"SoftwareApplication",
+ "name":"PDF to Word Converter",
+ "operatingSystem":"All",
+ "applicationCategory":"BusinessApplication",
+ "offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}
 }
 </script>
 
-<!-- pdf.js -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
-
-<!-- docx generator -->
-<script src="https://cdn.jsdelivr.net/npm/docx@8.2.2/build/index.umd.js"></script>
+<!-- Schema: Organization -->
+<script type="application/ld+json">
+{
+ "@context":"https://schema.org",
+ "@type":"Organization",
+ "name":"PDFwala.in",
+ "url":"https://pdfwala.in"
+}
+</script>
 
 <style>
-:root{
-  --brand:#e53935;
-  --dark:#1f2937;
-  --bg:#f4f7f6;
-  --card:#ffffff;
-  --text:#333;
-  --muted:#6b7280;
-  --border:#e5e7eb;
-}
-*{box-sizing:border-box}
-
 body{
-  margin:0;
-  font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
-  background:var(--bg);
-  color:var(--text);
+margin:0;
+font-family:Arial,sans-serif;
+background:#0f172a;
+color:#fff;
 }
 
-.header{background:var(--dark);color:#fff}
-.header-inner{
-  max-width:1100px;margin:auto;padding:12px 16px;
-  display:flex;justify-content:space-between;align-items:center
-}
-.brand a{color:#fff;text-decoration:none;font-weight:700;font-size:18px}
-.nav{font-size:13px;color:#cbd5e1}
-
-.page{max-width:900px;margin:24px auto;padding:0 12px}
-
-.tool-card{
-  background:var(--card);
-  border-radius:12px;
-  border:1px solid var(--border);
-  padding:22px;
-  box-shadow:0 4px 12px rgba(0,0,0,.05);
+/* Horizontal Banner */
+.top-bar{
+background:#ff9800;
+color:#000;
+padding:8px 0;
+overflow:hidden;
+white-space:nowrap;
+font-weight:bold;
+position:fixed;
+top:0;
+left:0;
+width:100%;
+z-index:999;
 }
 
-.tool-title{
-  display:flex;gap:10px;align-items:center;margin-bottom:12px
-}
-.tool-title .icon{
-  width:36px;height:36px;border-radius:8px;
-  background:rgba(229,57,53,.12);
-  display:flex;align-items:center;justify-content:center;
-  font-weight:700;color:var(--brand)
-}
-.tool-title h1{margin:0;font-size:22px}
-
-.form-grid{display:grid;gap:14px}
-
-label{font-size:13px;color:var(--muted)}
-
-input[type=file]{display:none}
-
-.drop-zone{
-  border:2px dashed var(--border);
-  border-radius:10px;
-  padding:28px 16px;
-  text-align:center;
-  cursor:pointer;
-  background:#fafafa;
-}
-.drop-zone.drag{
-  border-color:var(--brand);
-  background:#fff5f5;
+.top-bar span{
+display:inline-block;
+padding-left:100%;
+animation:scrollText 12s linear infinite;
 }
 
-.file-name{font-size:13px;color:#444;margin-top:6px}
-
-.actions{display:flex;gap:12px}
-
-.btn{
-  flex:1;
-  padding:12px 14px;
-  border-radius:8px;
-  border:none;
-  font-size:15px;
-  cursor:pointer;
+@keyframes scrollText{
+0%{transform:translateX(0);}
+100%{transform:translateX(-100%);}
 }
-.btn-primary{background:var(--brand);color:#fff}
-.btn-outline{background:#fff;color:var(--brand);border:1px solid var(--brand)}
 
-.preview-box{
-  display:none;
-  margin-top:20px;
-  border-top:1px solid var(--border);
-  padding-top:16px;
-}
-.preview-head{
-  display:flex;justify-content:space-between;align-items:center;
-  margin-bottom:8px
-}
-.preview-head h2{margin:0;font-size:16px}
+body{padding-top:45px;}
 
-textarea{
-  width:100%;
-  min-height:260px;
-  resize:vertical;
-  border:1px solid var(--border);
-  border-radius:8px;
-  padding:10px;
-  font-size:14px;
-  line-height:1.5;
+header{
+display:flex;
+justify-content:space-between;
+padding:15px 30px;
+background:#111827;
+}
+
+.logo{font-weight:bold;color:#3b82f6;}
+
+nav a{
+color:white;
+margin-left:12px;
+padding:8px 14px;
+background:#1f2937;
+border-radius:8px;
+text-decoration:none;
+}
+
+.container{
+max-width:1000px;
+margin:40px auto;
+background:#1e293b;
+padding:30px;
+border-radius:20px;
+box-shadow:0 0 25px rgba(0,0,0,0.6);
+}
+
+h1{text-align:center;color:#ffd54f;}
+
+.upload{
+border:2px dashed #ffd54f;
+padding:30px;
+text-align:center;
+border-radius:12px;
+cursor:pointer;
+margin-bottom:15px;
+}
+
+button{
+padding:12px 22px;
+border:none;
+border-radius:10px;
+cursor:pointer;
+background:#2563eb;
+color:#fff;
+font-weight:bold;
+transition:0.3s;
+margin-top:10px;
+}
+
+button:hover{
+box-shadow:0 0 15px #fff;
+transform:translateY(-2px);
+}
+
+button:disabled{
+background:#555;
+cursor:not-allowed;
 }
 
 .progress{
-  font-size:13px;
-  color:#555;
-  margin-bottom:8px;
+height:8px;
+background:#333;
+border-radius:10px;
+margin-top:15px;
 }
 
-.footer{
-  text-align:center;
-  font-size:13px;
-  color:#777;
-  padding:24px 10px 32px;
+.progress-bar{
+height:8px;
+width:0%;
+background:#22c55e;
+border-radius:10px;
+transition:0.4s;
+}
+
+textarea{
+width:100%;
+height:260px;
+margin-top:15px;
+border-radius:10px;
+padding:10px;
+resize:none;
 }
 </style>
 </head>
+
 <body>
 
-<header class="header">
-  <div class="header-inner">
-    <div class="brand">
-      <a href="https://pdfwala.in">PDFwala.in</a>
-    </div>
-    <div class="nav">Home • All PDF Tools • PDF to Word</div>
-  </div>
+<div class="top-bar">
+<span>🚀 Advanced Version Coming Soon – Full Formatting, Layout & OCR Support</span>
+</div>
+
+<header>
+<div class="logo">PDFwala.in</div>
+<nav>
+<a href="index.html">Home</a>
+<a href="index.html">All Tools</a>
+<a href="index.html">Popular Tools</a>
+</nav>
 </header>
 
-<main class="page">
+<div class="container">
 
-<section class="tool-card">
+<h1>PDF to Word Converter</h1>
 
-  <div class="tool-title">
-    <div class="icon">P→W</div>
-    <h1>PDF to Word</h1>
-  </div>
+<div class="upload" onclick="document.getElementById('fileInput').click()">
+Click or Drag & Drop PDF File Here
+<input type="file" id="fileInput" accept="application/pdf" hidden>
+</div>
 
-  <p style="margin-top:0;font-size:14px;color:#555">
-    Convert your PDF into an editable Word document.
-  </p>
+<div id="fileInfo"></div>
+<div id="pageInfo"></div>
 
-  <div class="form-grid">
+<button id="convertBtn" onclick="convertPDF()">Convert to Word</button>
 
-    <div>
-      <label>Select PDF</label>
+<div class="progress">
+<div class="progress-bar" id="progressBar"></div>
+</div>
 
-      <div id="dropZone" class="drop-zone">
-        <strong>Drag & drop your PDF here</strong><br>
-        or click to select file
-        <div class="file-name" id="fileName"></div>
-      </div>
+<textarea id="previewText" placeholder="Preview will appear here..." readonly></textarea>
 
-      <input id="pdfFile" type="file" accept="application/pdf">
-    </div>
+<button id="downloadBtn" onclick="downloadWord()" disabled>
+Download Word File
+  </button>
+  </div> <!-- container close -->
 
-    <div class="actions">
-      <button class="btn btn-primary" onclick="convertAndPreview()">
-        Convert & Preview
-      </button>
-      <button class="btn btn-outline" onclick="directDownload()">
-        Direct Download
-      </button>
-    </div>
+<footer style="background:#111827;padding:40px 20px;margin-top:60px;">
+<div style="max-width:1000px;margin:auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:30px;">
 
-  </div>
+<div>
+<h3>Contact Support</h3>
 
-  <div class="preview-box" id="previewBox">
+<a href="mailto:Praveshhelp4u@gmail.com"
+style="display:inline-block;margin-top:10px;padding:10px 16px;background:#2563eb;color:#fff;border-radius:8px;text-decoration:none;">
+📧 Email Support
+</a>
 
-    <div class="preview-head">
-      <h2>Extracted text preview</h2>
-      <button class="btn btn-primary"
-              style="flex:0 0 auto;padding:8px 14px;font-size:13px"
-              onclick="downloadDOCX()">
-        Download Word
-      </button>
-    </div>
+<br><br>
 
-    <div class="progress" id="progress"></div>
+<a href="https://wa.me/918318158236"
+target="_blank"
+style="display:inline-block;padding:10px 16px;background:#22c55e;color:#000;border-radius:8px;text-decoration:none;font-weight:bold;">
+💬 WhatsApp Chat
+</a>
 
-    <textarea id="previewText" placeholder="Extracted text will appear here..."></textarea>
+</div>
 
-  </div>
+<div>
+<h3>Tool Features</h3>
+<ul>
+<li>✔ 100% Browser Based</li>
+<li>✔ No File Upload</li>
+<li>✔ Secure & Private</li>
+<li>✔ Preview Before Download</li>
+<li>✔ Instant Conversion</li>
+</ul>
+</div>
+
+</div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.min.js"></script>
+
+<script>
+
+let selectedFile;
+let extractedText = "";
+
+document.getElementById('fileInput').addEventListener('change', async function(e){
+
+selectedFile = e.target.files[0];
+if(!selectedFile) return;
+
+document.getElementById("fileInfo").innerText =
+"File: " + selectedFile.name +
+" | Size: " + (selectedFile.size/1024).toFixed(2) + " KB";
+
+const reader = new FileReader();
+
+reader.onload = async function(){
+const typedarray = new Uint8Array(this.result);
+const pdf = await pdfjsLib.getDocument(typedarray).promise;
+
+document.getElementById("pageInfo").innerText =
+"Total Pages: " + pdf.numPages;
+};
+
+reader.readAsArrayBuffer(selectedFile);
+
+});
+
+async function convertPDF(){
+
+if(!selectedFile){
+alert("Upload PDF first.");
+return;
+}
+
+document.getElementById("downloadBtn").disabled = true;
+document.getElementById("convertBtn").disabled = true;
+
+let progressBar = document.getElementById("progressBar");
+progressBar.style.width = "10%";
+
+const reader = new FileReader();
+
+reader.onload = async function(){
+
+const typedarray = new Uint8Array(this.result);
+const pdf = await pdfjsLib.getDocument(typedarray).promise;
+
+extractedText = "";
+
+for(let i=1;i<=pdf.numPages;i++){
+
+const page = await pdf.getPage(i);
+const textContent = await page.getTextContent();
+
+textContent.items.forEach(item=>{
+extractedText += item.str + " ";
+});
+
+extractedText += "\n\n";
+
+progressBar.style.width = (10 + (i/pdf.numPages)*80) + "%";
+}
+
+document.getElementById("previewText").value = extractedText;
+
+progressBar.style.width = "100%";
+
+document.getElementById("downloadBtn").disabled = false;
+document.getElementById("convertBtn").disabled = false;
+};
+
+reader.readAsArrayBuffer(selectedFile);
+}
+
+function downloadWord(){
+
+if(!extractedText){
+alert("Preview before download.");
+return;
+}
+
+const blob = new Blob(['\ufeff', extractedText], {
+type: 'application/msword'
+});
+
+const link = document.createElement("a");
+link.href = URL.createObjectURL(blob);
+link.download = "PDFwala.in_pdf-to-word_" + Date.now() + ".doc";
+link.click();
+}
+
+  </script>
+  <section style="max-width:1000px;margin:60px auto;padding:20px;line-height:1.7;">
+
+<h2>About PDF to Word Converter</h2>
+<p>
+PDFwala.in PDF to Word Converter ek secure browser-based tool hai jo aapko PDF documents ko editable Word format me convert karne ki suvidha deta hai. Yeh tool directly aapke browser me run karta hai, isliye aapki files kisi server par upload nahi hoti. Isse aapko maximum privacy aur security milti hai.
+</p>
+
+<p>
+Yeh converter text-based PDF files ke liye optimized hai. Agar PDF scanned image format me hai to uske liye OCR advanced version me available hoga.
+</p>
+
+<h2>How to Use PDF to Word Tool</h2>
+<ol>
+<li>Upload PDF file.</li>
+<li>File name aur page count verify karein.</li>
+<li>Convert button par click karein.</li>
+<li>Preview section me extracted text check karein.</li>
+<li>Download Word file manually karein.</li>
+</ol>
+
+<h2>Why Choose PDFwala.in?</h2>
+<ul>
+<li>100% browser-based processing</li>
+<li>No file upload required</li>
+<li>Secure & private</li>
+<li>Preview before download</li>
+<li>Fast & lightweight tool</li>
+</ul>
+
+<h2>Privacy Policy</h2>
+<p>
+PDFwala.in aapki privacy ko sabse zyada importance deta hai. Hum kisi bhi uploaded document ko store nahi karte. Saari processing aapke device ke browser me hoti hai. Hum aapki files ko na dekhte hain, na save karte hain, na share karte hain.
+</p>
+
+<p>
+Hum cookies ka use sirf website performance improve karne ke liye kar sakte hain. Koi personal document data collect nahi kiya jata.
+</p>
+
+<h2>Terms & Conditions</h2>
+<p>
+Is tool ka use karte samay user ko ensure karna hoga ki unke paas document process karne ka legal right ho. PDFwala.in kisi bhi misuse ke liye responsible nahi hoga.
+</p>
+
+<p>
+Tool “as-is” basis par provide kiya jata hai bina kisi warranty ke. Formatting accuracy document complexity par depend karegi.
+</p>
+
+<h2>Disclaimer</h2>
+<p>
+Yeh basic browser-based version text extraction karta hai. Complex formatting preserve nahi ho sakti. Advanced formatting version future update me available hoga.
+</p>
+
+<h2>Frequently Asked Questions (FAQ)</h2>
+
+<h3>Is PDF to Word tool free?</h3>
+<p>Yes, yeh completely free hai.</p>
+
+<h3>Kya meri files upload hoti hain?</h3>
+<p>Nahi, saari processing aapke browser me hoti hai.</p>
+
+<h3>Kya formatting same rahegi?</h3>
+<p>Basic version me text extract hota hai. Advanced formatting version coming soon.</p>
 
 </section>
 
-</main>
-
-<footer class="footer">
-  © 2026 PDFwala.in – Free and secure online PDF tools
-</footer>
-
-<script>
-/* =========================
-   hidden plan
-   test: ?plan=premium
-========================= */
-
-const USER_PLAN =
-  new URLSearchParams(location.search).get("plan")==="premium"
-  ? "premium" : "free";
-
-let selectedFile=null;
-let finalText="";
-let finalDocxBlob=null;
-
-/* =========================
-   Drag & drop
-========================= */
-
-const dropZone=document.getElementById("dropZone");
-const fileInput=document.getElementById("pdfFile");
-const fileNameBox=document.getElementById("fileName");
-
-dropZone.addEventListener("click",()=>fileInput.click());
-
-dropZone.addEventListener("dragover",e=>{
-  e.preventDefault();
-  dropZone.classList.add("drag");
-});
-dropZone.addEventListener("dragleave",()=>{
-  dropZone.classList.remove("drag");
-});
-dropZone.addEventListener("drop",e=>{
-  e.preventDefault();
-  dropZone.classList.remove("drag");
-  const f=e.dataTransfer.files[0];
-  if(f && f.type==="application/pdf"){
-    selectedFile=f;
-    fileNameBox.innerText=f.name;
-  }else{
-    alert("Please drop a PDF file.");
+<!-- FAQ Schema -->
+<script type="application/ld+json">
+{
+ "@context":"https://schema.org",
+ "@type":"FAQPage",
+ "mainEntity":[
+  {
+   "@type":"Question",
+   "name":"Is PDF to Word tool free?",
+   "acceptedAnswer":{"@type":"Answer","text":"Yes, this tool is completely free."}
+  },
+  {
+   "@type":"Question",
+   "name":"Are files uploaded?",
+   "acceptedAnswer":{"@type":"Answer","text":"No, all processing happens inside your browser."}
   }
-});
-
-fileInput.addEventListener("change",()=>{
-  selectedFile=fileInput.files[0];
-  if(selectedFile){
-    fileNameBox.innerText=selectedFile.name;
-  }
-});
-
-/* =========================
-   FREE USER
-   PDF -> text -> DOCX
-========================= */
-
-async function browserPDFtoWord(file){
-
-  const arrayBuffer = await file.arrayBuffer();
-  const pdf = await pdfjsLib.getDocument({data: arrayBuffer}).promise;
-
-  let allText = "";
-
-  for(let i=1;i<=pdf.numPages;i++){
-    const page = await pdf.getPage(i);
-    const textContent = await page.getTextContent();
-    const pageText = textContent.items.map(it=>it.str).join(" ");
-    allText += pageText + "\n\n";
-  }
-
-  const { Document, Packer, Paragraph, TextRun } = window.docx;
-
-  const paragraphs = allText
-    .split(/\n+/)
-    .map(line => new Paragraph({
-      children: [ new TextRun(line) ]
-    }));
-
-  const doc = new Document({
-    sections:[{ children: paragraphs }]
-  });
-
-  const blob = await Packer.toBlob(doc);
-
-  return { text: allText, blob };
+ ]
 }
+</script>
 
-/* =========================
-   PREMIUM USER
-   backend conversion
-========================= */
-
-async function premiumPDFtoWord(file){
-
-  const fd=new FormData();
-  fd.append("file",file);
-
-  const r=await fetch("/api/premium-pdf-to-word",{
-    method:"POST",
-    body:fd
-  });
-
-  if(!r.ok){
-    alert("Premium conversion service unavailable.");
-    throw new Error("premium api failed");
-  }
-
-  const blob=await r.blob();
-  return { text:null, blob };
-}
-
-/* =========================
-   unified
-========================= */
-
-async function processPDF(file){
-
-  if(USER_PLAN==="premium"){
-    return await premiumPDFtoWord(file);
-  }else{
-    return await browserPDFtoWord(file);
-  }
-}
-
-/* =========================
-   UI
-========================= */
-
-async function convertAndPreview(){
-
-  const file = selectedFile || fileInput.files[0];
-
-  if(!file){
-    alert("Please select a PDF file.");
-    return;
-  }
-
-  document.getElementById("previewBox").style.display="block";
-  document.getElementById("progress").innerText="Converting...";
-
-  const result = await processPDF(file);
-
-  finalDocxBlob = result.blob;
-
-  if(result.text){
-    finalText = result.text;
-    document.getElementById("previewText").value = finalText;
-  }else{
-    document.getElementById("previewText").value =
-      "Preview is not available in premium mode. Please download the Word file.";
-  }
-
-  document.getElementById("progress").innerText =
-    USER_PLAN==="premium"
-      ? "Premium conversion completed."
-      : "Free conversion completed.";
-}
-
-async function directDownload(){
-
-  const file = selectedFile || fileInput.files[0];
-
-  if(!file){
-    alert("Please select a PDF file.");
-    return;
-  }
-
-  const result = await processPDF(file);
-  finalDocxBlob = result.blob;
-  downloadDOCX();
-}
-
-/* =========================
-   helpers
-========================= */
-
-function downloadDOCX(){
-
-  if(!finalDocxBlob){
-    alert("No Word file generated yet.");
-    return;
-  }
-
-  const a=document.createElement("a");
-  a.href=URL.createObjectURL(finalDocxBlob);
-  a.download="PDFwala.in-pdf-to-word.docx";
-  a.click();
+<!-- Breadcrumb Schema -->
+<script type="application/ld+json">
+{
+ "@context":"https://schema.org",
+ "@type":"BreadcrumbList",
+ "itemListElement":[
+  {"@type":"ListItem","position":1,"name":"Home","item":"https://pdfwala.in/index.html"},
+  {"@type":"ListItem","position":2,"name":"PDF to Word","item":"https://pdfwala.in/pdf-to-word.html"}
+ ]
 }
 </script>
 
