@@ -2,112 +2,439 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>PDF Compressor – PDFwala.in</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Compress PDF files online with PDFwala.in">
+
+<title>Compress PDF Online Free – Reduce PDF File Size Instantly | PDFwala.in</title>
+
+<meta name="description" content="Compress PDF online free. Reduce PDF file size instantly without uploading files. 100% secure browser-based PDF compressor tool by PDFwala.in. Fast, safe and mobile friendly.">
+<meta name="keywords" content="compress pdf online free, reduce pdf size, pdf compressor tool, shrink pdf file, decrease pdf size without losing quality, free pdf compression tool">
+<meta name="author" content="PDFwala.in">
 <meta name="robots" content="index, follow">
+<link rel="canonical" href="https://pdfwala.in/compress-pdf.html">
+
+<meta property="og:title" content="Compress PDF Online Free – PDFwala.in">
+<meta property="og:description" content="Reduce PDF file size instantly without uploading files. Secure client-side compression tool.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://pdfwala.in/compress-pdf.html">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Compress PDF Online Free – PDFwala.in">
+<meta name="twitter:description" content="Securely reduce PDF file size in your browser. No upload required.">
+
+<script type="application/ld+json">
+{
+ "@context":"https://schema.org",
+ "@type":"SoftwareApplication",
+ "name":"Compress PDF Tool",
+ "operatingSystem":"All",
+ "applicationCategory":"BusinessApplication",
+ "offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}
+}
+</script>
+
+<script type="application/ld+json">
+{
+ "@context":"https://schema.org",
+ "@type":"Organization",
+ "name":"PDFwala.in",
+ "url":"https://pdfwala.in"
+}
+</script>
+
+<script type="application/ld+json">
+{
+ "@context":"https://schema.org",
+ "@type":"BreadcrumbList",
+ "itemListElement":[{
+   "@type":"ListItem",
+   "position":1,
+   "name":"Home",
+   "item":"https://pdfwala.in"
+ },{
+   "@type":"ListItem",
+   "position":2,
+   "name":"Compress PDF",
+   "item":"https://pdfwala.in/compress-pdf.html"
+ }]
+}
+</script>
 
 <style>
-*{box-sizing:border-box}
 body{
 margin:0;
-font-family:system-ui,Arial,sans-serif;
-background:#0f172a;
+font-family:Arial, sans-serif;
+background:linear-gradient(135deg,#081b33,#0d2d50);
 color:#fff;
 }
 
-/* header */
-.header{
-max-width:1100px;margin:auto;padding:14px;
-display:flex;justify-content:space-between;align-items:center
+.top-bar{
+background:#ff9800;
+color:#000;
+padding:8px;
+overflow:hidden;
+white-space:nowrap;
+font-weight:bold;
 }
+
+.top-bar span{
+display:inline-block;
+padding-left:100%;
+animation:scrollText 12s linear infinite;
+}
+
+@keyframes scrollText{
+0%{transform:translateX(0);}
+100%{transform:translateX(-100%);}
+}
+
+header{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:15px 30px;
+background:#0b1f3a;
+}
+
 .logo{
-text-decoration:none;color:#fff;font-weight:700;
-padding:6px 14px;border-radius:20px;
-background:linear-gradient(135deg,#ff1744,#ff9100)
-}
-.nav a{
-margin-left:8px;text-decoration:none;color:#eee;
-font-size:13px;padding:5px 10px;border-radius:14px;
-background:rgba(255,255,255,.08)
+font-weight:bold;
+font-size:20px;
+color:#4da6ff;
 }
 
-/* main */
-.wrap{max-width:1100px;margin:auto;padding:0 14px 50px}
+nav a{
+text-decoration:none;
+color:white;
+padding:8px 14px;
+margin-left:10px;
+border-radius:8px;
+background:#122b4d;
+transition:0.3s;
+}
 
-.card{
-margin-top:20px;
-background:rgba(255,255,255,.06);
-border-radius:16px;
-padding:18px;
-border:1px solid rgba(255,255,255,.12);
+nav a:hover{
+box-shadow:0 0 12px white;
+transform:translateY(-2px);
+}
+
+.container{
+max-width:1000px;
+margin:40px auto;
+background:#112c4f;
+padding:30px;
+border-radius:20px;
+box-shadow:0 0 30px rgba(0,0,0,0.4);
 }
 
 h1{
 text-align:center;
-margin:0 0 14px;
-font-size:26px;
-color:#ff9100
+color:#ffd54f;
 }
 
 .upload{
-border:2px dashed rgba(255,255,255,.35);
-border-radius:14px;
-padding:26px;
+border:2px dashed #ffd54f;
+padding:30px;
 text-align:center;
+margin:20px 0;
+border-radius:15px;
 cursor:pointer;
 }
 
-.info{margin-top:8px;font-size:13px;color:#ccc}
-
-.buttons{margin-top:12px;display:flex;gap:10px}
 button{
+padding:10px 20px;
 border:none;
-padding:10px 16px;
-border-radius:18px;
-font-weight:600;
-cursor:pointer
+border-radius:10px;
+cursor:pointer;
+background:#1e88e5;
+color:white;
+transition:0.3s;
 }
-.primary{background:linear-gradient(135deg,#ff1744,#ff9100);color:#fff}
-.secondary{background:rgba(255,255,255,.15);color:#fff}
 
-/* progress */
-.progressBox{
-margin-top:12px;
-background:rgba(0,0,0,.35);
-border-radius:12px;
-padding:10px;
-display:none
+button:hover{
+box-shadow:0 0 15px white;
+transform:translateY(-2px);
 }
-.row{display:flex;align-items:center;gap:8px;font-size:13px}
-.spinner{
-width:14px;height:14px;
-border:3px solid rgba(255,255,255,.3);
-border-top-color:#ff9100;
-border-radius:50%;
-animation:spin 1s linear infinite
-}
-@keyframes spin{to{transform:rotate(360deg)}}
-.tick{color:#00e676;font-weight:800}
 
-.bar{
-height:7px;
+.progress{
+width:100%;
+height:8px;
 background:#333;
-border-radius:20px;
-overflow:hidden;
-margin-top:6px
-}
-.fill{
-height:100%;
-width:0%;
-background:linear-gradient(90deg,#ff1744,#ff9100)
+border-radius:10px;
+margin-top:20px;
 }
 
-.fileBox{
-margin-top:12px;
-background:rgba(255,255,255,.06);
-border-radius:12px;
-padding:10px;
+.progress-bar{
+height:8px;
+width:0%;
+background:#00e676;
+border-radius:10px;
+transition:0.4s;
+}
+
+.preview{
+margin-top:30px;
+display:none;
+}
+
+iframe{
+width:100%;
+height:400px;
+border:none;
+border-radius:10px;
+}
+
+footer{
+margin-top:60px;
+background:#0b1f3a;
+padding:30px;
+}
+
+.footer-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+gap:20px;
+}
+
+footer h3{
+color:#ffd54f;
+}
+
+.contact-btn{
+display:inline-block;
+margin-top:8px;
+padding:8px 15px;
+background:#1e88e5;
+border-radius:6px;
+text-decoration:none;
+color:#fff;
+}
+</style>
+</head>
+
+<body>
+
+<div class="top-bar">
+<span>🚀 Advanced Version Coming Soon – Higher Compression Levels & Smart Optimization</span>
+</div>
+
+<header>
+<div class="logo">PDFwala.in</div>
+<nav>
+<a href="index.html">Home</a>
+<a href="index.html">All Tools</a>
+<a href="index.html">Popular Tools</a>
+</nav>
+</header>
+
+<div class="container">
+
+<h1>Compress PDF Online Free</h1>
+
+<div class="upload" onclick="document.getElementById('fileInput').click()">
+Click or Drag & Drop PDF File Here
+<input type="file" id="fileInput" accept="application/pdf" hidden>
+</div>
+
+<div id="fileInfo"></div>
+
+<button onclick="compressPDF()">Compress PDF</button>
+
+<div class="progress">
+<div class="progress-bar" id="progressBar"></div>
+</div>
+
+<div id="percent"></div>
+
+<div class="preview" id="previewSection">
+<h2>Preview</h2>
+<iframe id="pdfPreview"></iframe>
+<br><br>
+<button id="downloadBtn">Download Compressed PDF</button>
+</div>
+
+</div>
+
+<footer>
+<div class="footer-grid">
+
+<div>
+<h3>Contact</h3>
+<a class="contact-btn" href="mailto:Praveshhelp4u@gmail.com">Email Support</a><br>
+<a class="contact-btn" href="https://wa.me/918318158236" target="_blank">WhatsApp Chat</a>
+</div>
+
+<div>
+<h3>Security</h3>
+<p>All PDF compression happens locally inside your browser. No files are uploaded to any server.</p>
+</div>
+
+</div>
+</footer>
+
+<script src="https://unpkg.com/pdf-lib/dist/pdf-lib.min.js"></script>
+
+<script>
+let selectedFile;
+let versionCounter=1;
+
+document.getElementById('fileInput').addEventListener('change',function(e){
+selectedFile=e.target.files[0];
+document.getElementById("fileInfo").innerText=
+"Uploaded: "+selectedFile.name+" | Original Size: "+(selectedFile.size/1024/1024).toFixed(2)+" MB";
+});
+
+async function compressPDF(){
+
+if(!selectedFile){
+alert("Upload PDF first.");
+return;
+}
+
+let progressBar=document.getElementById("progressBar");
+let percent=document.getElementById("percent");
+
+progressBar.style.width="30%";
+percent.innerText="30%";
+
+const bytes=await selectedFile.arrayBuffer();
+const pdfDoc=await PDFLib.PDFDocument.load(bytes);
+
+progressBar.style.width="60%";
+percent.innerText="60%";
+
+const compressedBytes=await pdfDoc.save({
+useObjectStreams:true,
+compress:true
+});
+
+progressBar.style.width="90%";
+percent.innerText="90%";
+
+const blob=new Blob([compressedBytes],{type:"application/pdf"});
+const url=URL.createObjectURL(blob);
+
+progressBar.style.width="100%";
+percent.innerText="100% Completed ✓";
+
+document.getElementById("pdfPreview").src=url;
+document.getElementById("previewSection").style.display="block";
+
+document.getElementById("downloadBtn").onclick=function(){
+const a=document.createElement("a");
+a.href=url;
+a.download="PDFwala.in_Compress_v"+versionCounter+".pdf";
+a.click();
+versionCounter++;
+};
+
+}
+  </script>
+  <div class="container">
+
+<h2>Why Use Our Compress PDF Tool?</h2>
+<p>
+Large PDF files can be difficult to share via email, upload to websites, or store on devices. 
+Our Compress PDF tool allows you to reduce PDF file size instantly without uploading your documents 
+to any external server. Unlike many online compressors, PDFwala.in performs compression directly 
+inside your browser. This ensures better privacy, faster processing, and full user control.
+</p>
+
+<h2>Key Features</h2>
+<ul>
+<li>100% Browser-Based Compression</li>
+<li>No File Upload Required</li>
+<li>Secure Local Processing</li>
+<li>Instant Preview Before Download</li>
+<li>Progress Indicator with Percentage</li>
+<li>Dynamic File Naming</li>
+<li>Mobile & Desktop Compatible</li>
+<li>Free to Use Without Registration</li>
+</ul>
+
+<h2>How to Compress PDF Online?</h2>
+<ol>
+<li>Click or drag and drop your PDF file.</li>
+<li>Check the original file size displayed.</li>
+<li>Click the “Compress PDF” button.</li>
+<li>Wait for compression to complete.</li>
+<li>Preview and download the compressed file.</li>
+</ol>
+
+<h2>Is PDF Compression Safe?</h2>
+<p>
+Yes. Your PDF file never leaves your device. All compression operations happen locally 
+inside your browser using advanced JavaScript technology. We do not upload, store, analyze, 
+or share your documents. This makes PDFwala.in one of the safest PDF compression tools online.
+</p>
+
+<h2>Who Can Use This Tool?</h2>
+<p>
+Students submitting assignments, office employees sending reports, freelancers sharing portfolios, 
+business owners uploading documents, and legal professionals handling paperwork can benefit from 
+this tool. If you work with PDFs regularly, reducing file size saves time and storage space.
+</p>
+
+<h2>Frequently Asked Questions (FAQ)</h2>
+
+<h3>1. Is this Compress PDF tool free?</h3>
+<p>Yes, it is completely free to use.</p>
+
+<h3>2. Does compression reduce quality?</h3>
+<p>Basic compression may slightly optimize internal structure but maintains document readability.</p>
+
+<h3>3. Are my files uploaded to a server?</h3>
+<p>No. All compression happens locally in your browser.</p>
+
+<h3>4. Is there a file size limit?</h3>
+<p>There is no server-side limit. Performance depends on your browser capability.</p>
+
+<h3>5. Does it work on mobile devices?</h3>
+<p>Yes, it is fully responsive and mobile-friendly.</p>
+
+<h3>6. Do I need to create an account?</h3>
+<p>No registration or login is required.</p>
+
+<h3>7. Can I compress multiple PDFs?</h3>
+<p>Currently, compression works one file at a time. Advanced version coming soon.</p>
+
+<h3>8. Is this tool secure?</h3>
+<p>Yes. Your files are processed locally and never stored.</p>
+
+<h2>Privacy Policy</h2>
+<p>
+At PDFwala.in, we prioritize user privacy and security. This Compress PDF tool operates entirely 
+within your browser. We do not upload files to servers, collect document data, or store personal 
+information related to your PDFs. We may collect minimal non-personal analytics data to improve 
+website performance, such as browser type and device category. However, your document content 
+remains strictly private.
+</p>
+
+<h2>Terms and Conditions</h2>
+<p>
+By using this tool, you agree that you are responsible for the documents processed. 
+PDFwala.in does not take responsibility for misuse, copyright violations, or unlawful content. 
+The service is provided “as is” without warranties of any kind. Users must ensure they have 
+legal rights to modify and compress the documents they upload.
+</p>
+
+<h2>Disclaimer</h2>
+<p>
+PDFwala.in provides document processing tools for convenience. While we strive to maintain 
+accuracy and reliability, we do not guarantee specific compression ratios. 
+Users are encouraged to review compressed documents before distribution.
+</p>
+
+<h2>Related PDF Tools</h2>
+<ul>
+<li><a href="merge-pdf.html">Merge PDF</a></li>
+<li><a href="split-pdf.html">Split PDF</a></li>
+<li><a href="rotate-pdf.html">Rotate PDF</a></li>
+<li><a href="jpg-to-pdf.html">JPG to PDF</a></li>
+</ul>
+
+</div>
+
+</body>
+</html>padding:10px;
 border:1px solid rgba(255,255,255,.12);
 white-space:pre-line;
 }
