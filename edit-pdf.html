@@ -4,161 +4,206 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Edit PDF Online Free | PDFwala.in</title>
-<meta name="description" content="Edit PDF online free. Add text to PDF securely using PDFwala.in. No file upload required.">
-<meta name="keywords" content="Edit PDF online, add text to PDF, free PDF editor, PDF text editor">
-<meta name="author" content="PDFwala.in">
-<meta name="robots" content="index, follow">
+<title>Edit PDF Online Free – Add Text & Modify PDF | PDFwala.in</title>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<meta name="description" content="Edit PDF online free with live preview. Add text, adjust position, resize, and download manually. Secure browser-based PDF editor by PDFwala.in.">
+<meta name="keywords" content="edit pdf online free, add text to pdf, pdf editor browser, modify pdf without upload">
+<meta name="robots" content="index, follow">
+<meta name="author" content="PDFwala.in">
+<link rel="canonical" href="https://pdfwala.in/edit-pdf.html">
+
+<!-- Open Graph -->
+<meta property="og:title" content="Edit PDF Online – PDFwala.in">
+<meta property="og:description" content="Secure browser-based PDF editor with preview and manual download.">
+<meta property="og:type" content="website">
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image">
+
+<!-- SoftwareApplication Schema -->
+<script type="application/ld+json">
+{
+ "@context":"https://schema.org",
+ "@type":"SoftwareApplication",
+ "name":"Edit PDF Tool",
+ "operatingSystem":"All",
+ "applicationCategory":"BusinessApplication",
+ "offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}
+}
+</script>
 
 <style>
 body{
 margin:0;
-font-family:Arial;
-background:linear-gradient(135deg,#071a2f,#0b2b4a,#071a2f);
+font-family:system-ui,Arial,sans-serif;
+background:#0f172a;
 color:#fff;
 }
+
+.top-bar{
+background:#ff9800;
+color:#000;
+padding:8px 0;
+overflow:hidden;
+white-space:nowrap;
+font-weight:bold;
+position:fixed;
+top:0;
+width:100%;
+z-index:999;
+}
+
+.top-bar span{
+display:inline-block;
+padding-left:100%;
+animation:scrollText 14s linear infinite;
+}
+
+@keyframes scrollText{
+0%{transform:translateX(0);}
+100%{transform:translateX(-100%);}
+}
+
+body{padding-top:45px;}
 
 header{
 display:flex;
 justify-content:space-between;
-align-items:center;
-padding:15px 30px;
-background:rgba(0,0,0,0.4);
+padding:16px 28px;
+background:#111827;
 }
 
 .logo{
 font-weight:bold;
-font-size:20px;
-color:#ffc107;
+color:#3b82f6;
+font-size:18px;
 }
 
 nav a{
-margin-left:10px;
-padding:8px 18px;
-border-radius:25px;
-background:#123a63;
 color:#fff;
+margin-left:12px;
+padding:8px 16px;
+background:#1f2937;
+border-radius:12px;
 text-decoration:none;
-transition:.3s;
-box-shadow:0 4px 12px rgba(0,0,0,.4);
+transition:0.3s;
 }
 
 nav a:hover{
+box-shadow:0 0 12px #fff;
 transform:translateY(-2px);
-box-shadow:0 0 15px rgba(255,255,255,.4);
 }
 
 .container{
-max-width:900px;
+max-width:1000px;
 margin:40px auto;
-background:rgba(255,255,255,0.05);
+background:#1e293b;
 padding:30px;
-border-radius:15px;
+border-radius:22px;
 box-shadow:0 0 30px rgba(0,0,0,0.6);
 }
 
-h1{text-align:center;color:#ffc107}
-
-.upload-box{
-border:2px dashed #ffc107;
-padding:40px;
+h1{
 text-align:center;
-margin-top:20px;
-border-radius:10px;
+color:#ffd54f;
+}
+
+.upload{
+border:2px dashed #ffd54f;
+padding:35px;
+text-align:center;
+border-radius:16px;
 cursor:pointer;
+margin-bottom:20px;
 }
 
-.file-info{
-margin-top:15px;
-padding:12px;
-background:rgba(0,0,0,0.4);
-border-radius:8px;
-font-size:14px;
-display:none;
-}
-
-.editor-area{
+#pdfPreview{
+position:relative;
+border:1px solid #333;
 margin-top:20px;
-display:none;
+min-height:400px;
+background:#fff;
+color:#000;
+overflow:auto;
 }
 
-canvas{
-max-width:100%;
-border-radius:8px;
-margin-top:15px;
+.editText{
+position:absolute;
+cursor:move;
+padding:4px 8px;
+background:rgba(255,255,255,0.7);
+border-radius:6px;
 }
 
-.text-input{
-margin-top:15px;
-padding:10px;
-width:100%;
-border-radius:8px;
-border:none;
-}
-
-.btn{
-margin-top:15px;
-padding:10px 20px;
-border:none;
-border-radius:25px;
-background:linear-gradient(145deg,#1b5fd6,#0d3d9c);
-color:#fff;
-cursor:pointer;
-font-weight:bold;
-transition:.3s;
-box-shadow:0 4px 15px rgba(0,0,0,.4),
-0 0 15px rgba(255,255,255,.2);
-}
-
-.btn:hover{
-transform:translateY(-3px);
-box-shadow:0 8px 20px rgba(0,0,0,.6),
-0 0 25px rgba(255,255,255,.4);
-}
-
-footer{
-margin-top:60px;
-padding:40px;
-background:rgba(0,0,0,.85);
+.controls{
+margin-top:20px;
 display:flex;
-justify-content:space-between;
+gap:10px;
 flex-wrap:wrap;
-gap:30px;
 }
 
-.footer-column{
-max-width:260px;
-}
-
-footer h3{
-color:#ffc107;
-margin-bottom:10px;
-}
-
-footer p{
-font-size:14px;
-line-height:1.6;
-color:#ddd;
-}
-
-.contact-btn{
-display:block;
-margin-top:10px;
-padding:10px 18px;
-border-radius:25px;
-background:linear-gradient(145deg,#1b5fd6,#0d3d9c);
+button{
+padding:12px 24px;
+border:none;
+border-radius:14px;
+cursor:pointer;
+background:#2563eb;
 color:#fff;
-text-decoration:none;
 font-weight:600;
-transition:.3s;
+transition:0.3s;
+}
+
+button:hover{
+box-shadow:0 0 18px #fff;
+transform:translateY(-3px);
+}
+
+.progress-box{
+margin-top:20px;
+display:none;
+}
+
+.progress{
+height:8px;
+background:#333;
+border-radius:10px;
+margin-top:10px;
+}
+
+.progress-bar{
+height:8px;
+width:0%;
+background:#22c55e;
+border-radius:10px;
+transition:0.4s;
+}
+
+.spinner{
+width:16px;
+height:16px;
+border:3px solid rgba(255,255,255,0.3);
+border-top-color:#22c55e;
+border-radius:50%;
+animation:spin 1s linear infinite;
+}
+
+@keyframes spin{
+to{transform:rotate(360deg);}
+}
+
+.tick{
+font-weight:bold;
+color:#22c55e;
+font-size:18px;
 }
 </style>
 </head>
 
 <body>
+
+<div class="top-bar">
+<span>🚀 Advanced Version Coming Soon – Full PDF Text Editing, OCR & Layer Control</span>
+</div>
 
 <header>
 <div class="logo">PDFwala.in</div>
@@ -170,114 +215,315 @@ transition:.3s;
 </header>
 
 <div class="container">
-<h1>Edit PDF</h1>
 
-<div class="upload-box" onclick="document.getElementById('fileInput').click()">
+<h1>Edit PDF Online</h1>
+
+<div class="upload" onclick="document.getElementById('fileInput').click()">
 Click or Upload PDF File
 <input type="file" id="fileInput" accept="application/pdf" hidden>
 </div>
 
-<div class="file-info" id="fileInfo"></div>
+<div id="pdfPreview"></div>
 
-<div class="editor-area" id="editorArea">
-<canvas id="pdfCanvas"></canvas>
+<div class="controls">
+<input type="text" id="textInput" placeholder="Enter text to add">
+<input type="color" id="colorPicker" value="#ff0000">
+<input type="range" id="fontSize" min="12" max="48" value="20">
+<button onclick="addText()">Add Text</button>
+<button onclick="savePDF()">Download Edited PDF</button>
+</div>
 
-<input type="text" id="textInput" class="text-input" placeholder="Enter text to add">
+<div class="progress-box" id="progressBox">
+<div style="display:flex;align-items:center;gap:10px;">
+<div id="spinner" class="spinner"></div>
+<div id="progressText">0%</div>
+</div>
+<div class="progress">
+<div class="progress-bar" id="progressBar"></div>
+</div>
+  </div>
+  </div> <!-- container close -->
 
-<button class="btn" onclick="addText()">Add Text</button>
-<button class="btn" onclick="downloadPDF()">Download Edited PDF</button>
+<footer style="background:#111827;padding:50px 20px;margin-top:70px;">
+<div style="max-width:1000px;margin:auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:30px;">
+
+<div>
+<h3>Contact Support</h3>
+
+<a href="mailto:Praveshhelp4u@gmail.com"
+style="display:inline-block;margin-top:12px;padding:10px 18px;background:#2563eb;color:#fff;border-radius:12px;text-decoration:none;">
+📧 Email Support
+</a>
+
+<br><br>
+
+<a href="https://wa.me/918318158236"
+target="_blank"
+style="display:inline-block;padding:10px 18px;background:#22c55e;color:#000;border-radius:12px;text-decoration:none;font-weight:600;">
+💬 WhatsApp Chat
+</a>
+</div>
+
+<div>
+<h3>Tool Features</h3>
+<ul>
+<li>✔ Upload PDF</li>
+<li>✔ Live Preview</li>
+<li>✔ Add Text Overlay</li>
+<li>✔ Drag to Position</li>
+<li>✔ Resize Text</li>
+<li>✔ Change Text Color</li>
+<li>✔ Manual Download Only</li>
+</ul>
 </div>
 
 </div>
-
-<footer>
-
-<div class="footer-column">
-<h3>About this Tool</h3>
-<p>
-The Edit PDF tool allows you to add text overlays to your PDF documents directly within your browser. This lightweight editor is designed for quick annotations, adding simple notes, or inserting additional information without installing any software.
-</p>
-</div>
-
-<div class="footer-column">
-<h3>How to Use</h3>
-<p>
-1. Click the upload area and select your PDF file.<br>
-2. The file name and size will appear after upload.<br>
-3. The first page will load in the preview area.<br>
-4. Enter your text and click "Add Text" to place it on the PDF.<br>
-5. Click "Download Edited PDF" to save the modified document.
-</p>
-</div>
-
-<div class="footer-column">
-<h3>Privacy Policy</h3>
-<p>
-We are committed to protecting your privacy. All PDF editing and processing operations are performed locally in your browser using client-side technology. We do not upload, store, monitor, or access your documents in any way. Your files remain on your device at all times. No personal information is collected during the use of this tool. By using this service, you agree that your data remains solely under your control.
-</p>
-</div>
-
-<div class="footer-column">
-<h3>Terms & Conditions</h3>
-<p>
-By accessing and using PDFwala.in tools, you agree to use them for lawful purposes only. You are solely responsible for the content you upload and modify. PDFwala.in shall not be held liable for any misuse of this service, data loss, or damages resulting from improper usage. This tool is provided "as is" without warranties of any kind. We reserve the right to update or modify the service at any time without prior notice.
-</p>
-
-<h3 style="margin-top:20px;">Contact</h3>
-<a href="mailto:support@pdfwala.in" class="contact-btn">📧 Email Support</a>
-<a href="https://wa.me/919876543210" target="_blank" class="contact-btn">💬 WhatsApp Support</a>
-</div>
-
 </footer>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
 <script>
-let pdfFile;
-let canvas=document.getElementById("pdfCanvas");
-let ctx=canvas.getContext("2d");
+const { jsPDF } = window.jspdf;
 
-document.getElementById("fileInput").addEventListener("change",function(e){
-pdfFile=e.target.files[0];
-if(!pdfFile) return;
+let uploadedPDF = null;
+let currentPageImage = null;
 
-document.getElementById("fileInfo").style.display="block";
-document.getElementById("fileInfo").innerHTML=`
-<strong>File Name:</strong> ${pdfFile.name}<br>
-<strong>File Size:</strong> ${(pdfFile.size/1024/1024).toFixed(2)} MB
-`;
+const fileInput = document.getElementById("fileInput");
+const preview = document.getElementById("pdfPreview");
 
-renderPDF();
+fileInput.addEventListener("change", async function(e){
+
+const file = e.target.files[0];
+if(!file) return;
+
+const reader = new FileReader();
+reader.onload = async function(){
+const typedarray = new Uint8Array(this.result);
+
+const pdf = await pdfjsLib.getDocument(typedarray).promise;
+const page = await pdf.getPage(1);
+const viewport = page.getViewport({ scale: 1.5 });
+
+const canvas = document.createElement("canvas");
+const context = canvas.getContext("2d");
+canvas.height = viewport.height;
+canvas.width = viewport.width;
+
+await page.render({
+canvasContext: context,
+viewport: viewport
+}).promise;
+
+preview.innerHTML = "";
+preview.appendChild(canvas);
+
+currentPageImage = canvas.toDataURL("image/png");
+};
+
+reader.readAsArrayBuffer(file);
 });
 
-async function renderPDF(){
-const reader=new FileReader();
-reader.onload=async function(){
-const typedarray=new Uint8Array(this.result);
-const pdf=await pdfjsLib.getDocument(typedarray).promise;
-const page=await pdf.getPage(1);
-
-const viewport=page.getViewport({scale:1.5});
-canvas.height=viewport.height;
-canvas.width=viewport.width;
-
-await page.render({canvasContext:ctx,viewport:viewport}).promise;
-
-document.getElementById("editorArea").style.display="block";
-};
-reader.readAsArrayBuffer(pdfFile);
-}
-
+/* Add Editable Text */
 function addText(){
-let text=document.getElementById("textInput").value;
-ctx.fillStyle="red";
-ctx.font="20px Arial";
-ctx.fillText(text,50,50);
+
+const text = document.getElementById("textInput").value;
+if(!text) return;
+
+const div = document.createElement("div");
+div.className = "editText";
+div.innerText = text;
+div.style.left = "50px";
+div.style.top = "50px";
+div.style.color = document.getElementById("colorPicker").value;
+div.style.fontSize = document.getElementById("fontSize").value + "px";
+
+makeDraggable(div);
+
+preview.appendChild(div);
 }
 
-function downloadPDF(){
-const { jsPDF } = window.jspdf;
-let pdf=new jsPDF();
-pdf.addImage(canvas.toDataURL("image/png"),'PNG',0,0,210,297);
-pdf.save("PDFwala_Edited.pdf");
+/* Drag Logic */
+function makeDraggable(element){
+
+let offsetX = 0, offsetY = 0, isDown = false;
+
+element.addEventListener("mousedown", function(e){
+isDown = true;
+offsetX = e.offsetX;
+offsetY = e.offsetY;
+});
+
+document.addEventListener("mouseup", function(){
+isDown = false;
+});
+
+document.addEventListener("mousemove", function(e){
+if(!isDown) return;
+element.style.left = (e.pageX - preview.offsetLeft - offsetX) + "px";
+element.style.top = (e.pageY - preview.offsetTop - offsetY) + "px";
+});
+}
+
+/* Save PDF */
+async function savePDF(){
+
+if(!currentPageImage){
+alert("Upload PDF first.");
+return;
+}
+
+const progressBox = document.getElementById("progressBox");
+const progressBar = document.getElementById("progressBar");
+const progressText = document.getElementById("progressText");
+const spinner = document.getElementById("spinner");
+
+progressBox.style.display = "block";
+progressBar.style.width = "0%";
+progressText.innerText = "0%";
+spinner.style.display = "block";
+
+const pdf = new jsPDF();
+pdf.addImage(currentPageImage, 'PNG', 0, 0, 210, 297);
+
+let overlays = document.querySelectorAll(".editText");
+
+overlays.forEach((el)=>{
+const x = parseInt(el.style.left);
+const y = parseInt(el.style.top);
+const size = parseInt(el.style.fontSize);
+pdf.setFontSize(size);
+pdf.setTextColor(el.style.color);
+pdf.text(el.innerText, x/2, y/2);
+});
+
+progressBar.style.width = "100%";
+progressText.innerHTML = '<span class="tick">✔ 100%</span>';
+spinner.style.display = "none";
+
+pdf.save("PDFwala.in_edit-pdf_" + Date.now() + ".pdf");
+}
+  </script>
+  <section style="max-width:1000px;margin:70px auto;padding:20px;line-height:1.8;">
+
+<h2>About Edit PDF Online Tool</h2>
+<p>
+PDFwala.in Edit PDF Tool allows users to add text overlays to PDF documents directly inside their browser. This secure, client-side editor enables you to upload a PDF file, preview it instantly, and add custom text anywhere on the page. You can adjust text size, color, and position before downloading the edited PDF.
+</p>
+
+<p>
+All editing processes are performed locally within your browser. No files are uploaded to any external server, ensuring complete privacy and data protection.
+</p>
+
+<h2>How to Use the Edit PDF Tool</h2>
+<ol>
+<li>Upload your PDF file.</li>
+<li>Wait for the preview to load.</li>
+<li>Enter the text you want to add.</li>
+<li>Choose color and font size.</li>
+<li>Drag the text to your desired position.</li>
+<li>Click Download Edited PDF after progress completes.</li>
+</ol>
+
+<h2>Main Features</h2>
+<ul>
+<li>Secure browser-based PDF editing</li>
+<li>Live PDF preview</li>
+<li>Add custom text overlay</li>
+<li>Drag and reposition text</li>
+<li>Adjust font size</li>
+<li>Change text color</li>
+<li>Manual download only</li>
+<li>Mobile and desktop friendly</li>
+</ul>
+
+<h2>Privacy Policy</h2>
+<p>
+PDFwala.in does not upload, store, or access any PDF files processed through this tool. All operations are executed locally within your web browser. Your documents remain on your device at all times.
+</p>
+
+<p>
+We may use anonymous website analytics to improve performance and user experience. However, no file data or personal document content is ever collected or transmitted.
+</p>
+
+<h2>Terms and Conditions</h2>
+<p>
+By using this service, you confirm that you have the legal right to modify the uploaded PDF files. PDFwala.in is not responsible for any misuse, copyright infringement, or unlawful editing of documents.
+</p>
+
+<p>
+This tool is provided on an “as-is” basis without warranties of any kind. Editing accuracy depends on the original PDF structure and browser compatibility.
+</p>
+
+<h2>Disclaimer</h2>
+<p>
+This browser-based version supports text overlay editing only. Advanced features such as direct text layer editing, OCR editing, image replacement, and multi-page editing may be introduced in future updates.
+</p>
+
+<h2>Frequently Asked Questions (FAQ)</h2>
+
+<h3>Is this PDF editor free?</h3>
+<p>Yes, this tool is completely free to use.</p>
+
+<h3>Are my PDF files uploaded to a server?</h3>
+<p>No. All editing happens locally within your browser.</p>
+
+<h3>Can I edit existing PDF text?</h3>
+<p>This version supports adding text overlays. Direct modification of original PDF text layers requires advanced processing and may be available in future updates.</p>
+
+<h2>Related Tools</h2>
+<ul>
+<li><a href="merge-pdf.html" style="color:#3b82f6;">Merge PDF</a></li>
+<li><a href="split-pdf.html" style="color:#3b82f6;">Split PDF</a></li>
+<li><a href="compress-pdf.html" style="color:#3b82f6;">Compress PDF</a></li>
+</ul>
+
+</section>
+
+<!-- FAQ Schema -->
+<script type="application/ld+json">
+{
+ "@context":"https://schema.org",
+ "@type":"FAQPage",
+ "mainEntity":[
+  {
+   "@type":"Question",
+   "name":"Is this PDF editor free?",
+   "acceptedAnswer":{"@type":"Answer","text":"Yes, this tool is completely free to use."}
+  },
+  {
+   "@type":"Question",
+   "name":"Are my PDF files uploaded to a server?",
+   "acceptedAnswer":{"@type":"Answer","text":"No. All editing happens locally within your browser."}
+  },
+  {
+   "@type":"Question",
+   "name":"Can I edit existing PDF text?",
+   "acceptedAnswer":{"@type":"Answer","text":"This version supports adding text overlays only."}
+  }
+ ]
+}
+</script>
+
+<!-- Breadcrumb Schema -->
+<script type="application/ld+json">
+{
+ "@context":"https://schema.org",
+ "@type":"BreadcrumbList",
+ "itemListElement":[
+  {"@type":"ListItem","position":1,"name":"Home","item":"https://pdfwala.in/index.html"},
+  {"@type":"ListItem","position":2,"name":"Edit PDF","item":"https://pdfwala.in/edit-pdf.html"}
+ ]
+}
+</script>
+
+<!-- Organization Schema -->
+<script type="application/ld+json">
+{
+ "@context":"https://schema.org",
+ "@type":"Organization",
+ "name":"PDFwala.in",
+ "url":"https://pdfwala.in"
 }
 </script>
 
