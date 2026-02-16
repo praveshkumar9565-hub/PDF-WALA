@@ -2,150 +2,423 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-
-<title>OCR PDF Online – Convert Scanned PDF to Text | PDFwala.in</title>
-
-<meta name="description" content="OCR PDF online to extract text from scanned PDF files. Drag and drop your PDF, preview recognized text and download instantly. Secure OCR tool by PDFwala.in.">
-
-<meta name="keywords" content="ocr pdf online, scanned pdf to text, extract text from pdf, pdf ocr free, online ocr tool, convert scanned pdf, pdfwala, pdfwala.in">
-
-<meta name="author" content="PDFwala.in">
-<meta name="robots" content="index, follow">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<link rel="canonical" href="https://pdfwala.in/ocr-pdf">
+<title>OCR PDF Online Free – Extract Text from PDF & Images | PDFwala.in</title>
 
+<meta name="description" content="OCR PDF online free. Extract text from scanned PDF and images instantly. 100% secure browser-based OCR tool by PDFwala.in. No upload required.">
+<meta name="keywords" content="ocr pdf online free, extract text from pdf, image to text converter, scanned pdf to text, free ocr tool">
+<meta name="robots" content="index, follow">
+<meta name="author" content="PDFwala.in">
+<link rel="canonical" href="https://pdfwala.in/ocr-pdf.html">
+
+<meta property="og:title" content="OCR PDF Online Free – PDFwala.in">
+<meta property="og:description" content="Extract text from scanned PDF & images securely in your browser.">
 <meta property="og:type" content="website">
-<meta property="og:title" content="OCR PDF Online – Convert Scanned PDF to Text | PDFwala.in">
-<meta property="og:description" content="Extract text from scanned PDF using OCR with preview and instant download. Secure OCR PDF tool by PDFwala.in.">
-<meta property="og:url" content="https://pdfwala.in/ocr-pdf">
-<meta property="og:site_name" content="PDFwala.in">
+<meta property="og:url" content="https://pdfwala.in/ocr-pdf.html">
 
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="OCR PDF Online – Convert Scanned PDF to Text | PDFwala.in">
-<meta name="twitter:description" content="Free online OCR PDF tool with preview by PDFwala.in.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="OCR PDF Online Free – PDFwala.in">
+<meta name="twitter:description" content="Secure browser-based OCR tool for PDF and images.">
 
 <script type="application/ld+json">
 {
-  "@context":"https://schema.org",
-  "@type":"WebApplication",
-  "name":"OCR PDF Online",
-  "url":"https://pdfwala.in/ocr-pdf",
-  "applicationCategory":"BusinessApplication",
-  "operatingSystem":"All",
-  "description":"OCR PDF tool to extract text from scanned PDF files by PDFwala.in.",
-  "publisher":{
-    "@type":"Organization",
-    "name":"PDFwala.in",
-    "url":"https://pdfwala.in"
-  }
+ "@context":"https://schema.org",
+ "@type":"SoftwareApplication",
+ "name":"OCR PDF Tool",
+ "operatingSystem":"All",
+ "applicationCategory":"BusinessApplication",
+ "offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}
 }
 </script>
 
-<!-- pdf.js -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+<script type="application/ld+json">
+{
+ "@context":"https://schema.org",
+ "@type":"Organization",
+ "name":"PDFwala.in",
+ "url":"https://pdfwala.in"
+}
+</script>
 
-<!-- tesseract.js -->
-<script src="https://cdn.jsdelivr.net/npm/tesseract.js@5/dist/tesseract.min.js"></script>
+<script type="application/ld+json">
+{
+ "@context":"https://schema.org",
+ "@type":"BreadcrumbList",
+ "itemListElement":[{
+   "@type":"ListItem",
+   "position":1,
+   "name":"Home",
+   "item":"https://pdfwala.in"
+ },{
+   "@type":"ListItem",
+   "position":2,
+   "name":"OCR PDF",
+   "item":"https://pdfwala.in/ocr-pdf.html"
+ }]
+}
+</script>
 
 <style>
-:root{
-  --brand:#e53935;
-  --dark:#1f2937;
-  --bg:#f4f7f6;
-  --card:#ffffff;
-  --text:#333;
-  --muted:#6b7280;
-  --border:#e5e7eb;
-}
-*{box-sizing:border-box}
-
 body{
-  margin:0;
-  font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
-  background:var(--bg);
-  color:var(--text);
+margin:0;
+font-family:Arial,sans-serif;
+background:linear-gradient(135deg,#081b33,#0d2d50);
+color:#fff;
 }
 
-.header{background:var(--dark);color:#fff}
-.header-inner{
-  max-width:1100px;margin:auto;padding:12px 16px;
-  display:flex;justify-content:space-between;align-items:center
-}
-.brand a{color:#fff;text-decoration:none;font-weight:700;font-size:18px}
-.nav{font-size:13px;color:#cbd5e1}
-
-.page{max-width:900px;margin:24px auto;padding:0 12px}
-
-.tool-card{
-  background:var(--card);
-  border-radius:12px;
-  border:1px solid var(--border);
-  padding:22px;
-  box-shadow:0 4px 12px rgba(0,0,0,.05);
+.top-bar{
+background:#ff9800;
+color:#000;
+padding:8px;
+overflow:hidden;
+white-space:nowrap;
+font-weight:bold;
 }
 
-.tool-title{
-  display:flex;gap:10px;align-items:center;margin-bottom:12px
-}
-.tool-title .icon{
-  width:36px;height:36px;border-radius:8px;
-  background:rgba(229,57,53,.12);
-  display:flex;align-items:center;justify-content:center;
-  font-weight:700;color:var(--brand)
-}
-.tool-title h1{margin:0;font-size:22px}
-
-.form-grid{display:grid;gap:14px}
-
-label{font-size:13px;color:var(--muted)}
-
-input[type=file]{
-  display:none;
+.top-bar span{
+display:inline-block;
+padding-left:100%;
+animation:scrollText 12s linear infinite;
 }
 
-/* Drag area */
-.drop-zone{
-  border:2px dashed var(--border);
-  border-radius:10px;
-  padding:28px 16px;
-  text-align:center;
-  cursor:pointer;
-  background:#fafafa;
-  transition:.2s;
-}
-.drop-zone.drag{
-  border-color:var(--brand);
-  background:#fff5f5;
-}
-.drop-zone strong{
-  display:block;
-  margin-bottom:6px;
+@keyframes scrollText{
+0%{transform:translateX(0);}
+100%{transform:translateX(-100%);}
 }
 
-.actions{display:flex;gap:12px}
+header{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:15px 30px;
+background:#0b1f3a;
+}
 
-.btn{
-  flex:1;
-  padding:12px 14px;
-  border-radius:8px;
-  border:none;
-  font-size:15px;
-  cursor:pointer;
-}
-.btn-primary{background:var(--brand);color:#fff}
-.btn-outline{background:#fff;color:var(--brand);border:1px solid var(--brand)}
+.logo{color:#4da6ff;font-weight:bold;font-size:20px;}
 
-.preview-box{
-  display:none;
-  margin-top:20px;
-  border-top:1px solid var(--border);
-  padding-top:16px;
+nav a{
+text-decoration:none;
+color:white;
+padding:8px 14px;
+margin-left:10px;
+border-radius:8px;
+background:#122b4d;
+transition:0.3s;
 }
-.preview-head{
-  display:flex;justify-content:space-between;align-items:center;
-  margin-bottom:8px
+
+nav a:hover{
+box-shadow:0 0 12px white;
+transform:translateY(-2px);
 }
+
+.container{
+max-width:1000px;
+margin:40px auto;
+background:#112c4f;
+padding:30px;
+border-radius:20px;
+box-shadow:0 0 30px rgba(0,0,0,0.4);
+}
+
+h1{text-align:center;color:#ffd54f;}
+
+.upload{
+border:2px dashed #ffd54f;
+padding:30px;
+text-align:center;
+margin:20px 0;
+border-radius:15px;
+cursor:pointer;
+}
+
+button{
+padding:10px 20px;
+border:none;
+border-radius:10px;
+cursor:pointer;
+background:#1e88e5;
+color:white;
+transition:0.3s;
+}
+
+button:hover{
+box-shadow:0 0 15px white;
+transform:translateY(-2px);
+}
+
+.progress{
+width:100%;
+height:8px;
+background:#333;
+border-radius:10px;
+margin-top:20px;
+}
+
+.progress-bar{
+height:8px;
+width:0%;
+background:#00e676;
+border-radius:10px;
+transition:0.4s;
+}
+
+textarea{
+width:100%;
+height:250px;
+margin-top:20px;
+padding:10px;
+border-radius:10px;
+border:none;
+}
+
+footer{
+margin-top:60px;
+background:#0b1f3a;
+padding:30px;
+}
+
+.footer-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+gap:20px;
+}
+
+.contact-btn{
+display:inline-block;
+padding:10px 18px;
+background:#1e88e5;
+border-radius:8px;
+text-decoration:none;
+color:#fff;
+font-weight:bold;
+transition:0.3s;
+}
+
+.contact-btn:hover{
+box-shadow:0 0 12px #fff;
+transform:translateY(-2px);
+}
+</style>
+</head>
+
+<body>
+
+<div class="top-bar">
+<span>🚀 Advanced Version Coming Soon – Multi-Language OCR & Editable PDF Output</span>
+</div>
+
+<header>
+<div class="logo">PDFwala.in</div>
+<nav>
+<a href="index.html">Home</a>
+<a href="index.html">All Tools</a>
+<a href="index.html">Popular Tools</a>
+</nav>
+</header>
+
+<div class="container">
+
+<h1>OCR PDF & Image to Text</h1>
+
+<div class="upload" onclick="document.getElementById('fileInput').click()">
+Click or Drag & Drop Image / PDF File Here
+<input type="file" id="fileInput" accept="image/*,application/pdf" hidden>
+</div>
+
+<div id="fileInfo"></div>
+
+<button onclick="runOCR()">Extract Text</button>
+
+<div class="progress">
+<div class="progress-bar" id="progressBar"></div>
+</div>
+
+<textarea id="outputText" placeholder="Extracted text will appear here..."></textarea>
+
+<button onclick="downloadText()">Download TXT</button>
+
+  </div>
+  <footer>
+<div class="footer-grid">
+
+<div>
+<h3>Contact Support</h3>
+
+<a class="contact-btn"
+href="mailto:Praveshhelp4u@gmail.com">
+📧 Email Support
+</a>
+
+<br><br>
+
+<a class="contact-btn"
+href="https://wa.me/918318158236"
+target="_blank">
+💬 WhatsApp Chat
+</a>
+
+</div>
+
+<div>
+<h3>Security</h3>
+<p>
+All OCR processing happens directly inside your browser. 
+We do not upload or store your documents.
+</p>
+</div>
+
+<div>
+<h3>Legal</h3>
+<p>
+By using this tool, you agree to our terms and privacy policy described below.
+</p>
+</div>
+
+</div>
+</footer>
+
+
+<script src="https://cdn.jsdelivr.net/npm/tesseract.js@2/dist/tesseract.min.js"></script>
+
+<script>
+
+let selectedFile;
+
+document.getElementById('fileInput').addEventListener('change',function(e){
+selectedFile=e.target.files[0];
+document.getElementById("fileInfo").innerText="Uploaded: "+selectedFile.name;
+});
+
+function runOCR(){
+if(!selectedFile){
+alert("Upload file first.");
+return;
+}
+
+let progressBar=document.getElementById("progressBar");
+
+Tesseract.recognize(
+selectedFile,
+'eng',
+{
+logger: m => {
+if(m.status==="recognizing text"){
+let percent=Math.floor(m.progress*100);
+progressBar.style.width=percent+"%";
+}
+}
+}
+).then(({ data: { text } }) => {
+document.getElementById("outputText").value=text;
+progressBar.style.width="100%";
+});
+}
+
+function downloadText(){
+let text=document.getElementById("outputText").value;
+let blob=new Blob([text],{type:"text/plain"});
+let link=document.createElement("a");
+link.href=URL.createObjectURL(blob);
+link.download="PDFwala.in_OCR_Text.txt";
+link.click();
+}
+
+</script>
+
+
+<div class="container">
+
+<h2>What is OCR PDF?</h2>
+<p>
+OCR (Optical Character Recognition) converts scanned documents and images into editable text.
+This tool allows you to extract text from image-based PDF files instantly without installing software.
+</p>
+
+<h2>Why Choose PDFwala.in OCR?</h2>
+<p>
+Unlike many platforms that upload your files to remote servers, PDFwala.in performs OCR directly inside your browser.
+This increases security, improves speed, and ensures your documents remain private.
+</p>
+
+<h2>Features</h2>
+<ul>
+<li>Extract text from scanned PDF</li>
+<li>Image to text conversion</li>
+<li>Secure browser-based processing</li>
+<li>No file upload required</li>
+<li>Free and fast</li>
+<li>Live progress bar</li>
+<li>Download extracted text</li>
+</ul>
+
+<h2>How To Use OCR Tool?</h2>
+<ol>
+<li>Upload scanned PDF or image.</li>
+<li>Click Extract Text.</li>
+<li>Wait for recognition to complete.</li>
+<li>Preview extracted content.</li>
+<li>Download TXT file.</li>
+</ol>
+
+<h2>Frequently Asked Questions</h2>
+
+<h3>Is this OCR tool free?</h3>
+<p>Yes, it is 100% free.</p>
+
+<h3>Are my files uploaded?</h3>
+<p>No, processing happens locally in your browser.</p>
+
+<h3>Does it work on mobile?</h3>
+<p>Yes, fully responsive.</p>
+
+<h3>Is OCR 100% accurate?</h3>
+<p>Accuracy depends on document quality and scan clarity.</p>
+
+<h2>Privacy Policy</h2>
+<p>
+PDFwala.in does not collect or store your document data.
+OCR processing is handled entirely within your browser.
+No personal information related to files is stored.
+</p>
+
+<h2>Terms and Conditions</h2>
+<p>
+Users must ensure they have rights to process uploaded documents.
+PDFwala.in is not responsible for misuse or copyright violations.
+The service is provided as-is without warranty.
+</p>
+
+<h2>Disclaimer</h2>
+<p>
+OCR accuracy may vary depending on scan quality.
+Users should verify extracted content before official use.
+</p>
+
+<h2>Related Tools</h2>
+<ul>
+<li><a href="compress-pdf.html">Compress PDF</a></li>
+<li><a href="split-pdf.html">Split PDF</a></li>
+<li><a href="merge-pdf.html">Merge PDF</a></li>
+<li><a href="jpg-to-pdf.html">JPG to PDF</a></li>
+</ul>
+
+</div>
+
+<script type="application/ld+json">
+{
+ "@context":"https://schema.org",
+ "@type":"FAQPage",
+ "mainEntity":[
+  {"@type":"Question","name":"Is this OCR tool free?","acceptedAnswer":{"@type":"Answer","text":"Yes, it is completely free."}},
+  {"@type":"Question","name":"Are files uploaded to server?","acceptedAnswer":{"@type":"Answer","text":"No. Processing happens locally in browser."}},
+  {"@type":"Question","name":"Does it work on mobile?","acceptedAnswer":{"@type":"Answer","text":"Yes, it is mobile friendly."}}
+ ]
+}
+</script>
+
+</body>
+</html>}
 .preview-head h2{margin:0;font-size:16px}
 
 textarea{
