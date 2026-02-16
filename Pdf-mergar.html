@@ -1,353 +1,471 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Merge PDF Files Online Free | Secure PDF Merger - PDFWala.in</title>
-<meta name="description" content="Merge multiple PDF files online for free. Secure client-side PDF merger tool. No upload required.">
-<meta name="keywords" content="merge pdf, combine pdf files, pdf merger online free, secure pdf merge">
-<meta name="author" content="PDFWala.in">
-<link rel="canonical" href="https://pdfwala.in/merge-pdf">
+<title>Merge PDF Online Free – Secure PDF Combiner Without Upload | PDFwala.in</title>
 
-<script src="https://unpkg.com/pdf-lib/dist/pdf-lib.min.js"></script>
+<meta name="description" content="Merge PDF online free without uploading your files. Combine multiple PDF documents securely inside your browser. Fast, private and no signup required PDF merger tool.">
+
+<meta name="keywords" content="merge pdf online, combine pdf files, join pdf free, merge multiple pdf documents, secure pdf merger, merge pdf without upload, browser based pdf combiner, pdf merger free tool">
+
+<meta name="robots" content="index, follow">
+
+<link rel="canonical" href="https://pdfwala.in/merge-pdf.html">
+
+<meta name="author" content="PDFwala.in">
+<meta name="theme-color" content="#0b2b4a">
+
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="Merge PDF Online Free – Secure PDF Combiner">
+<meta property="og:description" content="Combine multiple PDF files instantly without uploading. 100% secure browser-based PDF merger tool.">
+<meta property="og:url" content="https://pdfwala.in/merge-pdf.html">
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Merge PDF Online Free – PDFwala.in">
+<meta name="twitter:description" content="Securely merge multiple PDF files inside your browser. No upload required.">
+
+<!-- ========================= -->
+<!-- ADVANCED STRUCTURED DATA -->
+<!-- ========================= -->
+
+<script type="application/ld+json">
+{
+ "@context":"https://schema.org",
+ "@type":"Organization",
+ "name":"PDFwala.in",
+ "url":"https://pdfwala.in",
+ "logo":"https://pdfwala.in/logo.png"
+}
+</script>
+
+<script type="application/ld+json">
+{
+ "@context":"https://schema.org",
+ "@type":"BreadcrumbList",
+ "itemListElement":[
+  {
+   "@type":"ListItem",
+   "position":1,
+   "name":"Home",
+   "item":"https://pdfwala.in/index.html"
+  },
+  {
+   "@type":"ListItem",
+   "position":2,
+   "name":"Merge PDF",
+   "item":"https://pdfwala.in/merge-pdf.html"
+  }
+ ]
+}
+</script>
+
+<script type="application/ld+json">
+{
+ "@context":"https://schema.org",
+ "@type":"SoftwareApplication",
+ "name":"Merge PDF Online",
+ "applicationCategory":"BusinessApplication",
+ "operatingSystem":"Web",
+ "description":"Browser-based PDF merger tool that combines multiple PDF files without uploading them to a server.",
+ "offers":{
+   "@type":"Offer",
+   "price":"0",
+   "priceCurrency":"USD"
+ }
+}
+</script>
+
+<script type="application/ld+json">
+{
+ "@context":"https://schema.org",
+ "@type":"FAQPage",
+ "mainEntity":[
+  {
+   "@type":"Question",
+   "name":"Is this Merge PDF tool secure?",
+   "acceptedAnswer":{
+    "@type":"Answer",
+    "text":"Yes. All PDF merging happens locally inside your browser. Files are not uploaded or stored."
+   }
+  },
+  {
+   "@type":"Question",
+   "name":"Can I merge large PDF files?",
+   "acceptedAnswer":{
+    "@type":"Answer",
+    "text":"Yes, depending on your device memory and browser capability."
+   }
+  },
+  {
+   "@type":"Question",
+   "name":"Do I need to sign up?",
+   "acceptedAnswer":{
+    "@type":"Answer",
+    "text":"No signup or registration is required."
+   }
+  },
+  {
+   "@type":"Question",
+   "name":"Is it completely free?",
+   "acceptedAnswer":{
+    "@type":"Answer",
+    "text":"Yes, this PDF merge tool is completely free to use."
+   }
+  }
+ ]
+}
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf-lib/1.17.1/pdf-lib.min.js"></script>
 
 <style>
 body{
 margin:0;
-font-family:Segoe UI, sans-serif;
-background:linear-gradient(135deg,#061a2e,#0d2d4d,#061a2e);
+font-family:system-ui,Arial;
+background:linear-gradient(135deg,#071a2f,#0b2b4a,#071a2f);
 color:#fff;
 }
 
-/* HEADER */
 header{
 display:flex;
 justify-content:space-between;
-align-items:center;
-padding:20px 40px;
+padding:15px 20px;
+background:rgba(0,0,0,0.4);
+flex-wrap:wrap;
 }
+
 .logo{
 color:#ffc107;
 font-weight:bold;
-font-size:22px;
+font-size:18px;
 }
+
 nav a{
-margin-left:15px;
-text-decoration:none;
+margin:5px;
+padding:8px 14px;
+border-radius:25px;
+background:#123a63;
 color:#fff;
-padding:8px 15px;
-border-radius:8px;
-background:#0e2f50;
-transition:0.3s;
+text-decoration:none;
+transition:.3s;
 }
+
 nav a:hover{
-transform:translateY(-3px);
 box-shadow:0 0 15px #fff;
+transform:translateY(-3px);
 }
 
-/* MAIN */
 .container{
-max-width:900px;
-margin:30px auto;
-background:#102a45;
-padding:30px;
-border-radius:20px;
-box-shadow:0 0 40px rgba(0,0,0,0.6);
+max-width:1000px;
+margin:40px auto;
+padding:25px;
+background:rgba(255,255,255,0.05);
+border-radius:18px;
 }
 
-h1{
-text-align:center;
-color:#ffc107;
-margin-bottom:20px;
-}
-
-.drop-area{
+.upload{
 border:2px dashed #ffc107;
 padding:30px;
 text-align:center;
 border-radius:15px;
 cursor:pointer;
-margin-bottom:20px;
+transition:.3s;
+}
+
+.upload:hover{
+background:rgba(255,193,7,0.1);
 }
 
 .file-item{
-background:#1a3a5f;
-padding:12px;
+background:#123a63;
+padding:10px;
 margin:8px 0;
 border-radius:10px;
-display:flex;
-justify-content:space-between;
-align-items:center;
-cursor:grab;
+cursor:move;
 }
 
-button{
-padding:10px 20px;
+.btn{
+margin-top:15px;
+padding:14px;
 border:none;
-border-radius:10px;
-cursor:pointer;
-margin:10px 5px;
-background:#0e2f50;
+border-radius:30px;
+background:#123a63;
 color:#fff;
-transition:0.3s;
-}
-button:hover{
-transform:translateY(-3px);
-box-shadow:0 0 15px #fff;
-}
-.primary{
-background:#0066ff;
-}
-.success{
-background:#28a745;
+cursor:pointer;
+width:100%;
+font-weight:600;
+transition:.3s;
 }
 
-.progress{
-height:8px;
+.btn:hover{
+box-shadow:0 0 20px #fff;
+transform:translateY(-3px);
+}
+
+.progress-wrapper{
+margin-top:20px;
 background:#222;
 border-radius:10px;
+height:12px;
 overflow:hidden;
-margin-top:15px;
-display:none;
 }
+
 .progress-bar{
 height:100%;
 width:0%;
-background:#28a745;
-transition:0.3s;
+background:#00e676;
+transition:.3s;
 }
 
-/* NEW EXTRA PROGRESS INFO */
-.progress-info{
-display:none;
-margin-top:8px;
-font-size:14px;
-display:flex;
-justify-content:space-between;
-opacity:0.9;
+.spinner{
+border:4px solid rgba(255,255,255,0.3);
+border-top:4px solid #fff;
+border-radius:50%;
+width:20px;
+height:20px;
+display:inline-block;
+animation:spin 1s linear infinite;
+margin-right:6px;
 }
 
-.preview{
-margin-top:20px;
-display:none;
-background:#000;
-padding:15px;
-border-radius:15px;
-}
-iframe{
-width:100%;
-height:400px;
-border:none;
+@keyframes spin{
+0%{transform:rotate(0);}
+100%{transform:rotate(360deg);}
 }
 
-/* FOOTER */
+.tick{
+color:#00e676;
+font-weight:bold;
+}
+
 footer{
-margin-top:50px;
-padding:30px;
-background:#081a2d;
+margin-top:60px;
+padding:40px;
+background:rgba(0,0,0,.9);
 display:flex;
-justify-content:space-around;
 flex-wrap:wrap;
-font-size:14px;
+gap:30px;
 }
-footer div{
-margin:10px;
-max-width:250px;
+
+.footer-column{
+flex:1;
+min-width:250px;
 }
+
 footer h3{
 color:#ffc107;
 }
-footer a{
+
+.contact-btn{
+display:block;
+margin-top:12px;
+padding:12px;
+background:#123a63;
+border-radius:25px;
 color:#fff;
 text-decoration:none;
-display:block;
-margin-top:5px;
+text-align:center;
 }
 </style>
-</head>
 
+</head>
 <body>
 
 <header>
-<div class="logo">PDFWala.in</div>
+<div class="logo">PDFwala.in</div>
 <nav>
-<a href="/">Home</a>
-<a href="#">All Tools</a>
-<a href="#">Popular Tools</a>
+<a href="index.html">Home</a>
+<a href="index.html">Popular Tools</a>
+<a href="index.html">All Tools</a>
 </nav>
 </header>
 
 <div class="container">
-<h1>Merge PDF Files Online Free</h1>
 
-<div class="drop-area" id="dropArea">
-Click or Drag & Drop PDF Files Here
+<h1>Merge PDF Online – Combine Multiple PDF Files Securely</h1>
+
+<div class="upload" onclick="fileInput.click()">
+Click to Upload PDF Files (Only PDF Allowed)
+<input type="file" id="fileInput" accept="application/pdf" multiple hidden>
 </div>
 
 <div id="fileList"></div>
 
-<button class="primary" onclick="mergePDF()">Merge PDF</button>
-<button onclick="clearFiles()">Clear</button>
+<button class="btn" onclick="mergePDFs()">Merge PDFs</button>
 
-<div class="progress" id="progressBox">
+<div class="progress-wrapper">
 <div class="progress-bar" id="progressBar"></div>
 </div>
 
-<!-- NEW PROGRESS TEXT SECTION -->
-<div class="progress-info" id="progressInfo">
-<span id="progressText">Preparing...</span>
-<span id="progressPercent">0%</span>
-</div>
+<div id="progressText" style="margin-top:10px;"></div>
 
-<div class="preview" id="previewBox">
-<h3>Preview</h3>
-<iframe id="pdfFrame"></iframe>
-<br>
-<button class="success" onclick="downloadPDF()">Download PDF</button>
-</div>
+<button class="btn" id="downloadBtn" style="display:none;" onclick="downloadMerged()">Download Merged PDF</button>
 
 </div>
 
 <footer>
-<div>
-<h3>About this tool</h3>
-<p>This tool merges multiple PDF files securely in your browser. No files are uploaded to any server.</p>
-</div>
-<div>
-<h3>How to use</h3>
-<p>1. Select PDF files</p>
-<p>2. Drag to reorder</p>
-<p>3. Click Merge</p>
-<p>4. Preview & Download</p>
-</div>
-<div>
-<h3>Contact</h3>
-<p>Email: support@pdfwala.in</p>
-<p>WhatsApp: +91 9876543210</p>
-</div>
-<div>
-<h3>Legal</h3>
-<a href="#">Privacy Policy</a>
-<a href="#">Terms & Conditions</a>
+<div class="footer-column">
+<h3>Support</h3>
+<a href="mailto:Praveshhelp4u@gmail.com" class="contact-btn">Email Support</a>
+<a href="https://wa.me/918318158236" target="_blank" class="contact-btn">WhatsApp Support</a>
 </div>
 </footer>
 
 <script>
+
 let files=[];
 let mergedBytes=null;
+let version=parseInt(localStorage.getItem("mergeVersion")||"0");
 
-const dropArea=document.getElementById("dropArea");
+const fileInput=document.getElementById("fileInput");
 const fileList=document.getElementById("fileList");
+const progressBar=document.getElementById("progressBar");
+const progressText=document.getElementById("progressText");
+const downloadBtn=document.getElementById("downloadBtn");
 
-dropArea.onclick=createInput;
-dropArea.addEventListener("dragover",e=>e.preventDefault());
-dropArea.addEventListener("drop",e=>{
-e.preventDefault();
-handleFiles(e.dataTransfer.files);
+fileInput.addEventListener("change",function(e){
+for(let file of e.target.files){
+
+if(file.type!=="application/pdf"){
+alert("Only PDF files are allowed.");
+return;
+}
+
+files.push(file);
+}
+
+renderFileList();
 });
 
-function createInput(){
-let input=document.createElement("input");
-input.type="file";
-input.multiple=true;
-input.accept="application/pdf";
-input.onchange=e=>handleFiles(e.target.files);
-input.click();
-}
-
-function handleFiles(selected){
-for(let f of selected){
-if(f.type==="application/pdf"){
-files.push(f);
-}
-}
-renderFiles();
-}
-
-function renderFiles(){
+function renderFileList(){
 fileList.innerHTML="";
-files.forEach((file,index)=>{
+files.forEach((file)=>{
 let div=document.createElement("div");
 div.className="file-item";
-div.draggable=true;
-div.innerHTML=`${file.name} <button onclick="removeFile(${index})">Remove</button>`;
-
-div.addEventListener("dragstart",e=>{
-e.dataTransfer.setData("text/plain", index);
-});
-
-div.addEventListener("dragover",e=>e.preventDefault());
-
-div.addEventListener("drop",e=>{
-e.preventDefault();
-const fromIndex=parseInt(e.dataTransfer.getData("text/plain"));
-const toIndex=index;
-
-if(isNaN(fromIndex)||fromIndex===toIndex) return;
-if(fromIndex<0||fromIndex>=files.length) return;
-
-const moved=files.splice(fromIndex,1)[0];
-files.splice(toIndex,0,moved);
-
-renderFiles();
-});
-
+div.textContent=file.name;
 fileList.appendChild(div);
 });
 }
 
-function removeFile(i){
-files.splice(i,1);
-renderFiles();
+async function mergePDFs(){
+
+if(files.length<2){
+alert("Upload at least 2 PDF files.");
+return;
 }
 
-async function mergePDF(){
-if(files.length<2){alert("Select at least 2 PDFs");return;}
-
-document.getElementById("progressBox").style.display="block";
-document.getElementById("progressInfo").style.display="flex";
-
-let bar=document.getElementById("progressBar");
+progressBar.style.width="0%";
+progressText.innerHTML='<span class="spinner"></span> 0%';
 
 const mergedPdf=await PDFLib.PDFDocument.create();
 
 for(let i=0;i<files.length;i++){
-let bytes=await files[i].arrayBuffer();
-const pdf=await PDFLib.PDFDocument.load(bytes);
-const copied=await mergedPdf.copyPages(pdf,pdf.getPageIndices());
-copied.forEach(page=>mergedPdf.addPage(page));
 
-let percent=Math.round((i+1)/files.length*100);
-bar.style.width=percent+"%";
-document.getElementById("progressPercent").innerText=percent+"%";
-document.getElementById("progressText").innerText="Merging file "+(i+1)+" of "+files.length;
+let bytes=await files[i].arrayBuffer();
+let pdf=await PDFLib.PDFDocument.load(bytes);
+let pages=await mergedPdf.copyPages(pdf,pdf.getPageIndices());
+pages.forEach(p=>mergedPdf.addPage(p));
+
+let percent=Math.round(((i+1)/files.length)*100);
+progressBar.style.width=percent+"%";
+progressText.innerHTML='<span class="spinner"></span> '+percent+'%';
+
 }
 
 mergedBytes=await mergedPdf.save();
-document.getElementById("progressText").innerText="Merge Complete ✓";
 
-document.getElementById("previewBox").style.display="block";
-document.getElementById("pdfFrame").src=URL.createObjectURL(new Blob([mergedBytes],{type:"application/pdf"}));
+progressText.innerHTML='<span class="tick">✔ Completed 100%</span>';
+downloadBtn.style.display="block";
+
+version++;
+localStorage.setItem("mergeVersion",version);
+
 }
 
-function downloadPDF(){
-if(!mergedBytes) return;
+function downloadMerged(){
 let blob=new Blob([mergedBytes],{type:"application/pdf"});
 let link=document.createElement("a");
 link.href=URL.createObjectURL(blob);
-link.download="PDFWala_merged.pdf";
+link.download=`PDFwala.in_Merge_v${version}.pdf`;
 link.click();
 }
 
-function clearFiles(){
-files=[];
-fileList.innerHTML="";
-document.getElementById("previewBox").style.display="none";
-document.getElementById("progressBox").style.display="none";
-document.getElementById("progressInfo").style.display="none";
-}
-</script>
+  </script>
+  <div style="max-width:1000px;margin:60px auto;padding:25px;line-height:1.9;font-size:16px;">
 
+<h2>Why Merge PDF Online Using PDFwala.in?</h2>
+<p>
+Merging PDF files is one of the most common document management tasks. Whether you are combining invoices, joining reports, merging contracts, or organizing scanned documents, our Merge PDF Online tool allows you to combine multiple PDF files into one secure document instantly. Unlike many online PDF tools, PDFwala.in processes files directly inside your browser, ensuring maximum privacy and zero server upload.
+</p>
+
+<h2>Key Benefits of Our PDF Merger Tool</h2>
+<ul>
+<li>100% Browser-Based PDF Processing</li>
+<li>No File Upload to Server</li>
+<li>Fast and Secure PDF Combination</li>
+<li>No Registration Required</li>
+<li>Completely Free PDF Merger</li>
+<li>Works on Mobile and Desktop</li>
+</ul>
+
+<h2>How to Merge PDF Files Online</h2>
+<p>
+To merge PDF files, simply upload multiple PDF documents using the upload area above. Only PDF files are accepted to maintain file integrity and security. Once uploaded, click on "Merge PDFs" and wait for the merging process to complete. A progress bar will show the percentage completed. When finished, download your combined PDF instantly.
+</p>
+
+<h2>Is This Merge PDF Tool Secure?</h2>
+<p>
+Yes. Security is our top priority. All PDF merging happens locally inside your browser using advanced client-side processing technology. No file is uploaded to any external server. Your documents remain private and secure on your device at all times.
+</p>
+
+<h2>Who Can Use This PDF Merger?</h2>
+<p>
+This tool is ideal for students, office professionals, freelancers, legal professionals, accountants, and anyone who needs to combine multiple PDF documents into one file quickly. Since it is browser-based, it works on Windows, Mac, Android, and iOS devices.
+</p>
+
+<h2>Frequently Asked Questions</h2>
+
+<h3>1. Is the Merge PDF tool completely free?</h3>
+<p>Yes, the tool is completely free with no hidden charges.</p>
+
+<h3>2. Are my PDF files stored anywhere?</h3>
+<p>No. Files are processed locally and are never uploaded or stored.</p>
+
+<h3>3. Can I merge large PDF files?</h3>
+<p>Yes, depending on your device performance and browser memory.</p>
+
+<h3>4. Do I need to create an account?</h3>
+<p>No account or signup is required.</p>
+
+<h3>5. Does it work on mobile devices?</h3>
+<p>Yes, the tool is fully responsive and works on mobile browsers.</p>
+
+<h2>Privacy Policy</h2>
+<p>
+At PDFwala.in, user privacy is extremely important. We do not collect, store, or process any document content from users. All PDF merging activities take place inside the user's browser using client-side scripting. We do not upload files to servers. We may use standard analytics tools to improve website performance, but no document data is ever accessed.
+</p>
+
+<h2>Terms & Conditions</h2>
+<p>
+By using this Merge PDF tool, you agree that you have the legal right to modify and combine the documents you upload. PDFwala.in is not responsible for misuse, copyright violations, or unauthorized document manipulation. Users are fully responsible for the files they process.
+</p>
+
+<h2>Related PDF Tools</h2>
+<p>
+Improve your productivity with our other tools:
+<br>
+<a href="index.html">Split PDF</a> |
+<a href="index.html">Compress PDF</a> |
+<a href="index.html">Rotate PDF</a> |
+<a href="index.html">Unlock PDF</a> |
+<a href="index.html">Add Watermark</a>
+</p>
+
+  </div>
+  </div>
 </body>
 </html>
