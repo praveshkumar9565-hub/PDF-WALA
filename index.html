@@ -206,6 +206,19 @@
             .tools-grid { grid-template-columns: 1fr; }
             .tool-card { padding: 20px; }
         }
+        .trust-bar{
+max-width:1280px;
+margin:20px auto;
+padding:20px;
+background:#fff;
+border-radius:10px;
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:10px;
+text-align:center;
+font-weight:600;
+box-shadow:0 4px 10px rgba(0,0,0,.08);
+}
     </style>
 </head>
 <body>
@@ -213,10 +226,7 @@
     <header>
         <nav class="navbar">
             <a href="/" class="logo"><i class="fa-solid fa-file-pdf"></i> PDF<span>Wala</span>.in</a>
-            <div class="nav-links">
-                <a href="#" class="nav-btn btn-login">Log In</a>
-                <a href="#" class="nav-btn btn-signup">Sign Up</a>
-            </div>
+           
         </nav>
 
     </header>
@@ -240,14 +250,29 @@
             <button class="cat-btn" onclick="filterTools('advanced')">Advanced</button>
         </div>
     </section>
-
-    <main class="container">
-        
-        <div class="ad-banner">
-            <i class="fa-solid fa-rectangle-ad"></i> Google Ads (Leaderboard)
-        </div>
-
+<section class="trust-bar">
+<div>🔒 Secure Processing</div>
+<div>⚡ Fast Conversion</div>
+<div>🆓 100% Free</div>
+<div>📱 Mobile Friendly</div>
+</section>
         <div class="tool-section" id="popular">
+            <section class="stats">
+<div>
+<h3>50+</h3>
+<p>PDF Tools</p>
+</div>
+
+<div>
+<h3>100K+</h3>
+<p>Files Processed</p>
+</div>
+
+<div>
+<h3>99.9%</h3>
+<p>Uptime</p>
+</div>
+</section>
             <h2 class="section-title"><i class="fa-solid fa-star"></i> Most Popular</h2>
             <div class="tools-grid">
                 <a href="Pdf-mergar.html" class="tool-card"><div class="tool-icon"><i class="fa-solid fa-object-group"></i></div><h3>Merge PDF</h3><p>Combine multiple PDFs into one.</p></a>
